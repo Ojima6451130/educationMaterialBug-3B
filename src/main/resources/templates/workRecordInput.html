@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+  <title>勤務実績入力画面</title>
+  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/js/message.js}"></script>
+  <script type="text/javascript" th:src="@{/js/checkCommon.js}"></script>
+  <script>
+
+    /**
+       * 登録へ
+       */
+    function register(event) {
+      if(event){
+        event.preventDefault();
+      }
+
+      // 一覧のサイズ
+      var row = document.querySelectorAll(".list")
+      var listSize = row.length;
+
+      // 開始時間エラーメッセージ
+      var startTimeErrMsg = '';
+      // 終了時間エラーメッセージ
+      var endTimeErrMsg = '';
+      // 休憩時間エラーメッセージ
+      var breakTimeErrMsg = '';
+      // From - To エラーメッセージ
+      var fromToErrMsg = '';
+      // エラーメッセージ
+      var errorMsg = '';
+
+
+      with (document.forms['registForm'].elements) {
+
+        for (var i = 0; i < listSize; i++) {
+
+          // 開始時間を取得する。
+          var startTimeInput  = document.querySelector('#WorkRecordInputList' + i + '\\.startTime');
+          var startTimeValue = startTimeInput.value;
+          // 終了時間を取得する。
+          var endTimeInput = document.querySelector('#WorkRecordInputList' + i + '\\.endTime');
+          var endTimeValue = endTimeInput.value;
+          // 休憩時間を取得する。
+          var breakTimeInput = document.querySelector('#WorkRecordInputList' + i + '\\.breakTime');
+          var breakTimeValue = breakTimeInput.value;
+
+          // 背景色をクリアする
+          startTimeInput.style.backgroundColor = 'white';
+          endTimeInput.style.backgroundColor = 'white';
+          breakTimeInput.style.backgroundColor = 'white';
+
+          if (startTimeValue  == "" && endTimeValue == "" && breakTimeValue == "") {
+            continue;
+          }
+
+          // 時間チェック
+          if (!startTimeErrMsg) {
+            if (!checkTime(startTimeValue)) {
+              var strArr = ['開始時間'];
+              startTimeErrMsg = getMessage('E-MSG-000004', strArr);
+              startTimeInput.style.backgroundColor = 'red';
+            }else{
+              startTimeInput.style.backgroundColor = 'white';
+            }
+          }
+          if (!endTimeErrMsg) {
+            if (!checkTime(endTimeValue)) {
+              var strArr = ['終了時間'];
+              endTimeErrMsg = getMessage('E-MSG-000004', strArr);
+              endTimeInput.style.backgroundColor = 'red';
+            }else{
+              endTimeInput.style.backgroundColor = 'white';
+            }
+          }
+          if (!breakTimeErrMsg) {
+            if (!checkTime(breakTimeValue)) {
+              var strArr = ['休憩時間'];
+              breakTimeErrMsg = getMessage('E-MSG-000004', strArr);
+              breakTimeInput.style.backgroundColor = 'red';
+            }else{
+              breakTimeInput.style.backgroundColor = 'white';
+            }
+          }
+
+          // from - to のチェック
+          if (!checkTimeCompare(startTimeValue, endTimeValue)) {
+            if (checkTime(startTimeValue) && checkTime(endTimeValue)) {
+              fromToErrMsg = getMessageCodeOnly('E-MSG-000005');
+              startTimeInput.style.backgroundColor = 'red';
+              endTimeInput.style.backgroundColor = 'red';
+            }
+          }
+
+        }
+      }
+
+      // エラーメッセージ
+      errorMsg = startTimeErrMsg + endTimeErrMsg + breakTimeErrMsg + fromToErrMsg;
+
+      if (errorMsg) {
+        alert(errorMsg);
+        // エラー
+        return false;
+      }
+
+      document.getElementById("registForm").submit();
+    }
+
+
+  </script>
+</head>
+
+<title>勤務実績入力画面</title>
+
+<style>
+  .weekday {
+    color: black;
+  }
+
+  .saturday {
+    color: blue;
+  }
+
+  .sunday {
+    color: red;
+  }
+
+  .holiday {
+    background-color: yellow;
+  }
+</style>
+
+
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <table class="centered-container">
+        <tr>
+          <td id="headLeft">
+            <form action="/kikin/menu" method="post">
+              <input value="戻る" type="submit" class="smallButton" />
+            </form>
+          </td>
+          <td id="headCenter">
+            勤務実績入力
+          </td>
+          <td id="headRight">
+            <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="businessBody">
+      <form action="/kikin/workRecordInput/search" method="post" th:object="${workRecordInputForm}">
+        <label>表示年月：</label>
+        <select name="yearMonth" id="yearMonth">
+          <!-- yearMonthValues リストをループして表示 -->
+          <option th:each="entry : ${yearMonthCmbMap.entrySet()}" th:text="${entry.value}" th:value="${entry.key}"
+            th:selected="${entry.key == workRecordInputForm.yearMonth}" th:inline="text">[[${yearMonth}]>
+          </option>
+        </select>
+        <input value="検索" type="submit"/>
+        <div style="float: right; width: 300px; text-align: center; box-sizing: border-box;">
+          社員ID&nbsp;<span th:text="${loginUserDto.employeeId}"></span>
+          ：社員名&nbsp;<span th:text="${loginUserDto.employeeName}"></span>
+        </div>
+      </form>
+    </div>
+
+    <div id="businessBody" style="justify-content: center;">
+      <form action="/kikin/workRecordInput/regist" id="registForm" method="post" th:object="${workRecordInputForm}">
+        <table class="overflowFixed">
+          <thead class="tableHeader" style="display: block; position: sticky; top: 0; width: max-content;">
+            <tr>
+              <td style="width: 70px; text-align: center; box-sizing: border-box;">
+                日付
+              </td>
+              <td style="width: 50px; text-align: center; box-sizing: border-box;">
+                曜日
+              </td>
+              <td style="width: 70px; text-align: center; box-sizing: border-box;">
+                シフト
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                開始時刻
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                終了時刻
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                休憩
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                実働時間
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                時間外
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                休日
+              </td>
+              <td style="width: 250px; text-align: center; box-sizing: border-box;">
+                備考
+              </td>
+            </tr>
+          </thead>
+          <tbody class="tableBody" style="display: block; width: max-content; height: 400px;  scrollbar-gutter: stable;">
+            <tr th:each="workRecordInput, iterStat : ${workRecordInputForm.workRecordInputList }" class="list">
+              <td style="width: 70px; text-align: center; box-sizing: border-box;">
+                <span th:text="${workRecordInput.workDayDisp}">
+              </td>
+              <td style="width: 50px; text-align: center; box-sizing: border-box;"
+                th:class="${workRecordInput.weekDay == '土' ? 'fontBlue' : (workRecordInput.weekDay == '日' or workRecordInput.publicHolidayFlg) ? 'fontRed' : 'fontBlack'}">
+                <span th:text="${workRecordInput.weekDay}"></span>
+              </td>
+
+              <td style="width: 70px; text-align: center; box-sizing: border-box;">
+                <span th:text="${symbol}"></span>
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                <input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].endTime}"
+                  style="width: 90px;" />
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                <input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].startTime}"
+                  style="width: 90px;" />
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                <input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].breakTime}"
+                  style="width: 90px;" />
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                <span th:text="${workRecordInput.actualWorkTime}"></span>
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                <span th:text="${workRecordInput.overTime}"></span>
+              </td>
+              <td style="width: 100px; text-align: center; box-sizing: border-box;">
+                
+              </td>
+              <td style="width: 250px; text-align: center; box-sizing: border-box;">
+                <input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].remark}"
+                  style="width: 240px;" />
+              </td>
+              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].workDay}" />
+              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].employeeId}" />
+
+              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].workDayDisp}" />
+              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].weekDay}" />
+              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].symbol}" />
+              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].actualWorkTime}" />
+              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].overTime}" />
+              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].holidayTime}" />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="footer">
+        <table>
+          <tr>
+            <td id="footLeft">
+
+            </td>
+            <td id="footCenter">
+
+            </td>
+            <td id="footRight">
+              <input value="登録" type="submit" form="registForm" class="smallButton" onclick="register(event)"/>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+  </div>
+</body>
+
+</html>

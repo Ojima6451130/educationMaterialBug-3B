@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/js/message.js}"></script>
+  <script type="text/javascript" th:src="@{/js/checkCommon.js}"></script>
+  <title>社員マスタメンテナンス画面</title>
+  <script>
+    /**
+        * 新規登録画面へ
+        */
+    function employeeMstMntRegister() {
+
+      with (document.forms['registForm']) {
+        // パスワード
+        var passwordVar = password.value;
+        // 社員名カナ
+        var employeeNameKanaVar = employeeNameKana.value;
+        // エラーメッセージ
+        var errorMsg = '';
+
+        // 背景色をクリアする
+        password.style.backgroundColor = 'white';
+        employeeNameKana.style.backgroundColor = 'white';
+
+        // パスワード
+        if (!checkRequired(passwordVar)) {
+          // エラー有り
+          var strArr = ['パスワード'];
+          errorMsg += getMessage('E-MSG-000001', strArr);
+          password.style.backgroundColor = 'red';
+        }
+        // 社員名カナ
+        if (!checkTime(employeeNameKanaVar)) {
+          // エラー有り
+          var strArr = ['社員名カナ'];
+          errorMsg += getMessage('E-MSG-000006', strArr);
+          employeeNameKana.style.backgroundColor = 'red';
+        }
+
+        if (errorMsg) {
+          alert(errorMsg);
+          // エラー
+          return false;
+        }
+      }
+
+     
+    }
+  </script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <table class="full-width">
+        <tr>
+          <td id="headLeft">
+            <form action="/kikin/eMstMntRegisterBack" method="post">
+              <input value="戻る" type="submit" class="smallButton" />
+              <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
+            </form>
+          </td>
+          <td id="headCenter">
+            社員マスタメンテナンス画面（新規登録）
+          </td>
+         
+        </tr>
+      </table>
+    </div>
+    <div id="businessBody">
+      <form id="registForm" action="/kikin/employeeMstMntRegister" method="post">
+        <div style="width: 650px;text-align: left;  margin: 0 auto;">
+          <table class="tableHeader">
+            <tr>
+              <td width="150px" align="center">
+                パスワード
+              </td>
+              <td width="200px" align="center">
+                社員名
+              </td>
+              <td width="200px" align="center">
+                社員名カナ
+              </td>
+              <td width="100px" align="center">
+                権限
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div style="overflow: auto; height: 440px; width: 650px; margin: 0 auto; ">
+          <table class="tableBody">
+            <tr>
+              <td width="150px" align="center">
+                <input type="text" name="password" size="10" />
+              </td>
+              <td width="200px" align="center">
+                <input type="text" name="employeeNameKana" size="20" />
+              </td>
+              
+                <input type="text" name="employeeName" size="20" />
+              
+              <td width="100px" align="center">
+                <select name="authorityId">
+                  <option value="01">管理者</option>
+                  <option value="02">一般</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+    </div>
+    <div id="footer">
+      <table>
+        <tr>
+          <td id="footLeft">
+            　
+          </td>
+          <td id="footCenter">
+            　
+          </td>
+          <td id="footRight">
+            <input value="登録" type="submit" class="smallButton" form="registForm" onclick="return employeeMstMntRegister()" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    </form>
+  </div>
+</body>
+
+</html>

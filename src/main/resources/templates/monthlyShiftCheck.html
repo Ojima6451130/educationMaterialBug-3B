@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+  <title>月別シフト確認画面</title>
+  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/js/message.js}"></script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <table class="centered-container">
+        <tr>
+          <td id="headLeft">
+            <form action="/kikin/menu" method="post">
+              <input value="戻る" type="submit" class="smallButton" />
+            </form>
+          </td>
+          <td id="headCenter">
+            月別シフト確認
+          </td>
+          <td id="headRight">
+            <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <form id="searchForm" action="/kikin/monthlyShiftCheck/search" method="post" th:object="${MonthlyShiftCheckForm}">
+        <label>表示年月：</label>
+        <select name="yearMonth" id="yearMonth" style="width: 5%; color: black;">
+            <option th:each="yearMonth : ${yearMonthValues}" th:value="${yearMonth}" th:selected="${yearMonth} == *{yearMonth}" th:inline="text" inputmode="text">[[${yearMonth}]]</option>
+        </select>
+        <button type="submit" value="search" >検索</button> 
+      </form>
+    </div>
+    <div id="businessBody">
+      <table class="daysTable">
+        <thead style="display: block; position: sticky;">
+          <tr class="tableHeader">
+            <td style="width: 150px; text-align: center;">
+              &nbsp;
+            </td>
+            <td th:each="dateBean : ${dateBeanList}" style="width: 40px; text-align: center;">
+              <span th:text="${dateBeanStat.count}"></span>
+            </td>
+          </tr>
+          <tr class="tableHeader">
+            <td style="width: 150px; text-align: center; white-space: nowrap;">
+              社員名
+            </td>
+            <td th:each="dateBean : ${dateBeanList}" style="width: 40px; text-align: center; vertical-align: middle;">
+              <span th:if="${dateBean.weekDay == saturday && !dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: blue;">[[${dateBean.weekDay}]]</span>
+              <span th:if="${dateBean.weekDay == sunday || dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: red;">[[${dateBean.weekDay}]]</span>
+              <span th:unless="${dateBean.weekDay == saturday || dateBean.weekDay == sunday || dateBean.publicHolidayFlg}" 
+                        th:value="${dateBean.weekDay}" style="color: black;">[[${dateBean.weekDay}]]</span>
+            </td>
+          </tr>
+        </thead>
+        <tbody style="display: block; max-height: 400px; overflow-y: scroll;">
+          <tr th:each="monthlyShiftCheck : ${monthlyShiftCheckBean}" class="tableBody">
+            <td class="tableBody" style="width: 150px; text-align: center;">
+              <span th:text="${monthlyShiftCheck.employeeName}"></span>
+            </td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol01}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol02}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol03}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol04}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol05}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol06}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol07}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol08}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol09}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol10}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol11}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol12}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol13}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol14}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol15}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol16}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol17}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol18}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol19}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol20}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol21}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol22}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol23}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol24}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol25}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol26}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol27}"></td>
+            <td class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol28}"></td>
+            <td th:if="${dateBeanList.size() > 28}" class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol29}"></td>
+            <td th:if="${dateBeanList.size() > 29}" class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol30}"></td>
+            <td th:if="${dateBeanList.size() > 30}" class="tableBody" style="width: 40px; text-align: center;" th:text="${monthlyShiftCheck.symbol31}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="footer" style="padding: 0;">
+      <table>
+        <tr>
+          <td id="footLeft">
+            <input value="凡例表示" type="button" class="longButton" onclick="openWindo()" />
+            <form id="excelForm" action="/kikin/monthlyShiftCheck/prin" method="post" th:object="${MonthlyShiftCheckForm}">
+              <input id="yearMonth" type="hidden" th:field="*{yearMonth}" th:value="${yearMonth}">
+              <input type="submit" class="smallButton" id="btn_excel" value="印刷">
+            </form>
+          </td>
+          <td id="footCenter" style="text-align: right;">
+          </td>
+          <td id="footRight">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+  <title>シフトマスタメンテナンス画面(新規登録)</title>
+  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/js/message.js}"></script>
+  <script type="text/javascript" th:src="@{/js/checkCommon.js}"></script>
+<script>
+  /**
+  * 登録処理を行うF
+  */
+ function shiftMstMntRegister() {
+	
+     // 開始時間エラーメッセージ
+     var startTimeErrMsg = '';
+     // 終了時間エラーメッセージ
+     var endTimeErrMsg = '';
+     // 休憩時間エラーメッセージ
+     var breakTimeErrMsg = '';
+     // エラーメッセージ
+     var errorMsg = '';
+     // From - To エラーメッセージ
+     var fromToErrMsg = '';
+
+     // 時間チェック
+     with (document.forms['regist']) {
+       // 開始時間を取得する。
+       var varStartTime = startTime.value;
+       // 終了時間を取得する。
+       var varEndTime = endTime.value;
+       // 休憩時間を取得する。
+       var varBreakTime = breakTime.value;
+
+       // 背景色をクリアする
+       startTime.style.backgroundColor = 'white';
+       endTime.style.backgroundColor = 'white';
+       breakTime.style.backgroundColor = 'white';
+
+       if (!checkTime(varStartTime)) {
+           var strArr = ['開始時間'];
+           startTimeErrMsg = getMessage('E-MSG-000004', strArr);
+           startTime.style.backgroundColor = 'red';
+       }
+
+       if (!checkTime(varEndTime)) {
+           var strArr = ['終了時間'];
+           endTimeErrMsg = getMessage('E-MSG-000004', strArr);
+           endTime.style.backgroundColor = 'red';
+       }
+
+       if (!checkTime(varBreakTime)) {
+           var strArr = ['休憩時間'];
+           breakTimeErrMsg = getMessage('E-MSG-000004', strArr);
+           breakTime.style.backgroundColor = 'red';
+       }
+
+       // from - to のチェック
+       if (!checkTimeCompare(varStartTime, varEndTime)) {
+         if (checkTime(varStartTime) && checkTime(varEndTime)) {
+             fromToErrMsg = getMessageCodeOnly('E-MSG-000005');
+             startTime.style.backgroundColor = 'red';
+             endTime.style.backgroundColor = 'red';
+         }
+       }
+     }
+
+     // エラーメッセージ
+     errorMsg = startTimeErrMsg + endTimeErrMsg + breakTimeErrMsg + fromToErrMsg;
+
+     if (errorMsg) {
+         alert(errorMsg);
+         // エラー
+         return false;
+     }
+
+     document.forms['regist'].submit();
+ }
+
+</script>
+</head>
+
+<body>
+  <div th:each="entry : ${dataMap}">
+    <h2 th:text="${entry.key}"></h2><!-- Mapのキー -->
+
+    <ul>
+      <li th:each="dto : ${entry.value}">
+        <span th:text="${dto.value}"></span> <!-- Dtoのvalueフィールド -->
+      </li>
+    </ul>
+  </div>
+  <div id="wrapper">
+    <div id="header">
+      <table class="full-width">
+        <tr>
+          <td id="headLeft">
+            <form action="/kikin/employeeMstMnt" method="get">
+              <input value="戻る" type="submit" class="smallButton" />
+            </form>
+          </td>
+          <td id="headCenter">
+            シフトマスタメンテナンス(新規登録)
+          </td>
+          <td id="headRight">
+            <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="businessBody">
+      <form action="/kikin/shiftMstMntRegister" id="regist" method="post">
+        <div style="width: max-content; margin: auto;">
+          <table class="tableHeader">
+            <tr>
+              <td style="width: 100px; box-sizing: border-box; text-align: center;">
+                シフト名
+              </td>
+              <td style="width: 70px; box-sizing: border-box; text-align: center;">
+                シンボル
+              </td>
+              <td style="width: 240px; box-sizing: border-box; text-align: center;">
+                時間
+              </td>
+              <td style="width: 100px; box-sizing: border-box; text-align: center;">
+                休憩
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div style="height: 100px; width: max-content; margin: auto;">
+          <table class="tableBody">
+            <tr>
+              <td style="width: 100px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "symbol"></td>
+              <td style="width: 70px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "shiftName"></td>
+              <td style="width: 110px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "endTime"></td>
+              <td class="non-border" style="width: 20px; box-sizing: border-box; text-align: center;">
+                &#xFF5E
+              </td>
+              <td style="width: 110px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "startTime"></td>
+              <td style="width: 100px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "breakTime"></td>
+            </tr>
+          </table>
+        </div>
+    </div>
+  </form>
+</div>
+<div id="footer">
+  <table>
+    <tr>
+      <td id="footLeft">
+
+      </td>
+      <td id="footCenter">
+
+      </td>
+      <td id="footRight">
+        <input value="登録" type="button" class="smallButton" onclick="shiftMstMntRegister()" style="margin-right: 50px;"/>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+
+</html>

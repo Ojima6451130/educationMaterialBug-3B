@@ -1,0 +1,341 @@
+/*
+* body定義
+*/
+body {
+    background-color: #66CCFF;
+    overflow: hidden;
+    width:100%;
+}
+errorbody {
+    background-color: red;
+}
+#wrapper {
+    width:99%;
+    height:100%;
+    padding:0px;
+}
+
+
+/*
+* ヘッダー、フッター共通定義
+*/
+#header,#businessBody,#footer {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+}
+
+/*
+* ヘッダー定義
+*/
+#header {
+    top: 2px;
+    height: 40px;
+}
+#headLeft {
+    width:15%;
+    text-align:center;
+}
+#headCenter {
+    font-size: 24px;
+    color: #FFFF00;
+    width:70%;
+    text-align:center;
+
+}
+#headRight {
+    width:15%;
+    text-align:center;
+}
+/*
+* メニュー画面のボタン
+*/
+.menuBlock {
+    margin-left:100px;
+    float:left;
+    text-align:center;
+    padding:30px;
+}
+
+/*
+* 業務body定義
+*/
+#businessBody {
+    height: 82%;
+    overflow: auto;
+}
+
+/*
+* フッター定義
+*/
+#footer {
+    bottom: 1%;
+    height: 70px;
+    width: 100%;
+}
+#footLeft {
+    float:left;
+    width:400px;
+    text-align:left;
+}
+#footCenter {
+    width:100%;
+    text-align:center;
+}
+#footRight {
+    float:right;
+    width:400px;
+    text-align:right;
+}
+/*
+* エラーページ ヘッダー、フッター共通定義
+*/
+#errorHeader,#errorBusinessBody,#errorFooter {
+    width: 100%;
+    margin: 0px;
+    padding: 5px;
+    background-color: #FFA4C6;
+}
+
+/*
+* エラーページ ヘッダー定義
+*/
+#errorHeader {
+    top: 1%;
+    height: 6%;
+    text-align: center;
+    font-size: 24px;
+    color: #FFFF00;
+}
+
+/*
+* エラーページ 業務body定義
+*/
+#errorBusinessBody {
+    top: 8%;
+    height: 80%;
+    overflow: auto;
+    font-weight: bold;
+    color: black;
+}
+
+/*
+* エラーページ フッター定義
+*/
+#errorFooter {
+    bottom: 1%;
+    height: 10%;
+}
+
+#resize{
+	 transform: scale(0.95);
+	 text-align: -webkit-center;
+}
+
+#left{
+	margin-left:130px;
+}
+
+/*
+* ボタンサイズ通常
+*/
+.smallButton {
+    width: 100px;
+    height: 30px;
+}
+
+/*
+* ボタンサイズ大
+*/
+.bigButton {
+    width: 200px;
+    height: 50px;
+}
+
+/*
+* ボタンサイズロング
+*/
+.longButton {
+    width: 200px;
+    height: 30px;
+}
+
+
+/*
+* 戻るボタンのスタイル
+*/
+.backButton {
+    top: 5px;
+    left: 10px;
+}
+
+/*
+* テーブルヘッダーのスタイル
+*/
+.tableHeader {
+    background-color: #98FB98;
+    font-weight: bold;
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+.tableHeader td, .tableHeader th {
+        padding: 0;
+        border: 1px solid black;
+}
+/* 日別シフト確認のテーブルヘッダー */
+.tableHeaderDaily {
+    background-color: #98FB98;
+    font-weight: bold;
+    border-collapse: collapse;
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 154px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.tableHeaderDaily td, .tableHeaderDaily th {
+    padding: 0;
+    border: 1px solid black;
+}
+
+/*
+* テーブルボディのスタイル
+*/
+.tableBody {
+    background-color: #E0FFFF;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.tableBody td, .tableBody th {
+        padding: 0;
+        border: 1px solid black;
+}
+/* 日別シフト確認のテーブルヘッダー */
+.tableBodyDaily {
+    background-color: #E0FFFF;
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 154px;
+    box-sizing: border-box;
+    table-layout: fixed;
+    padding: 0;
+    margin: 0;
+    border-spacing: 0;
+    table-layout: fixed;
+    height: max-content;
+}
+.tableBodyDaily td, .tableBodyDaily th {
+    padding: 0;
+    border: 1px solid black;
+    font-size: 15px;
+    width: 100%;
+}
+.full-width {
+        width: 100%;
+}
+.nomalTable{
+	border: 0px solid black;
+    border-collapse: collapse;
+}
+.nomalTable td, .nomalTable th {
+        padding: 0;
+        border: 0px solid black;
+}
+
+.widthTable{
+	width: 1500px;
+    border-collapse: collapse;
+}
+.widthTable td, .widthTable th {
+        padding: 0;
+}
+
+.widthTable-S{
+	width: 950px;
+    border-collapse: collapse;
+}
+.widthTable-S td, .widthTable-S th {
+        padding: 0;
+}
+
+.daysTable {
+    border-collapse: collapse;
+    table-layout: auto;
+    margin: auto;
+    width: max-content;
+}
+.daysTable td, .daysTable th {
+    padding: 0;
+}
+.overflowFixed{
+    border-collapse: collapse;
+    table-layout: auto;
+    margin: auto;
+    width: max-content;
+}
+.overflowFixed td,.overflowFixed th{
+    padding: 0;
+}
+.dailyShiftTable {
+    display: block;
+    position: absolute;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: max-content;
+    height: max-content;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+.dailyShiftTable thead{
+    display: block;
+    position: sticky;
+    top: 0;
+    box-sizing: border-box;
+    z-index: 10;
+    max-width: 1500px;
+}
+.dailyShiftTableBody{
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    max-width: 1500px;
+    max-height: 400px;
+}
+.dailyShiftTable td, .dailyShiftTable th {
+    padding: 0;
+    margin: 0;
+    width: 154px;
+    text-align: center;
+    white-space: nowrap;
+}
+.non-border {
+	border: none !important;
+}
+
+.centered-container {
+    width: 80%;
+    margin: 0 auto;
+}
+/*
+* 文字色 黒
+*/
+.fontBlack {
+    color: black;
+}
+
+/*
+* 文字色 青
+*/
+.fontBlue {
+    color: blue;
+}
+
+/*
+* 文字色 赤
+*/
+.fontRed {
+    color: red;
+}

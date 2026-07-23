@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+  <title>勤務実績確認画面</title>
+  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/js/message.js}"></script>
+</head>
+<title>勤務実績確認画面</title>
+
+<style>
+  .weekday {
+    color: black;
+  }
+
+  .saturday {
+    color: blue;
+  }
+
+  .sunday {
+    color: red;
+  }
+
+  .holiday {
+    background-color: yellow;
+  }
+</style>
+
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <table class="centered-container">
+        <tr>
+          <td id="headLeft">
+            <form action="/kikin/menu" method="post">
+              <input value="戻る" type="submit" class="smallButton" />
+            </form>
+          </td>
+          <td id="headCenter">
+            勤務実績確認
+          </td>
+          <td id="headRight">
+            <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="businessBody">
+      <form action="/kikin/workRecordCheck/search" method="post" th:object="${workRecordInputForm}">
+        <label>表示年月：</label>
+        <select name="yearMonth" id="yearMonth">
+          <!-- yearMonthValues リストをループして表示 -->
+          <option th:each="entry : ${yearMonthCmbMap.entrySet()}" th:text="${entry.value}" th:value="${entry.key}"
+            th:selected="${entry.key == workRecordInputForm.yearMonth}" th:inline="text">[[${yearMonth}]>
+          </option>
+        </select>
+        <div style="display: inline;">
+          社員名：
+          <select name="employeeId" id="employeeId">
+            <option th:each="entry : ${yearMonthCmbMap.entrySet()}" th:text="${entry.value}" th:value="${entry.key}"
+              th:selected="${entry.key == workRecordInputForm.employeeId}" th:inline="text">[[${entry.key}]>
+            </option>
+          </select>
+        </div>
+        <input value="検索" type="submit" />
+      </form>
+    </div>
+    <br>
+
+    <div class="businessBody">
+      <table class="overflowFixed">
+        <thead class="tableHeader" style="display: block; position: sticky; top: 0; width: max-content;">
+          <tr>
+            <td style="width: 70px; text-align: center; box-sizing: border-box;">
+              日付
+            </td>
+            <td style="width: 50px; text-align: center; box-sizing: border-box;">
+              曜日
+            </td>
+            <td style="width: 70px; text-align: center; box-sizing: border-box;">
+              シフト
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              開始時刻
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              終了時刻
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              休憩
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              実働時間
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              時間外
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              休日
+            </td>
+            <td style="width: 250px; text-align: center; box-sizing: border-box;">
+              備考
+            </td>
+          </tr>  
+        </thead>
+        <tbody class="tableBody" style="display: block; width: max-content; height: 400px; overflow-y: scroll; scrollbar-gutter: stable;">
+          <tr th:each="workRecordCheck, iterStat : ${WorkRecordInputList}" class="list">
+            <td style="width: 70px; text-align: center; box-sizing: border-box;">
+              <span th:text="${workRecordCheck.workDayDisp}">
+            </td>
+            <td style="width: 50px; text-align: center; box-sizing: border-box;"
+              th:class="${workRecordCheck.weekDay == '土' ? 'fontBlue' : (workRecordCheck.weekDay == '日' or workRecordCheck.publicHolidayFlg) ? 'fontRed' : 'fontBlack'}">
+              <span th:text="${workRecordCheck.weekDay}"></span>
+            </td>
+
+            <td style="width: 70px; text-align: center; box-sizing: border-box;">
+              <span th:text="${workRecordCheck.symbol}"></span>
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              <span th:text="${workRecordCheck.startTime}"></span>
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              <span th:text="${workRecordCheck.endTime}"></span>
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              <span th:text="${workRecordCheck.breakTime}"></span>
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              <span th:text="${workRecordCheck.actualWorkTime}"></span>
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              <span th:text="${workRecordCheck.overTime}"></span>
+            </td>
+            <td style="width: 100px; text-align: center; box-sizing: border-box;">
+              <span th:text="${workRecordCheck.holidayTime}"></span>
+            </td>
+            <td style="width: 250px; text-align: center; box-sizing: border-box;">
+              <span type="text" th:text="${workRecordCheck.remark}"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

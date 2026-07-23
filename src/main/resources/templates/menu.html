@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+  <title>メニュー画面</title>
+  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/js/message.js}"></script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <table class="full-width">
+        <tr>
+          <td id="headLeft">
+            　
+          </td>
+          <td id="headCenter">
+            <div th:if="${authority_id == adminAuthority}">
+              　　メニュー(管理者)
+            </div>
+            <div th:if="${authority_id == userAuthority}">
+              　　メニュー(一般)
+            </div>
+          </td>
+          <td id="headRight">
+            <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="businessBody">
+      <div th:if="${authority_id == adminAuthority}" style="margin: auto;">
+
+          <div class="menuBlock">
+            
+            <form action="/kikin/dailyShift" method="post">
+              <input type="submit" value="日別シフト確認" class="bigButton" />
+            </form>
+          </div>
+
+          <div class="menuBlock">
+            <form action="/kikin/workRecordCheck">
+              <input type="submit" value="勤務実績確認" class="bigButton" />
+            </form>
+            <form action="/kikin/workRecordInput">
+              <input type="submit" value="勤務実績入力" class="bigButton" />
+            </form>
+          </div>
+          <div class="menuBlock">
+            <form action="/kikin/workDateRequestInput" method="post">
+              <input type="submit" value="出勤希望日入力" class="bigButton" />
+            </form>
+          </div>
+
+          <div class="menuBlock">
+            <form action="/kikin/workDateRequestCheck">
+              <input type="submit" value="出勤希望日確認" class="bigButton" />
+            </form>
+            <form action="/kikin/monthlyShiftInput">
+              <input type="submit" value="月別シフト入力" class="bigButton" />
+            </form>
+          </div>
+
+          <div class="menuBlock">
+            <form action="/kikin/employeeMstMnt">
+              <input type="submit" value="シフトマスタメンテナンス" class="bigButton" />
+            </form>
+            <form action="/kikin/shiftMstMnt">
+              <input type="submit" value="社員マスタメンテナンス" class="bigButton" />
+            </form>
+            <form action="/kikin/baseShiftInput">
+              <input type="submit" value="基本シフト登録" class="bigButton" />
+            </form>
+
+          </div>
+      </div>
+      <div th:if="${authority_id == userAuthority}" style="margin: auto;">
+          <div class="menuBlock">
+            <form action="/kikin/monthlyShiftCheck">
+              <input type="submit" value="月別シフト確認" class="bigButton" />
+            </form>
+            <form action="/kikin/dailyShift">
+              <input type="submit" value="日別シフト確認" class="bigButton" />
+            </form>
+          </div>
+
+          <div class="menuBlock">
+            <form action="/kikin/workRecordInput">
+              <input type="submit" value="勤務実績入力" class="bigButton" />
+            </form>
+          </div>
+
+          <div class="menuBlock">
+            <form action="/kikin/workDateRequestInput" method="post">
+              <input type="submit" value="出勤希望日入力" class="bigButton" />
+            </form>
+          </div>
+
+          <div class="menuBlock">
+            <form action="/kikin/BaseShiftCheck">
+              <input type="submit" value="基本シフト確認" class="bigButton" />
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <table>
+      <tr>
+        <td id="footLeft">
+          　
+        </td>
+        <td id="footCenter">
+          　
+        </td>
+        <td id="footRight">
+          　
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

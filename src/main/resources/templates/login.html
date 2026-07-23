@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+<title>ログイン画面Login</title>
+<link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+<script type="text/javascript" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/js/message.js}"></script>
+</head>
+
+<body>
+
+	<!-- エラーメッセージの表示 -->
+	<script th:if="${error}" th:inline="javascript">
+		showMessage("E-MSG-000002", []);
+	</script>
+
+	<div id="wrapper">
+		<div id="header">
+			<table class="full-width">
+				<tr>
+					<td id="headLeft"></td>
+					<td id="headCenter">ログイン</td>
+					<td id="headRight"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="businessBody">
+			<div align="center">
+				<div>ID・パスワードを入力してください。</div>
+				<form action="/kikin/dologin" method="post">
+					<input type="text" id="employeeId" name="employeeId" size="16"
+						value="sh0001" required /> <br /> <input type="password"
+						id="password" name="password" size="16" value="sh0002" required />
+					<br /> <br /> <input type="submit" value="ログイン" /> <input
+						type="reset" value="リセット" />
+				</form>
+			</div>
+		</div>
+
+		<div id="footer">
+			<table>
+				<tr>
+					<td id="footLeft"></td>
+					<td id="footCenter"></td>
+					<td id="footRight"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</body>
+
+</html>

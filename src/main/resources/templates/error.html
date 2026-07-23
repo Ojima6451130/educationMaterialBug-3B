@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+  <title>エラー</title>
+  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/js/message.js}"></script>
+</head>
+
+<body>
+<div id="errorHeader">
+    <table>
+      <tr>
+          <td id="headLeft" ></td>
+          <td id="headCenter">
+            エラー画面
+          </td>
+          <td ></td>
+          <td id="headRight">
+            <input value="ログアウト" type="button" class="smallButton"  onclick="logout()" />
+          </td>
+      </tr>
+    </table>
+</div>
+<div id="errorBusinessBody">
+  <form>
+    <div></div>
+    <div></div>
+    <div style="text-align: center;">
+      例外が発生しました。この文言の修正もよろ～～
+    </div>
+    <div></div>
+  </form>
+</div>
+<div id="errorFooter"></div>
+</body>
+
+</html>
