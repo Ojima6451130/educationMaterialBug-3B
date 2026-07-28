@@ -117,7 +117,9 @@ public class MonthlyShiftInputController {
     public String init(HttpServletRequest request, HttpSession session, Model model, MonthlyShiftInputForm form,
             BindingResult bindingResult)
             throws Exception {
-        return view();
+//        return view();修正前コード
+    	//ここから修正コード。2026/07/28 田渕 障害票No007
+        return view("init", request, session, model, form, bindingResult);
     }
 
     /**
