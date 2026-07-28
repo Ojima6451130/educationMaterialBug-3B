@@ -42,6 +42,7 @@ import jp.co.kikin.dto.WorkDateRequestCheckDto;
 import jp.co.kikin.model.DateBean;
 import jp.co.kikin.model.WorkDateRequestCheckBean;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -84,8 +85,12 @@ public class WorkDateRequestCheckController {
      * @author hashimoto
      */
     @RequestMapping(value = SCREEN_PATH)
+
     public String init(HttpServletRequest request, HttpSession session, Model model, WorkDateRequestCheckForm form, BindingResult result) throws Exception {
-        return view("init", request, session, model, form, result);
+        
+    return view("init", request, session, model, form, result);
+    	
+    	
     }
 
     /**
@@ -97,6 +102,7 @@ public class WorkDateRequestCheckController {
      * @throws Exception
      * @author hashimoto
      */
+   
     private String view(String processType, HttpServletRequest request, HttpSession session, Model model, WorkDateRequestCheckForm form, BindingResult bindingResult) throws Exception {
 
         // ログインユーザ情報をセッションより取得
@@ -170,9 +176,15 @@ public class WorkDateRequestCheckController {
         // 画面への受渡し
         //----------------
         // 対象年月
+        
+
         model.addAttribute("yearMonthValues", yearMonthValues);
-        model.addAttribute("datebeanList", workDateRequestCheckBeanList);
-        model.addAttribute("workDateRequestCheckBeanList", dateBeanList);
+//        ここから変更（7/28)　久保田　障害票_004
+//		model.addAttribute("datebeanList",workDateRequestCheckBeanList);
+//        model.addAttribute("workDateRequestCheckBeanList", dateBeanList );
+        model.addAttribute("datebeanList",dateBeanList);
+        model.addAttribute("workDateRequestCheckBeanList",  workDateRequestCheckBeanList);
+//        ここまで変更(7/28)　久保田　障害票_004
         model.addAttribute("saturday", saturday);
         model.addAttribute("sunday", sunday);
         return "workDateRequestCheck";
