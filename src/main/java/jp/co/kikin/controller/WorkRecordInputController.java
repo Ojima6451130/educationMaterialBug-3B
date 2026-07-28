@@ -77,7 +77,12 @@ public class WorkRecordInputController {
     @RequestMapping(value = SCREEN_PATH)
     public String init(HttpServletRequest request, HttpSession session, Model model, WorkRecordInputForm form, BindingResult bindingResult)
             throws Exception {
-        return view("init", request, session, model, form);
+    		//元データ(7/28) 
+        //return view("init", request, session, model, form);
+    	
+        //ここから変更(7/28) 矢田部 障害表_002
+        return view("init", request, session, model, form, bindingResult);
+        //ここまで＆さらに一番下の行付近を削除(7/28) 矢田部 障害表_002
     }
     
     /**
@@ -313,9 +318,10 @@ public class WorkRecordInputController {
         return dtoList;
 
     }
-    
-    public String view(String processType, HttpServletRequest request, HttpSession session, Model model, WorkRecordInputForm form)throws Exception {
-    	return "残念でした";
-    }
+    //ここから削除(7/28) 矢田部　障害表_002
+//    public String view(String processType, HttpServletRequest request, HttpSession session, Model model, WorkRecordInputForm form)throws Exception {
+//    	return "残念でした";
+//    }
+    //ここまで(7/28) 矢田部　障害表_002
 
 }
