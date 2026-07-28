@@ -127,8 +127,12 @@ public class BaseShiftMstMntInputController extends DailyShiftAbstractController
         model.addAttribute("baseShiftMstMntBeanList", dateBeanList);
         model.addAttribute("shiftCmbMap", shiftCmbMap);
         model.addAttribute("baseShiftPatternBeanList", shiftPatternBeanList);
-
-        return "baseShiftMntInput";
+        //元データ(7/27)
+        //return "baseShiftMntInput";
+        
+        //ここから変更(7/27)矢田部　障害表_005
+        return "baseShiftMstMntInput";
+        //ここまで(7/27)矢田部 障害表_005
     }
     
     /**

@@ -116,8 +116,15 @@ public class ComboListUtilsDao extends Dao {
             this.connect();
 
             StringBuffer strSql = new StringBuffer();
-           
-
+            
+            //ここから追加(7/27)矢田部 障害表_005
+            strSql.append("SELECT shift_id, ");
+            strSql.append("CONCAT(CONCAT(shift_id ,':'), symbol) symbol ");
+            strSql.append("FROM ");
+            strSql.append("m_shift ");
+            strSql.append("ORDER BY shift_id ");
+            //ここまで(7/27)矢田部 障害表_005
+            
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
             // ログ出力
