@@ -181,17 +181,30 @@
               <td style="width: 100px; box-sizing: border-box;">
                 <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].startTime}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
-              	 <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].breakTime}"
-                        style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
-             
+              <!-- ここから削除 (7/29)-->
+              <!-- <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].breakTime}"
+                        style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" /> -->
+              <!-- ここまで -->
               </td>
-             
+              
+               <!--元データ  (7/29)-->
+               <!-- <td style="width: 70px; box-sizing: border-box;"> 
+                     <input type="hidden" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].deleteFlg}"
+                        style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
+                     <input type="hidden" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].shiftId}">
+                    </td>-->
                
-              <td style="width: 70px; box-sizing: border-box;">
-                <input type="hidden" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].deleteFlg}"
+               
+               <!-- ここから変更＆追加 障害No.042　矢田部　7/29 -->
+              <td style="width: 100px; box-sizing: border-box;">
+              	<input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].breakTime}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
-                <input type="hidden" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].shiftId}">
               </td>
+              <td style="width: 70px; box-sizing: border-box;">
+              	<input type="checkbox" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].deleteFlg}"
+                        style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
+              </td>
+              <!-- ここまで -->
             </tr>
           </tbody>
         </table>
