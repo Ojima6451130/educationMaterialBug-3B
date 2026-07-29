@@ -110,6 +110,8 @@ public class EmployeeMstMntLogic {
 
         // 社員情報を取得する。
         List<EmployeeMstMntDto> m_employeeList = null;
+        //No003 東國原夏鈴 m_employeeListに社員マスタ情報をもたせる
+        m_employeeList = employeeMstMntDao.getEmployeeAllList();
 
         // 自分をリストから省く
         // 削除対象
