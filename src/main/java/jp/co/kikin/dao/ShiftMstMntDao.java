@@ -223,7 +223,13 @@ public class ShiftMstMntDao extends Dao {
             strSql.append("shift_id, ");
             strSql.append("shift_name, ");
             strSql.append("symbol, ");
-            strSql.append("end_time, ");
+            //元データ　7/29
+            //strSql.append("end_time, ");
+            
+            //ここから変更　障害票-No.28 寺松　7/29
+            strSql.append("start_time, ");
+            //ここまで
+            
             strSql.append("end_time, ");
             strSql.append("break_time, ");
             strSql.append("updater_employee_id, ");
