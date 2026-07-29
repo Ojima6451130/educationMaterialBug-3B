@@ -60,15 +60,38 @@
     <div id="header">
       <table class="full-width">
         <tr>
+        
+        
+        
+        
+        
+        
           <td id="headLeft">
-            <form action="/kikin/eMstMntRegisterBack" method="post">
+          <!-- eMstMntRegisterBack→employeeMstMntにしたけどエラー -->
+            <form action="/kikin/employeeMstMnt" method="post">
               <input value="戻る" type="submit" class="smallButton" />
-              <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
             </form>
           </td>
+          
+          
+         
+       
+          
           <td id="headCenter">
             社員マスタメンテナンス画面（新規登録）
           </td>
+         
+         
+         
+          <td id="headright">
+          <!-- eMstMntRegisterBack→？ -->
+            <form action="/kikin/eMstMntRegisterBack" method="post">
+              <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
+            </form>
+          </td>
+         
+         
+         
          
         </tr>
       </table>
@@ -97,13 +120,17 @@
           <table class="tableBody">
             <tr>
               <td width="150px" align="center">
-                <input type="text" name="password" size="10" />
+                <input type="password" name="password" size="10" />
+              </td>
+              <td width="200px" align="center">
+                <input type="text" name="employeeName" size="20" />
               </td>
               <td width="200px" align="center">
                 <input type="text" name="employeeNameKana" size="20" />
               </td>
               
-                <input type="text" name="employeeName" size="20" />
+              
+                
               
               <td width="100px" align="center">
                 <select name="authorityId">
