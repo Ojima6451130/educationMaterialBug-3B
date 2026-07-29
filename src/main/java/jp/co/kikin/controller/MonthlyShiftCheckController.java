@@ -198,8 +198,11 @@ public class MonthlyShiftCheckController {
         model.addAttribute("dateBeanList", dateBeanList);
         model.addAttribute("saturday", saturday);
         model.addAttribute("sunday", sunday);
-        return null;
-    }
+        //障害表No038 山口
+//      return null;修正前コード
+        return "monthlyShiftCheck";
+                //↑ 修正コード
+  }
 
     /**
      * 印刷ボタン押下後Excelダウンロード時に動作する処理.
