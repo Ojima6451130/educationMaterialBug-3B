@@ -92,7 +92,8 @@ public class EmployeeMstMntRegisterController {
         // 取得したセレクトボックスのマップをフォームへセットする。
         employeeMstMntRegisterForm.setAuthorityCmbMap(comboMap);
 
-       
+        //No037 東國原夏鈴 登録
+        employeeMstMntLogic.registerM_employee(m_employeeDto, loginUserDto);
 
         String redirectUrl = "redirect:/kikin/employeeMstMnt";
 
