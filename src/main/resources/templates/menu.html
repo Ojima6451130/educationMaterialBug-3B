@@ -52,8 +52,12 @@
             </form>
           </div>
           <div class="menuBlock">
-            <form action="/kikin/workDateRequestInput" method="post">
-              <input type="submit" value="出勤希望日入力" class="bigButton" />
+
+            <!--  障害票No.006 山口 2026/7/28 -->
+            <form action="/kikin/monthlyShiftCheck">
+            <!-- ↑修正コード action="/kikin/workDateRequestInput"　→　action="/kikin/monthlyShiftCheck"に変更 -->
+              <input type="submit" value="月別シフト確認" class="bigButton" />
+              <!-- ↑修正コード value="出勤希望日入力"　→　value="月別シフト確認"に変更 -->
             </form>
           </div>
 
