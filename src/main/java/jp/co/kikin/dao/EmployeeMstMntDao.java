@@ -241,9 +241,32 @@ public class EmployeeMstMntDao extends Dao {
 
             StringBuffer strSql = new StringBuffer();
             //No037 東國原夏鈴 インサート文の作成
-            strSql.append("insert into m_employee");
-            strSql.append(" (employee_id, password, employee_name, employee_name_kana, authority_id, creator_employee_id, creation_datetime)");
-            strSql.append(" values (?, ?, ?, ?, ?, ?, ?) ");
+            strSql.append("insert into");
+            strSql.append(" m_employee");
+            strSql.append(" (");
+            strSql.append("employee_id,");
+            strSql.append(" password,");
+            strSql.append(" employee_name,");
+            strSql.append(" employee_name_kana,");
+            strSql.append(" authority_id,");
+            strSql.append(" creator_employee_id,");
+            strSql.append(" creation_datetime,");
+            strSql.append(" updater_employee_id,");
+            strSql.append(" update_datetime");
+            strSql.append(")");
+            strSql.append(" values");
+            strSql.append(" (");
+            strSql.append("?,");
+            strSql.append(" ?,");
+            strSql.append(" ?,");
+            strSql.append(" ?,");
+            strSql.append(" ?,");
+            strSql.append(" ?,");
+            strSql.append(" current_timestamp(),");
+            strSql.append(" ?,");
+            strSql.append(" current_timestamp()");
+            strSql.append(") ");
+            //No048 ここまで
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
             ps.setString(1, m_employeeDto.getEmployeeId());
@@ -252,8 +275,7 @@ public class EmployeeMstMntDao extends Dao {
             ps.setString(4, m_employeeDto.getEmployeeNameKana());
             ps.setString(5, m_employeeDto.getAuthorityId());
             ps.setString(6, loginUserDto.getEmployeeId());
-          //No037 東國原夏鈴 CreationDatetimeを？にいれる
-            ps.setDate(7, (Date) m_employeeDto.getCreationDatetime());
+            ps.setString(7, loginUserDto.getEmployeeId());
 
             // ログ出力
             log.info(ps);

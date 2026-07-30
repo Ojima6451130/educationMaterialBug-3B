@@ -36,17 +36,18 @@ public class EmployeeMstMntDto {
     /** 削除フラグ */
     private boolean deleteFlg;
 
-
+//No048 東國原夏鈴 IDとパスワードが逆
 	public String getEmployeeId() {
-		return password;
+		return employeeId;
 	}
 
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
 
+//No048 東國原夏鈴 IDとパスワードが逆
 	public String getPassword() {
-		return employeeId;
+		return password;
 	}
 
 	public void setPassword(String password) {
