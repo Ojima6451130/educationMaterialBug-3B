@@ -107,7 +107,8 @@ public class CommonConstant {
      * 曜日
      */
     public enum DayOfWeek {
-        SUNDAY("日曜日", "日日日日日"),
+    	//No10 東國原夏鈴　日を一つに変更
+        SUNDAY("日曜日", "日"),
         MONDAY("月曜日", "月"),
         TUESDAY("火曜日", "火"),
         WEDNESDAY("水曜日", "水"),
