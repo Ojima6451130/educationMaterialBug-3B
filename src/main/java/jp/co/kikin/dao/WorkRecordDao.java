@@ -61,8 +61,11 @@ public class WorkRecordDao extends Dao {
 			strSql.append("    shift.break_time_shift AS break_time_shift, ");
 			strSql.append("    (CASE WHEN shift.work_day IS NULL THEN twr.work_day  ");
 			strSql.append("    ELSE shift.work_day END) AS work_day, ");
-			strSql.append("    twr.end_time         AS start_time, ");
-			strSql.append("    twr.start_time           AS end_time, ");
+//			ここから修正障害No５４(7/30)元データ
+//			strSql.append("    twr.end_time         AS start_time, ");
+//			strSql.append("    twr.start_time           AS end_time, ");
+			strSql.append("    twr.start_time         AS start_time, ");
+			strSql.append("    twr.end_time           AS end_time, ");
 			strSql.append("    twr.break_time         AS break_time, ");
 			strSql.append("    twr.actual_work_time      AS actual_work_time, ");
 			strSql.append("    twr.over_time      AS over_time, ");
@@ -108,12 +111,20 @@ public class WorkRecordDao extends Dao {
 			strSql.append("    twr.work_day ");
 
 			PreparedStatement ps = connection.prepareStatement(strSql.toString());
-
+			
 			ps.setString(1, startDay);
 			ps.setString(2, endDay);
 			ps.setString(3, employeeId);
 			ps.setString(4, startDay);
 			ps.setString(5, endDay);
+
+//			ここを変更すると治る可能性があり
+//			久保田　(7/30)
+//			ps.setString(1, employeeId);
+//			ps.setString(2, startDay);
+//			ps.setString(3, endDay);
+//			ps.setString(4, startDay);
+//			ps.setString(5, endDay);
 
 			// ログ出力
 			log.info(ps);
@@ -246,11 +257,21 @@ public class WorkRecordDao extends Dao {
 			strSql.append("    twr.work_day ");
 
 			PreparedStatement ps = connection.prepareStatement(strSql.toString());
+			
+//			ここから変更障害No59(7/30)久保田
+//			元データ
+//			ps.setString(1, "sh0001");
+//			ps.setString(2, startDay);
+//			ps.setString(3, endDay);
+//			ps.setString(4, "sh0001");
+//			ps.setString(5, startDay);
+//			ps.setString(6, endDay);
 
-			ps.setString(1, "sh0001");
+			
+			ps.setString(1, employeeId);
 			ps.setString(2, startDay);
 			ps.setString(3, endDay);
-			ps.setString(4, "sh0001");
+			ps.setString(4, employeeId);
 			ps.setString(5, startDay);
 			ps.setString(6, endDay);
 
