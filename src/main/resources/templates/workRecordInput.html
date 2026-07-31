@@ -225,14 +225,16 @@
                 <span th:text="${symbol}"></span>
               </td>
               <td style="width: 100px; text-align: center; box-sizing: border-box;">
-              	<!-- ここから修正(7/30)久保田
+              	<!-- 障害No５４ここから修正(7/30)久保田
+              	元データ
               	<input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].endTime}"
               	 -->
                 <input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].startTime}"
                   style="width: 90px;" />
               </td>
               <td style="width: 100px; text-align: center; box-sizing: border-box;">
-               <!-- ここから修正(7/30)久保田
+               <!-- 障害No５４ここから修正(7/30)久保田
+               元データ
               	<input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].startTime}"
               	  -->
                 <input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].endTime}"
