@@ -72,8 +72,12 @@ public class ShiftMstMntDao extends Dao {
 
                 ShiftMstMntDto shiftMstMntDto = new ShiftMstMntDto();
                 shiftMstMntDto.setShiftId(rs.getString(M_shift.SHIFT_ID.getName())); // シフトID
-                shiftMstMntDto.setShiftName(rs.getString(M_shift.SHIFT_NAME.getName())); // パスワード
-                shiftMstMntDto.setSymbol(CommonUtils.changeNullToBlank(rs.getString(M_shift.SHIFT_NAME.getName()))); // シンボル
+                shiftMstMntDto.setShiftName(rs.getString(M_shift.SHIFT_NAME.getName())); // パスワード　障害No.057(7/31)　矢田部　正しくはシフト名
+                //元データ
+//                shiftMstMntDto.setSymbol(CommonUtils.changeNullToBlank(rs.getString(M_shift.SHIFT_NAME.getName()))); // シンボル
+                //障害No.057(7/31) 矢田部　SYMBOL.getName()に変更
+                shiftMstMntDto.setSymbol(CommonUtils.changeNullToBlank(rs.getString(M_shift.SYMBOL.getName()))); // シンボル
+                //ここまで
                 shiftMstMntDto.setStartTime(rs.getString(M_shift.START_TIME.getName())); // 開始時間
                 shiftMstMntDto.setEndTime(rs.getString(M_shift.END_TIME.getName())); // 終了時間
                 shiftMstMntDto.setBreakTime(rs.getString(M_shift.BREAK_TIME.getName())); // 休憩時間
@@ -257,7 +261,9 @@ public class ShiftMstMntDao extends Dao {
             ps.setString(2, shiftMstMntDto.getShiftName());
             ps.setString(3, shiftMstMntDto.getSymbol());
             ps.setString(4, shiftMstMntDto.getStartTime());
-            ps.setString(5, shiftMstMntDto.getStartTime());
+            //障害No.057(7/31) 矢田部　EndTimeに変更
+            ps.setString(5, shiftMstMntDto.getEndTime());
+            //ここまで
             ps.setString(6, shiftMstMntDto.getBreakTime());
             ps.setString(7, loginUserDto.getEmployeeId());
             ps.setString(8, loginUserDto.getEmployeeId());

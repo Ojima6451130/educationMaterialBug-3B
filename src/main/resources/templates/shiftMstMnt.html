@@ -174,13 +174,19 @@
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
               </td>
               <td style="width: 100px; box-sizing: border-box;">
-                <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].endTime}"
-                        style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
-              </td>
-              <td class="non-border" style="width: 40px; box-sizing: border-box; text-align: center;">&#xFF5E;</td>
-              <td style="width: 100px; box-sizing: border-box;">
+              
+               <!--障害No.057 7/31　矢田部　shiftMstMntBeanList[__${itemStat.index}__].endTimeとstartTimeが逆 -->
                 <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].startTime}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
+                <!-- ここと、 No.057-->
+              </td>
+              <td class="non-border" style="width: 40px; box-sizing: border-box; text-align: center;">
+              <!--障害No.057 矢田部　削除 &#xFF5E; -->
+              </td>
+              <td style="width: 100px; box-sizing: border-box;">
+                <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].endTime}"
+                        style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
+                <!-- ここまで、 NO.057-->
               <!-- ここから削除 (7/29)-->
               <!-- <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].breakTime}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" /> -->
