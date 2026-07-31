@@ -117,7 +117,8 @@ public class BaseShiftMstMntInputController extends DailyShiftAbstractController
         List<BaseShiftMstMntBean> dateBeanList = this.listDataDtoToBean(baseShiftDataMap, loginUserDto);
 
         // フォーム
-        // BaseShiftMstMntForm baseShiftMstMntForm = (BaseShiftMstMntForm) form;
+        //No009 東國原夏鈴　フォームがコメントアウトされていたため修正
+        BaseShiftMstMntForm baseShiftMstMntForm = (BaseShiftMstMntForm) form;
         // フォームにデータをセットする
         form.setBaseShiftMstMntBeanList(dateBeanList);
         form.setShiftCmbMap(shiftCmbMap);

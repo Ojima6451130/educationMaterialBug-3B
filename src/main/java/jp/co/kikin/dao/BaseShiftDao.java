@@ -47,27 +47,28 @@ public class BaseShiftDao extends Dao {
 
             /* 基本シフトを取得する */
             StringBuffer strSql = new StringBuffer();
-            strSql.append(" SELECT             ");
-            strSql.append("     emp.employee_id    ");
-            strSql.append("   , emp.employee_name  ");
-            strSql.append("   , mbs.monday     ");
-            strSql.append("   , mbs.tuesday    ");
-            strSql.append("   , mbs.wednesday  ");
-            strSql.append("   , mbs.thursday   ");
-            strSql.append("   , mbs.friday     ");
-            strSql.append("   , mbs.saturday   ");
-            strSql.append("   , mbs.sunday     ");
-            strSql.append("   , mbs.creation_datetime  ");
-            strSql.append("   , mbs.creator_employee_id  ");
-            strSql.append("   , mbs.update_datetime  ");
-            strSql.append("   , mbs.updater_employee_id  ");
-            strSql.append(" FROM           ");
-            strSql.append("           m_employee      emp");
+            strSql.append(" SELECT");
+            strSql.append(" emp.employee_id");
+            strSql.append(", emp.employee_name");
+            strSql.append(", mbs.monday");
+            strSql.append(", mbs.tuesday");
+            strSql.append(", mbs.wednesday");
+            strSql.append(", mbs.thursday");
+            strSql.append(", mbs.friday");
+            strSql.append(", mbs.saturday");
+            strSql.append(", mbs.sunday");
+            strSql.append(", mbs.creation_datetime");
+            strSql.append(", mbs.creator_employee_id");
+            strSql.append(", mbs.update_datetime");
+            strSql.append(", mbs.updater_employee_id");
+            strSql.append(" FROM");
+            strSql.append(" m_employee emp");
             strSql.append(" LEFT JOIN m_base_shift mbs");
-            strSql.append(" ON        emp.employee_id = mbs.employee_id ");
-            strSql.append(" ORDER BY       ");
-            strSql.append("   mbs.employee_id     ");
-            strSql.append("   limit 3     ");
+            strSql.append(" ON emp.employee_id = mbs.employee_id ");
+            strSql.append(" ORDER BY");
+            strSql.append(" mbs.employee_id");
+            //No064 東國原夏鈴 不要なためコメントアウト
+            //strSql.append(" limit 3");
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
             // ログ出力
@@ -117,12 +118,14 @@ public class BaseShiftDao extends Dao {
     public boolean isData(String employeeId) throws SQLException {
         try {
             StringBuffer strSql = new StringBuffer();
-            strSql.append("SELECT           ");
-            strSql.append("    1            ");
-            strSql.append("FROM             ");
-            strSql.append("    m_base_shift ");
-            strSql.append("WHERE            ");
-            
+            strSql.append("SELECT");
+            strSql.append(" 1");
+            strSql.append(" FROM");
+            strSql.append(" m_base_shift");
+            strSql.append(" WHERE");
+            //No055 東國原夏鈴 セレクト文の修正
+            strSql.append(" employee_id = ");
+            strSql.append("?");
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
