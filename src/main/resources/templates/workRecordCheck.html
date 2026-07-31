@@ -62,7 +62,12 @@
         <div style="display: inline;">
           社員名：
           <select name="employeeId" id="employeeId">
-            <option th:each="entry : ${yearMonthCmbMap.entrySet()}" th:text="${entry.value}" th:value="${entry.key}"
+         	<!-- ここから変更しました　久保田 -->
+ <!-- 元データ<option th:each="entry : ${yearMonthCmbMap.entrySet()}" th:text="${entry.value}" th:value="${entry.key}"
+              th:selected="${entry.key == workRecordInputForm.employeeId}" th:inline="text">[[${entry.key}]>
+            </option>  -->   
+            <!-- ここまで変更　久保田 -->
+            <option th:each="entry : ${employeeCmbMap.entrySet()}" th:text="${entry.value}" th:value="${entry.key}"
               th:selected="${entry.key == workRecordInputForm.employeeId}" th:inline="text">[[${entry.key}]>
             </option>
           </select>
@@ -111,7 +116,7 @@
         <tbody class="tableBody" style="display: block; width: max-content; height: 400px; overflow-y: scroll; scrollbar-gutter: stable;">
           <tr th:each="workRecordCheck, iterStat : ${WorkRecordInputList}" class="list">
             <td style="width: 70px; text-align: center; box-sizing: border-box;">
-              <span th:text="${workRecordCheck.workDayDisp}">
+              <span th:text="${workRecordCheck.workDayDisp}"></span>
             </td>
             <td style="width: 50px; text-align: center; box-sizing: border-box;"
               th:class="${workRecordCheck.weekDay == '土' ? 'fontBlue' : (workRecordCheck.weekDay == '日' or workRecordCheck.publicHolidayFlg) ? 'fontRed' : 'fontBlack'}">
