@@ -163,7 +163,8 @@
                                         </td>
 
                                         <!-- 木曜日のシフト -->
-                                        <td width="10000px" align="center">
+                                        <!--10000px→50　障害No.77 -->
+                                        <td width="50px" align="center">
                                             <select
                                                 th:field="*{baseShiftMstMntBeanList[__${employeeStat.index}__].shiftIdOnThursday}">
                                                 <option th:each="entry : ${baseShiftMstMntForm.shiftCmbMap}"
