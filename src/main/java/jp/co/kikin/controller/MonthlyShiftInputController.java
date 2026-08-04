@@ -224,14 +224,14 @@ public class MonthlyShiftInputController {
         form.setShiftCmbMap(shiftCmbMap);
         form.setYearMonthCmbMap(yearMonthCmbMap);
 
-        // int offset = form.getOffset();
-        // int limit = 16;
-        // int startIndex = Math.max(0, offset - limit);
-        // int endIndex = Math.min(offset, monthlyShiftInputBean.size());
-        // List<MonthlyShiftInputBean> subList =
-        // monthlyShiftInputBean.subList(startIndex, endIndex);
+//         int offset = form.getOffset();
+//         int limit = 16;
+//         int startIndex = Math.max(0, offset - limit);
+//         int endIndex = Math.min(offset, monthlyShiftInputBean.size());
+//         List<MonthlyShiftInputBean> subList =
+//         monthlyShiftInputBean.subList(startIndex, endIndex);
 
-        // form.setMonthlyShiftInputBeanList(subList);
+//         form.setMonthlyShiftInputBeanList(subList);
         form.setMonthlyShiftInputBeanList(monthlyShiftInputBean);
 
         form.setDateBeanList(dateBeanList);
@@ -244,7 +244,7 @@ public class MonthlyShiftInputController {
         // 日曜日
         String sunday   = DayOfWeek.SUNDAY.getWeekdayShort();
 
-        model.addAttribute("satuuuurday", saturday);
+        model.addAttribute("saturday", saturday);
         model.addAttribute("sunday", sunday);
         model.addAttribute("monthlyShiftInputForm", form);
         model.addAttribute("shiftCmbMap", shiftCmbMap);
