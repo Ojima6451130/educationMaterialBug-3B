@@ -119,7 +119,8 @@ public class ComboListUtilsDao extends Dao {
             
             //ここから追加(7/27)矢田部 障害表_005
             strSql.append("SELECT shift_id, ");
-            strSql.append("CONCAT(CONCAT(shift_id ,':'), symbol) symbol ");
+            //No073 東國原夏鈴 セレクト文のCONCATを削除
+            strSql.append("symbol ");
             strSql.append("FROM ");
             strSql.append("m_shift ");
             strSql.append("ORDER BY shift_id ");
