@@ -83,7 +83,10 @@ public class BaseShiftDao extends Dao {
 
                 baseShiftDto.setEmployeeId        (rs.getString(M_base_shift.EMPLOYEE_ID.getName()));          // 社員ID
                 baseShiftDto.setEmployeeName      (rs.getString(M_employee.EMPLOYEE_NAME.getName()));             // 社員名
+
                 baseShiftDto.setShiftIdOnSunday   (rs.getString(M_base_shift.SUNDAY.getName()));            // 日曜日シフトＩＤ
+                //No070 東國原夏鈴 月曜日シフトをセットする文言がなかったため追記
+                baseShiftDto.setShiftIdOnMonday   (rs.getString(M_base_shift.MONDAY.getName()));            // 月曜日シフトＩＤ
                 baseShiftDto.setShiftIdOnTuesday  (rs.getString(M_base_shift.TUESDAY.getName()));           // 火曜日シフトＩＤ
                 baseShiftDto.setShiftIdOnWednesday(rs.getString(M_base_shift.WEDNESDAY.getName()));         // 水曜日シフトＩＤ
                 baseShiftDto.setShiftIdOnThursday (rs.getString(M_base_shift.THURSDAY.getName()));          // 木曜日シフトＩＤ
@@ -161,20 +164,20 @@ public class BaseShiftDao extends Dao {
         try {
 
             StringBuffer strSql = new StringBuffer();
-            strSql.append(" UPDATE ");
-            strSql.append("     m_base_shift ");
-            strSql.append(" SET ");
-            strSql.append("      monday          = ? ");
-            strSql.append("     ,tuesday         = ? ");
-            strSql.append("     ,wednesday       = ? ");
-            strSql.append("     ,thursday        = ? ");
-            strSql.append("     ,friday          = ? ");
-            strSql.append("     ,saturday        = ? ");
-            strSql.append("     ,sunday          = ? ");
-            strSql.append("     ,updater_employee_id = ? ");
-            strSql.append("     ,update_datetime       = CURRENT_DATE ");
-            strSql.append(" WHERE ");
-            strSql.append("     employee_id   = ? ");
+            strSql.append("UPDATE");
+            strSql.append(" m_base_shift");
+            strSql.append(" SET");
+            strSql.append(" monday = ?");
+            strSql.append(", tuesday = ?");
+            strSql.append(", wednesday = ?");
+            strSql.append(", thursday = ?");
+            strSql.append(", friday = ?");
+            strSql.append(", saturday = ?");
+            strSql.append(", sunday = ?");
+            strSql.append(", updater_employee_id = ?");
+            strSql.append(", update_datetime = CURRENT_DATE");
+            strSql.append(" WHERE");
+            strSql.append(" employee_id = ?");
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
@@ -211,37 +214,37 @@ public class BaseShiftDao extends Dao {
         try {
 
             StringBuffer strSql = new StringBuffer();
-            strSql.append(" INSERT INTO ");
-            strSql.append("     m_base_shift  ");
-            strSql.append("     ( ");
-            strSql.append("          employee_id        ");
-            strSql.append("         ,monday          ");
-            strSql.append("         ,tuesday         ");
-            strSql.append("         ,wednesday       ");
-            strSql.append("         ,thursday        ");
-            strSql.append("         ,friday          ");
-            strSql.append("         ,saturday        ");
-            strSql.append("         ,sunday          ");
-            strSql.append("         ,creator_employee_id ");
-            strSql.append("         ,creation_datetime       ");
-            strSql.append("         ,updater_employee_id ");
-            strSql.append("         ,update_datetime       ");
-            strSql.append("     ) ");
-            strSql.append("     VALUES ");
-            strSql.append("     ( ");
-            strSql.append("          ? ");
-            strSql.append("         ,? ");
-            strSql.append("         ,? ");
-            strSql.append("         ,? ");
-            strSql.append("         ,? ");
-            strSql.append("         ,? ");
-            strSql.append("         ,? ");
-            strSql.append("         ,? ");
-            strSql.append("         ,? ");
-            strSql.append("         ,current_timestamp() ");
-            strSql.append("         ,? ");
-            strSql.append("         ,current_timestamp() ");
-            strSql.append("     ) ");
+            strSql.append("INSERT INTO");
+            strSql.append(" m_base_shift");
+            strSql.append(" (");
+            strSql.append(" employee_id");
+            strSql.append(", monday");
+            strSql.append(", tuesday");
+            strSql.append(", wednesday");
+            strSql.append(", thursday");
+            strSql.append(", friday");
+            strSql.append(", saturday");
+            strSql.append(", sunday");
+            strSql.append(", creator_employee_id");
+            strSql.append(", creation_datetime");
+            strSql.append(", updater_employee_id");
+            strSql.append(", update_datetime");
+            strSql.append(")");
+            strSql.append(" VALUES");
+            strSql.append(" (");
+            strSql.append("?");
+            strSql.append(", ?");
+            strSql.append(", ?");
+            strSql.append(", ?");
+            strSql.append(", ?");
+            strSql.append(", ?");
+            strSql.append(", ?");
+            strSql.append(", ?");
+            strSql.append(", ?");
+            strSql.append(", current_timestamp()");
+            strSql.append(", ?");
+            strSql.append(", current_timestamp()");
+            strSql.append(")");
 
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
