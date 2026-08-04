@@ -145,6 +145,12 @@
                                     社員名カナ
                                 </td>
                                 
+                                <!-- 権限を追加 　障害No.50　川面-->
+                                <td width="100px" align="center">
+                                    権限
+                                </td>
+                                
+                                
                                 <td width="100px" align="center">
                                     削除
                                 </td>
@@ -164,7 +170,8 @@
                                     </td>
 
                                     <td style="width: 200px; text-align: center;">
-                                        <input type="text"
+                                    <!-- text →password 　障害No.50　川面-->
+                                        <input type="password"
                                             th:value="*{employeeMstMntBeanList[__${itemStat.index}__].password}"
                                             size="10" th:id="'password_' + ${itemStat.index}" maxlength="6" />
                                         <input type="hidden"
