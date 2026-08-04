@@ -106,7 +106,14 @@
       <table>
         <tr>
           <td id="footLeft">
-            <input value="凡例表示" type="button" class="longButton" onclick="openWindo()" />
+          
+          	<!-- 修正前 -->
+          	<!-- <input value="凡例表示" type="button" class="longButton" onclick="openWindow()" /> -->
+            
+          	<!-- 修正後 障害No.43 寺松-->
+            <input value="凡例表示" type="button" class="longButton" onclick="openWindow()" />
+          	<!-- ここまで -->
+            
             <form id="excelForm" action="/kikin/monthlyShiftCheck/prin" method="post" th:object="${MonthlyShiftCheckForm}">
               <input id="yearMonth" type="hidden" th:field="*{yearMonth}" th:value="${yearMonth}">
               <input type="submit" class="smallButton" id="btn_excel" value="印刷">

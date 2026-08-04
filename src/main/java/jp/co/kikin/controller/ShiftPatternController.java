@@ -108,43 +108,50 @@ public class ShiftPatternController {
 
         return returnList;
     }
+    
+    //コメントアウト解除　8/4　寺松
+    
     /**
      * 説明：凡例表示初期処理
      * 
      * @author yokota
      *
      */
-    // @Controller
-    // @Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
-    // @RequestMapping(method = RequestMethod.GET, value = SCREEN_PATH)
-    // /** 処理区分 */
-    // private enum PROCCESS_TYPE {INIT}
-    // /**
-    // * 凡例表示のアクション
-    // *
-    // * @param mapping アクションマッピング
-    // * @param form アクションフォーム
-    // * @param req リクエスト
-    // * @param res レスポンス
-    // * @return アクションフォワード
-    // * @author yokota
-    // */
-    // @RequestMapping(method = RequestMethod.GET, value = SCREEN_PATH)
-    // public String init(HttpServletRequest req,BaseShiftMstMntForm form)
-    // throws Exception {
+     @Controller
+     @Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
+     @RequestMapping(method = RequestMethod.GET, value = SCREEN_PATH)
+     /** 処理区分 */
+     private enum PROCCESS_TYPE {INIT}
+     /**
+     * 凡例表示のアクション
+     *
+     * @param mapping アクションマッピング
+     * @param form アクションフォーム
+     * @param req リクエスト
+     * @param res レスポンス
+     * @return アクションフォワード
+     * @author yokota
+     */
+     @RequestMapping(method = RequestMethod.GET, value = SCREEN_PATH)
+     public String init(HttpServletRequest req,BaseShiftMstMntForm form)
+     throws Exception {
 
-    // return view(PROCCESS_TYPE.INIT,req,form);
-    // }
-    // /**
-    // * 画面情報取得処理.
-    // *
-    // * @param req リクエストスコープ上にオブジェクトを載せるためのmap
-    // * @return view名称
-    // * @throws Exception
-    // */
-    // private String view(PROCCESS_TYPE processType, HttpServletRequest
-    // req,BaseShiftMstMntForm form) throws Exception {
+     return view(PROCCESS_TYPE.INIT,req,form);
+     }
+     /**
+     * 画面情報取得処理.
+     *
+     * @param req リクエストスコープ上にオブジェクトを載せるためのmap
+     * @return view名称
+     * @throws Exception
+     */
+     private String view(PROCCESS_TYPE processType, HttpServletRequest
+     req,BaseShiftMstMntForm form) throws Exception {
 
-    // return "ShiftPattern";
+     return "ShiftPattern";
+     
+     }
+     
+     //ここまで
 
 }
