@@ -33,9 +33,11 @@
 			<div align="center">
 				<div>ID・パスワードを入力してください。</div>
 				<form action="/kikin/dologin" method="post">
+				<!--value="sh0001"→ value=""　障害No.74　川面 　-->
+				<!--value="sh0002"→ value=""　障害No.74　川面 -->
 					<input type="text" id="employeeId" name="employeeId" size="16"
-						value="sh0001" required /> <br /> <input type="password"
-						id="password" name="password" size="16" value="sh0002" required />
+						value="" required /> <br /> <input type="password"
+						id="password" name="password" size="16" value="" required />
 					<br /> <br /> <input type="submit" value="ログイン" /> <input
 						type="reset" value="リセット" />
 				</form>
