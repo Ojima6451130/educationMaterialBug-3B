@@ -10,7 +10,12 @@
  *  ログアウトボタンサブミット
  */
 function logout() {
+	/*
+	障害No22　(8/4)久保田修正
+	元データ
     document.forms[0].action = "/kikin";
+	*/
+	document.forms[0].action = "/kikin/";
     document.forms[0].submit();
 }
 
