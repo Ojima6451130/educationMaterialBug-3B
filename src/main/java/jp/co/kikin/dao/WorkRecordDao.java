@@ -112,19 +112,20 @@ public class WorkRecordDao extends Dao {
 
 			PreparedStatement ps = connection.prepareStatement(strSql.toString());
 			
-			ps.setString(1, startDay);
-			ps.setString(2, endDay);
-			ps.setString(3, employeeId);
-			ps.setString(4, startDay);
-			ps.setString(5, endDay);
-
-//			ここを変更すると治る可能性があり
-//			久保田　(7/30)
-//			ps.setString(1, employeeId);
-//			ps.setString(2, startDay);
-//			ps.setString(3, endDay);
+//			障害No69久保田(8/5)
+//			元データ
+//			ps.setString(1, startDay);
+//			ps.setString(2, endDay);
+//			ps.setString(3, employeeId);
 //			ps.setString(4, startDay);
 //			ps.setString(5, endDay);
+
+
+			ps.setString(1, employeeId);
+			ps.setString(2, startDay);
+			ps.setString(3, endDay);
+			ps.setString(4, startDay);
+			ps.setString(5, endDay);
 
 			// ログ出力
 			log.info(ps);
