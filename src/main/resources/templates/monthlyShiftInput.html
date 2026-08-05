@@ -267,7 +267,12 @@
                 <option th:each="shift : ${shiftCmbMap}" th:value="${shift.key}" th:selected="${shift.key} == ${monthlyShiftInput.shiftId30}" th:inline="text">[[${shift.value}]]</option>
               </select>
             </td>
-            
+             <td th:if="${dateBeanList.size() > 30}" style="width: 40px; text-align: center;">
+              <select id="shiftId31" name="shiftIdList[30]">
+                <option th:value="''" th:selected="${monthlyShiftInput.shiftId30} == ''" th:inline="text"></option>
+                <option th:each="shift : ${shiftCmbMap}" th:value="${shift.key}" th:selected="${shift.key} == ${monthlyShiftInput.shiftId30}" th:inline="text">[[${shift.value}]]</option>
+              </select>
+            </td>
           </tr>
         </tbody>
       </table>
