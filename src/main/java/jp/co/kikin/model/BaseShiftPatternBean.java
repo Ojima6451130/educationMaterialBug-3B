@@ -23,10 +23,17 @@ public class BaseShiftPatternBean {
     private String breakTime;
 
 	public String getShiftName() {
-		return symbol;
+		//修正元
+//		return symbol;
+		//障害No.83　寺松
+		return shiftName;
 	}
 	public void setShiftName(String shiftName) {
-		this.symbol = shiftName;
+		//修正元
+//		this.shiftName = symbol;
+		
+		//障害No.83　寺松　
+		this.shiftName = shiftName;
 	}
 	public String getSymbol() {
 		return symbol;

@@ -58,6 +58,12 @@
                                 <td th:text="${baseShiftPatternBean.shiftName}"
                                     style="width: 100px; text-align: center;">
                                 </td>
+                                
+                                <!--//障害No.83　寺松 ここから修正（追加） -->
+                                <td th:text="${baseShiftPatternBean.symbol}"
+                                    style="width: 150px; text-align: center;">
+                                </td>
+                                <!-- ここまで -->
                                
                                 <td th:utext="${baseShiftPatternBean.timeZone}"
                                     style="width: 150px; text-align: center;">
@@ -75,6 +81,13 @@
                 <div style="width: 580px;">
                     <table class="tableHeader">
                         <tr>
+                        
+                        
+                            <!-- 障害No.83　寺松　社員名を追加 -->
+                            <td width="230px" align="center">
+                                社員名
+                            </td>
+                            <!-- ここまで -->
                             
                             <td width="50px" align="center">
                                 月
