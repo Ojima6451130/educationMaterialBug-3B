@@ -163,7 +163,8 @@ public class WorkDateRequestLogic {
                         resWorkDateRequestLogic.setEmployeeName(listWorkRequest.get(0).getEmployeeName());
                     }
                     this.setWorkRequestSymbols(indexDateNom, symbol, resWorkDateRequestLogic);
-                    indexDateNom ++;
+                    
+                    indexDateNom++;
                 }
             }
             workDateRequestList.add(resWorkDateRequestLogic);

@@ -138,7 +138,8 @@ public class WorkDateRequestDao extends Dao{
             strSql.append("ORDER BY ");
             strSql.append("employee_id,");
             strSql.append("year_month_day");
-            strSql.append(" limit 3");
+            //No100 東國原夏鈴 limitをコメントアウト
+            //strSql.append(" limit 3");
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
@@ -307,7 +308,12 @@ public class WorkDateRequestDao extends Dao{
         try {
 
             StringBuffer strSql = new StringBuffer();
-            
+            //No082 東國原夏鈴 アップデート文の追記
+            strSql.append("UPDATE t_shift SET ");
+            strSql.append("request_shift_id = ?, ");
+            strSql.append("updater_employee_id = ?, ");
+            strSql.append("update_datetime = current_timestamp() ");
+            strSql.append("WHERE employee_id = ? AND year_month_day = ? ");
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 

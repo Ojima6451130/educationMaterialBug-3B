@@ -318,6 +318,7 @@ public class WorkDateRequestInputController extends WorkDateRequestAbstractContr
         }
         return workDateRequestInputBeanList;
     }
+    
 
     /**
      * DtoからBeanへ変換する
@@ -372,9 +373,10 @@ public class WorkDateRequestInputController extends WorkDateRequestAbstractContr
                     workDateRequestInputDtoList.add(workDateRequestInputDto);
 
                     index++;
-                    requestDtoNestedList.add(workDateRequestInputDtoList);
                 }
             }          
+            //No094 東國原夏鈴 Listに追加するタイミングを変更
+            requestDtoNestedList.add(workDateRequestInputDtoList);
         }
         return requestDtoNestedList;
     }
