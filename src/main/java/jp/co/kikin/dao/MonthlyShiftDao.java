@@ -162,7 +162,30 @@ public class MonthlyShiftDao extends Dao{
         try {
 
             StringBuffer strSql = new StringBuffer();
-            
+
+            //障害No.041　山口　
+            strSql.append("INSERT INTO ");
+            strSql.append("t_shift ");
+            strSql.append(" ( ");
+            strSql.append(" employee_id,");
+            strSql.append(" year_month_day,");
+            strSql.append(" shift_id,");
+            strSql.append(" creator_employee_id,");
+            strSql.append(" creation_datetime,");
+            strSql.append(" updater_employee_id,");
+            strSql.append(" update_datetime");
+            strSql.append(") ");
+            strSql.append("VALUES ");
+            strSql.append(" ( ");
+            strSql.append("? ");
+            strSql.append(",? ");
+            strSql.append(",? ");
+            strSql.append(",? ");
+            strSql.append(", current_timestamp()");
+            strSql.append(",? ");
+            strSql.append(", current_timestamp()");
+            strSql.append(") ");
+            // ↑ INSERT文追加
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
@@ -205,8 +228,10 @@ public class MonthlyShiftDao extends Dao{
             strSql.append("update_datetime = current_timestamp() ");
             strSql.append("WHERE ");
             strSql.append("employee_id = ? ");
+            //障害No.041　山口
+            strSql.append("AND year_month_day = ? ");
+            // ↑　追加
             
-
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
