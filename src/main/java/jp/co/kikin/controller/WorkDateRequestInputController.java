@@ -179,8 +179,10 @@ public class WorkDateRequestInputController extends WorkDateRequestAbstractContr
         model.addAttribute("comboShift", comboShiftMap);
         form.setWorkDateRequestInputBeanList(workDateRequestInputBeanList);
         model.addAttribute("workDateRequestInputBeanList", workDateRequestInputBeanList);
-        model.addAttribute("saturday", sunday);
-        model.addAttribute("sunday", saturday);
+        //model.addAttribute("saturday", sunday);
+        //model.addAttribute("sunday", saturday);
+        model.addAttribute("saturday", saturday);
+        model.addAttribute("sunday", sunday);
         model.addAttribute("userId", session.getAttribute(RequestSessionNameConstant.SESSION_CMN_LOGIN_USER_ID));
 
        
