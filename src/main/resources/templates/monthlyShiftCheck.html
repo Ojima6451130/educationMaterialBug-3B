@@ -55,10 +55,13 @@
               社員名
             </td>
             <td th:each="dateBean : ${dateBeanList}" style="width: 40px; text-align: center; vertical-align: middle;">
-              <span th:if="${dateBean.weekDay == saturday && !dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: blue;">[[${dateBean.weekDay}]]</span>
-              <span th:if="${dateBean.weekDay == sunday || dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: red;">[[${dateBean.weekDay}]]</span>
-              <span th:unless="${dateBean.weekDay == saturday || dateBean.weekDay == sunday || dateBean.publicHolidayFlg}" 
+            
+            <!-- 障害No.93　 寺松　日曜日が赤色になるようにした -->
+              <span th:if="${dateBean.weekDay == '土' && !dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: blue;">[[${dateBean.weekDay}]]</span>
+              <span th:if="${dateBean.weekDay == '日' || dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: red;">[[${dateBean.weekDay}]]</span>
+              <span th:unless="${dateBean.weekDay == '土' || dateBean.weekDay == '日' || dateBean.publicHolidayFlg}" 
                         th:value="${dateBean.weekDay}" style="color: black;">[[${dateBean.weekDay}]]</span>
+            <!-- ここまで　 sunday saturday などの表記をすべて'土''日'などにした-->
             </td>
           </tr>
         </thead>
