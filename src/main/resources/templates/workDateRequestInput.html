@@ -282,10 +282,12 @@
         </div>
     </div>
     <script>
-      function openWindow() {
-        // 新しいウィンドウを開く
-        window.open("https://tomcat.apache.org/", "windowBPopup", "menubar=no, toolbar=no, scrollbars=auto, resizable=yes, width=520px, height=650px");
-      }
+    
+  //障害No.81　寺松　openWindow()をオーバーライド（上書き）していたため、削除しました
+    //function openWindow() {
+      // 新しいウィンドウを開く
+      //window.open("/educationMaterialBug-3B/src/main/resources/templates/ShiftPattern.html", "windowBPopup", "menubar=no, toolbar=no, scrollbars=auto, resizable=yes, width=520px, height=650px");
+    //}
       function openSearch(){
         window.open("/kikin/workDateRequestCheck", "searchPopup", "menubar=no, toolbar=no, scrollbars=auto, resizable=yes, width=1000px, height=600px")
       }
