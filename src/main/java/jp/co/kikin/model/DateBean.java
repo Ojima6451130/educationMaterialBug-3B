@@ -44,7 +44,10 @@ public class DateBean {
 	public boolean getPublicHolidayFlg() {
 		return publicHolidayFlg;
 	}
+	
+	//障害No.24　寺松　代入値を修正
 	public void setPublicHolidayFlg(boolean publicHolidayFlg) {
-		this.publicHolidayFlg = false;
+//		this.publicHolidayFlg = true;
+		this.publicHolidayFlg = publicHolidayFlg;
 	}
 }
