@@ -256,21 +256,33 @@
                 <span th:text="${workRecordInput.overTime}"></span>
               </td>
               <td style="width: 100px; text-align: center; box-sizing: border-box;">
-                
+              <!-- 
+              この下一行を追加　障害No61 久保田(8/7)
+               -->
+                <span th:text="${workRecordInput.holidayTime}"></span>
               </td>
               <td style="width: 250px; text-align: center; box-sizing: border-box;">
                 <input type="text" th:field="*{WorkRecordInputList[__${iterStat.index}__].remark}"
                   style="width: 240px;" />
               </td>
-              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].workDay}" />
-              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].employeeId}" />
-
-              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].workDayDisp}" />
-              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].weekDay}" />
-              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].symbol}" />
-              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].actualWorkTime}" />
-              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].overTime}" />
-              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].holidayTime}" />
+              <td>
+              	  <!-- 
+              	  この下3行を追加障害No61　久保田　(8/7)
+              	   -->
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].startTimeShift}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].endTimeShift}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].breakTimeShift}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].workDay}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].employeeId}" />
+	
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].workDayDisp}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].weekDay}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].symbol}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].actualWorkTime}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].overTime}" />
+	              <input type="hidden" th:field="*{WorkRecordInputList[__${iterStat.index}__].holidayTime}" />
+              
+              </td>
             </tr>
           </tbody>
         </table>
