@@ -339,3 +339,8 @@ errorbody {
 .fontRed {
     color: red;
 }
+/*障害票No.021 田渕 2026/8/7*/
+/*下記内容を追記*/
+.search{
+	text-align: center;
+}
