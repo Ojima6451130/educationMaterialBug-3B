@@ -191,10 +191,11 @@
                                             th:field="*{employeeMstMntBeanList[__${itemStat.index}__].employeeNameKana}"
                                             th:id="'employeeNameKana_' + ${itemStat.index}" size="20" maxlength="10" />
                                     </td>
-
+                                    
+									<!-- 障害NO.53　　川面　disabled削除 -->
                                     <td style="width: 100px; text-align: center;">
                                         <select th:field="*{employeeMstMntBeanList[__${itemStat.index}__].AuthorityId}"
-                                            style="width: 100%; text-align: center; " disabled="disabled">
+                                            style="width: 100%; text-align: center; " >
                                             <option value="01" th:selected="${item.AuthorityId == '01'}">管理者</option>
                                             <option value="02" th:selected="${item.AuthorityId == '02'}">一般</option>
                                         </select>
