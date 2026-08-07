@@ -202,7 +202,8 @@ public class MonthlyShiftLogic {
         String yearMonth = "";
 
         int listSize = dateBeanList.size();
-        for (int i = 0; i < 3; i++) {
+        //No044 東國原夏鈴 forループの条件式を修正
+        for (int i = 0; i < 31; i++) {
             DateBean dateBean = null;
 
             if (i < listSize) {
@@ -295,8 +296,8 @@ public class MonthlyShiftLogic {
         Row row = sheet.getRow(cr.getRow());
         Cell cell = row.getCell(cr.getCol());
 
-        // String oldValue = cell.getStringCellValue();
-        // String newValue = oldValue.replaceAll(oldValue, value);
+         //String oldValue = cell.getStringCellValue();
+         //String newValue = oldValue.replaceAll(oldValue, value);
 
         cell.setCellValue(value);
     }
