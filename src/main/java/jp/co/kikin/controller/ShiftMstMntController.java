@@ -160,7 +160,8 @@ public class ShiftMstMntController {
 
         // 更新後のフォームをリダイレクト先に渡す
         redirectAttributes.addFlashAttribute("shiftMstMntForm", form);
-        return null;
+      //障害No.047 null→REDIRECTに修正
+        return REDIRECT;
     }
 
 

@@ -191,6 +191,8 @@ public class ShiftMstMntDao extends Dao {
             strSql.append("DELETE FROM ");
             strSql.append("m_shift ");
             strSql.append("WHERE ");
+          //障害No.047 矢田部 shift_id=?を追記
+            strSql.append("shift_id = ? ");
            
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());

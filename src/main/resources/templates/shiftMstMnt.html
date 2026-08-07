@@ -181,7 +181,7 @@
                 <!-- ここと、 No.057-->
               </td>
               <td class="non-border" style="width: 40px; box-sizing: border-box; text-align: center;">
-              <!--障害No.057 矢田部　削除 &#xFF5E; -->
+              ～<!--障害No.057 矢田部　削除 &#xFF5E; 障害No.047で合わせて見た目修正(8/6)-->
               </td>
               <td style="width: 100px; box-sizing: border-box;">
                 <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].endTime}"
@@ -209,6 +209,11 @@
               <td style="width: 70px; box-sizing: border-box;">
               	<input type="checkbox" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].deleteFlg}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
+              </td>
+              <!-- ここまで -->
+               <!-- 障害No.047 矢田部　更新・削除処理用でshiftId追加 -->
+              <td>
+                <input type="hidden" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].shiftId}">
               </td>
               <!-- ここまで -->
             </tr>
