@@ -292,7 +292,9 @@
             <div style="margin-left:50px;white-space: nowrap;">
               <input value="凡例表示" type="button" class="longButton" onclick="openWindow()" />
               <input value="基本シフト反映" type="submit" class="longButton"  formaction="/kikin/monthlyShiftInput/submitImportKihon" />
-              <input value="出勤希望日反映" type="submit" class="longButton"  formaction="/kikin/monthlyShiftInput/submitImportKihon" />
+              <!-- 障害No40 山口 -->
+              <input value="出勤希望日反映" type="submit" class="longButton"  formaction="/kikin/monthlyShiftInput/dateRequest" />
+              <!-- formactionの　submitImportKihon を dateRequest　に修正 -->
             </div>
           </td>
           <td id="footCenter" style="text-align: right;">
