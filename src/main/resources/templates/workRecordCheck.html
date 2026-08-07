@@ -33,7 +33,7 @@
 <body>
   <div id="wrapper">
     <div id="header">
-      <table class="centered-container">
+      <table class="full-width">
         <tr>
           <td id="headLeft">
             <form action="/kikin/menu" method="post">
@@ -59,7 +59,8 @@
             th:selected="${entry.key == workRecordInputForm.yearMonth}" th:inline="text">[[${yearMonth}]>
           </option>
         </select>
-        <div style="display: inline;">
+        <!-- 障害No.31　川面<div style="display: inline;">を変更 -->
+         <div style="float: right; width: 300px; text-align: center; box-sizing: border-box;">
           社員名：
           <select name="employeeId" id="employeeId">
          	<!-- 障害No１２ここから変更しました　久保田 -->
