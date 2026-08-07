@@ -19,17 +19,17 @@
           <tr>
           <!-- 障害No.68　 -->
             <td id="headLeft">
-              <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
-              <!--  ここまで修正input value="ログアウト"の行と input value="戻る" の行を入れ替え -->
+              <!-- 障害No058 と No060 山口 -->
+              <form action="/kikin/menu" method="post">
+                <input value="戻る" type="submit" class="smallButton" />
+              </form>
             </td>
             <td id="headCenter">
               日別シフト確認
             </td>
             <td id="headRight">
-            <!-- 障害No058 と No060 山口 -->
-              <form action="/kikin/menu" method="post">
-                <input value="戻る" type="submit" class="smallButton" />
-              </form>
+            <input value="ログアウト" type="button" class="smallButton" onclick="logout()" />
+              <!--  ここまで修正input value="ログアウト"の行と input value="戻る" の行を入れ替え -->
                 
             </td>
           </tr>
