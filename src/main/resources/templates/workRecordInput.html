@@ -211,7 +211,12 @@
               </td>
             </tr>
           </thead>
-          <tbody class="tableBody" style="display: block; width: max-content; height: 400px;  scrollbar-gutter: stable;">
+          <!-- 障害No.71　寺松　スクロールしても色が変わらないように修正 -->
+         <!-- 修正前 -->
+          <!-- <tbody class="tableBody" style="display: block; width: max-content; height: 400px;  scrollbar-gutter: stable;"> -->
+          <!-- 修正後 -->
+          <tbody class="tableBody" style="display: block; width: max-content; height: 400px; overflow-y: scroll; scrollbar-gutter: stable;">
+          <!-- ここまで -->
             <tr th:each="workRecordInput, iterStat : ${workRecordInputForm.workRecordInputList }" class="list">
               <td style="width: 70px; text-align: center; box-sizing: border-box;">
                 <span th:text="${workRecordInput.workDayDisp}">
