@@ -164,6 +164,8 @@ public class EmployeeMstMntDao extends Dao {
             StringBuffer strSql = new StringBuffer();
             strSql.append("UPDATE ");
             strSql.append("m_employee ");
+            //障害No.105 矢田部 SET追記
+            strSql.append("SET ");
             strSql.append("password = ?, ");
             strSql.append("employee_name = ?, ");
             strSql.append("employee_name_kana = ?, ");

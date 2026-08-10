@@ -130,7 +130,8 @@
                 th:object="${employeeMstMntForm}">
                 <div style="overflow-y: scroll; overflow-x: hidden; height: 440px;  margin: auto; width: 1030px; width: max-content;">
                     <div>
-                        <table class="tableHeader" style="position: fixed;">
+                    <!--障害No.105　矢田部 tableタグのstyle="position: fixed;" を削除-->
+                        <table class="tableHeader">
                             <tr>
                                 <td width="200px" align="center">
                                     社員ＩＤ
@@ -228,8 +229,9 @@
                         </tr>
                     </table>
                 </div>
+                <!--障害No.105　矢田部 /formの位置を修正 -->
+           </form>
         </div>
-        </form>
     </div>
 </body>
 

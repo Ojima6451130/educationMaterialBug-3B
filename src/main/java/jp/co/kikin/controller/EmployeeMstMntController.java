@@ -219,7 +219,8 @@ public class EmployeeMstMntController {
             EmployeeMstMntDto employeeMstMntDto = new EmployeeMstMntDto();
 
             // Dtoに値をセットする
-            
+            //障害No.105　矢田部　setEmployeeIdを追加
+            employeeMstMntDto.setEmployeeId(employeeMstMntBean.getEmployeeId());
             employeeMstMntDto.setEmployeeName(employeeMstMntBean.getEmployeeName());
             employeeMstMntDto.setEmployeeNameKana(employeeMstMntBean.getEmployeeNameKana());
             employeeMstMntDto.setPassword(employeeMstMntBean.getPassword());

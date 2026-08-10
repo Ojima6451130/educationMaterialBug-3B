@@ -51,7 +51,9 @@ public class EmployeeMstMntLogic {
 
                 if (deleteFlg) {
                     // 削除
-                    employeeMstMntDao.updateEmployeeMst(employeeMstMntDto, loginUserDto);
+                	// 障害No.105　矢田部　deleteメソッドに飛ぶように修正
+                    //employeeMstMntDao.updateEmployeeMst(employeeMstMntDto, loginUserDto);
+                    employeeMstMntDao.deleteEmployeeMst(employeeMstMntDto.getEmployeeId());
                 } else {
                     // 更新
                     employeeMstMntDao.updateEmployeeMst(employeeMstMntDto, loginUserDto);
