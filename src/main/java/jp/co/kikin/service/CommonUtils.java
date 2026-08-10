@@ -156,7 +156,10 @@ public class CommonUtils {
             newId.append(M_employee.PREFIX.getName());
         } else if (M_shift.TABLE_NAME.getName().equals(tableName)) {
             // シフトマスタ
-            newId.append(M_shift.SHIFT_ID.getName());
+//        	障害No106 (8/10)　久保田
+//        	元データ
+//            newId.append(M_shift.SHIFT_ID.getName());
+        		newId.append(M_shift.PREFIX.getName());
         }
 
         newId.append(ID);
