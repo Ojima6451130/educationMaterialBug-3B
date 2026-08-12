@@ -91,7 +91,9 @@ public class WorkRecordDao extends Dao {
 			strSql.append("    FROM ");
 			strSql.append("        t_shift ");
 			strSql.append("    WHERE ");
-			strSql.append("        employee_id = 'sh0001' AND ");
+			//障害No.109　久保田　"sh0001"→?に修正
+			//元データ　strSql.append("        employee_id = 'sh0001' AND ");
+			strSql.append("        employee_id = ? AND ");
 			strSql.append("        year_month_day >= ? AND ");
 			strSql.append("        year_month_day <= ? ");
 			strSql.append("    ORDER BY ");
@@ -129,9 +131,11 @@ public class WorkRecordDao extends Dao {
 
 			ps.setString(1, employeeId);
 			ps.setString(2, startDay);
-			ps.setString(3, endDay);
-			ps.setString(4, startDay);
-			ps.setString(5, endDay);
+			//障害No.109　久保田　修正(ステークホルダー追加)
+			ps.setString(4, employeeId);
+			ps.setString(5, startDay);
+			ps.setString(6, endDay);
+
 
 			// ログ出力
 			log.info(ps);
@@ -307,7 +311,24 @@ public class WorkRecordDao extends Dao {
 				workRecordDto.setSymbol(rs.getString(M_shift.SYMBOL.getName()));                         // シンボル
 				workRecordDto.setStartTimeShift(startShift);                                              // 開始時間(シフト)
 				workRecordDto.setEndTimeShift(endShift);                                                  // 終了時間(シフト)
-				workRecordDto.setBreakTimeShift(breakShift);                                              // 休憩時間(シフト)
+				workRecordDto.setBreakTimeShift(breakShift);// 休憩時間(シフト)
+				//障害No.113 検索ボタン押下時のSQLでNULL＆""チェック追加
+				if (CheckUtils.isEmpty(startTime)) {
+					workRecordDto.setStartTime(startShift);  // 開始時間
+				} else {
+					workRecordDto.setStartTime(startTime)  ; // 開始時間
+				}
+				if (CheckUtils.isEmpty(endTime)) {
+					workRecordDto.setEndTime(endShift);      // 終了時間
+				} else {
+					workRecordDto.setEndTime(endTime);       // 終了時間
+				}
+				if (CheckUtils.isEmpty(breakTime)) {
+					workRecordDto.setBreakTime(breakShift);  // 休憩時間
+				} else {
+					workRecordDto.setBreakTime(breakTime);   // 休憩時間
+				}
+
 				workRecordDto.setStartTime(startTime);                                                    // 開始時間
 				workRecordDto.setEndTime(endTime);                                                        // 終了時間
 				workRecordDto.setBreakTime(breakTime);                                                    // 休憩時間

@@ -24,7 +24,7 @@ public class CommonConstant {
     public static final String NODATA = "nodata";
 
     /** 空白 */
-//    修正　障害No35　久保田 (8/7)
+//    修正　障害No35　久保田 (8/7)　→　8/12　別の問題が発生したため、一旦戻す。
 //    元データ
 //    public static final String BLANK = "";
     public static final String BLANK = "-";
