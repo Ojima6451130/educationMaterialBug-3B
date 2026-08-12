@@ -313,6 +313,9 @@ public class WorkRecordDao extends Dao {
 				workRecordDto.setStartTimeShift(startShift);                                              // 開始時間(シフト)
 				workRecordDto.setEndTimeShift(endShift);                                                  // 終了時間(シフト)
 				workRecordDto.setBreakTimeShift(breakShift);// 休憩時間(シフト)
+				workRecordDto.setStartTime(startTime);                                                    // 開始時間
+				workRecordDto.setEndTime(endTime);                                                        // 終了時間
+				workRecordDto.setBreakTime(breakTime);                                                    // 休憩時間
 				//障害No.113 　矢田部　検索ボタン押下時のSQLでNULL＆""チェック追加
 				if (CheckUtils.isEmpty(startTime)) {
 					workRecordDto.setStartTime(startShift);  // 開始時間
@@ -330,9 +333,6 @@ public class WorkRecordDao extends Dao {
 					workRecordDto.setBreakTime(breakTime);   // 休憩時間
 				}
 
-				workRecordDto.setStartTime(startTime);                                                    // 開始時間
-				workRecordDto.setEndTime(endTime);                                                        // 終了時間
-				workRecordDto.setBreakTime(breakTime);                                                    // 休憩時間
 				workRecordDto.setActualWorkTime(rs.getString(T_work_record.ACTUAL_WORK_TIME.getName())); // 実働時間
 				workRecordDto.setOverTime(rs.getString(T_work_record.OVER_TIME.getName()));       // 時間外時間
 				workRecordDto.setHolidayTime(rs.getString(T_work_record.HOLIDAY_WORK_TIME.getName()));   // 休日時間
