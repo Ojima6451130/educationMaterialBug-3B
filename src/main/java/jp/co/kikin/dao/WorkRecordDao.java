@@ -131,6 +131,7 @@ public class WorkRecordDao extends Dao {
 
 			ps.setString(1, employeeId);
 			ps.setString(2, startDay);
+			ps.setString(3, endDay);
 			//障害No.109　久保田　修正(ステークホルダー追加)
 			ps.setString(4, employeeId);
 			ps.setString(5, startDay);
@@ -312,7 +313,7 @@ public class WorkRecordDao extends Dao {
 				workRecordDto.setStartTimeShift(startShift);                                              // 開始時間(シフト)
 				workRecordDto.setEndTimeShift(endShift);                                                  // 終了時間(シフト)
 				workRecordDto.setBreakTimeShift(breakShift);// 休憩時間(シフト)
-				//障害No.113 検索ボタン押下時のSQLでNULL＆""チェック追加
+				//障害No.113 　矢田部　検索ボタン押下時のSQLでNULL＆""チェック追加
 				if (CheckUtils.isEmpty(startTime)) {
 					workRecordDto.setStartTime(startShift);  // 開始時間
 				} else {

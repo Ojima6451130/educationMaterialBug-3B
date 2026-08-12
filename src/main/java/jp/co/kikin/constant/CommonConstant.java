@@ -27,7 +27,7 @@ public class CommonConstant {
 //    修正　障害No35　久保田 (8/7)　→　8/12　別の問題が発生したため、一旦戻す。
 //    元データ
 //    public static final String BLANK = "";
-    public static final String BLANK = "-";
+    public static final String BLANK = "";
     /** 空白ID */
     public static final String BLANK_ID = "-1";
     /** ハイフン */
