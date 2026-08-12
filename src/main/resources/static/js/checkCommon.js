@@ -64,7 +64,8 @@ function checkTime(str) {
  * param str チェック対象文字列
  * return true:開始が終了以下 false:開始が終了より大きい
  */
-function checkTimeCompare(end,start) {
+//障害No111 山口　↓　引数のstartとendの順番を入れ替え
+function checkTimeCompare(start,end) {
 
     var vStart = start.replace(":", "");
     var vEnd = end.replace(":", "");

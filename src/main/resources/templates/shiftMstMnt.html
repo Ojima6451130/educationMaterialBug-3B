@@ -18,7 +18,7 @@
 
       // 一覧のサイズ
       // var listSize = <%= beanListSize %>;
-      var row = document.querySelectorAll('.list');
+      var row = document.querySelectorAll('.tableBody');
       var listSize = row.length;
 
       // 開始時間エラーメッセージ
@@ -69,9 +69,10 @@
             }
           }
           if (!endTimeErrMsg) {
-            if (!checkHalfWidthKana(endTimeValue)) {
-              var strArr = ['終了時間'];
-              endTimeErrMsg = getMessage('E-MSG-000006', strArr);
+          	//障害No111　山口　checkHalfWidthKana関数をcheckTimeに変更
+              if (!checkTime(endTimeValue)) {
+                var strArr = ['終了時間'];
+                endTimeErrMsg = getMessage('E-MSG-000004', strArr);
               endTimeInput.style.backgroundColor = 'red';
             }else{
               endTimeInput.style.backgroundColor = 'white';
@@ -103,6 +104,8 @@
       errorMsg = startTimeErrMsg + endTimeErrMsg + breakTimeErrMsg + fromToErrMsg;
 
       if (errorMsg) {
+        //障害No111　山口　↓　alertを追加
+        alert(errorMsg);
         // エラー
         return false;
       }
@@ -164,6 +167,7 @@
             </tr>
           </thead>
           <tbody style="display: block; max-height: 300px; overflow-x: hidden; overflow-y: auto; scrollbar-gutter: stable;">
+            <!-- classを変更 -->
             <tr th:each="item, itemStat : *{shiftMstMntBeanList}" class="tableBody">
               <td style="width: 100px; box-sizing: border-box;">
                 <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].shiftName}"
@@ -232,7 +236,8 @@
           <td id="footRight">
             <form action="/kikin/shiftMstMnt/regist" method="post">
               <input value="新規登録" type="submit" class="smallButton" name="regist" />
-              <input value="更新" form="update" type="submit" class="smallButton" style="margin:10px;" onclick="return shiftMstMntUpdate()"/>
+              <!-- 障害No111　山口　↓　onclickのreturnを削除 -->
+              <input value="更新" form="update" type="submit" class="smallButton" style="margin:10px;" onclick="shiftMstMntUpdate()"/>
           </form>
           </td>
         </tr>
