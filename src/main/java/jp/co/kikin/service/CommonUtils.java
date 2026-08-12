@@ -55,7 +55,10 @@ public class CommonUtils {
     public static String changeNullToBlank(String arg) {
         if (CheckUtils.isEmpty(arg)) {
             // null または ""
-            return CommonConstant.BLANK;
+//	        	障害No35久保田(8/12)
+//	    		元データ
+//            return CommonConstant.BLANK;
+        	return "-";
         }
 
         return arg;
