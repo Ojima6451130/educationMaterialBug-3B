@@ -39,7 +39,12 @@
         if (!checkTime(employeeNameKanaVar)) {
           // エラー有り
           var strArr = ['社員名カナ'];
-          errorMsg += getMessage('E-MSG-000006', strArr);
+          
+          //久保田　(8/13)半角カナでなかったらエラーアラートが出るよう改修
+          //※障害票立てる前に改修が終わったため障害票は立てていない
+          //errorMsg += getMessage('E-MSG-000006', strArr);
+          
+          errorMsg += getMessage('E-MSG-000003', strArr);
           employeeNameKana.style.backgroundColor = 'red';
         }
 
