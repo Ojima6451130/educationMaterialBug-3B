@@ -69,7 +69,8 @@ public class MonthlyShiftDao extends Dao{
             //元データ
 //            strSql.append("WHERE emp.employee_name not　like '社員%' ");
             //障害No.49　寺松　not　like　のnotを削除
-            strSql.append("WHERE emp.employee_name like '社員%' ");
+            //障害No120　山口　社員　を削除
+            strSql.append("WHERE emp.employee_name like '%' ");
             //ここまで
             strSql.append("ORDER BY ");
             strSql.append("    employee_id, ");
