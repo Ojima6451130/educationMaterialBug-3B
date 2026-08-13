@@ -36,7 +36,10 @@
           password.style.backgroundColor = 'red';
         }
         // 社員名カナ
-        if (!checkTime(employeeNameKanaVar)) {
+        //久保田　(8/13)半角カナでなかったらエラーアラートが出るよう改修した際に半角カナでもエラーが出ていたところを改修
+          //※障害票立てる前に改修が終わったため障害票は立てていない
+        //if (!checkTime(employeeNameKanaVar)) {
+        	if (!checkHalfWidthKana(employeeNameKanaVar)) {
           // エラー有り
           var strArr = ['社員名カナ'];
           
