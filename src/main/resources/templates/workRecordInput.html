@@ -89,7 +89,10 @@
           }
 
           // from - to のチェック
-          if (checkTimeCompare(startTimeValue, endTimeValue)) {
+          <!--
+          障害No54 久保田 (8/13)変更不要となったので元に戻しました
+          -->
+          if (!checkTimeCompare(startTimeValue, endTimeValue)) {
             if (checkTime(startTimeValue) && checkTime(endTimeValue)) {
               fromToErrMsg = getMessageCodeOnly('E-MSG-000005');
               startTimeInput.style.backgroundColor = 'red';
