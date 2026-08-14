@@ -53,7 +53,10 @@
             with (document.forms['mntform'].elements) {
                 for (var i = 0; i < listSize; i++) {
                     // パスワードを取得する。
-                    var password = document.getElementById('password_' + i + '_value').value;
+                    //障害No119　久保田　(8/24)
+                    //元データ
+                    //var password = document.getElementById('password_' + i + '_value').value;
+                    var password = document.getElementById('password_' + i).value;
                     // 社員名カナを取得する。
                     var employeeNameKana = document.getElementById('employeeNameKana_' + i).value;
 
