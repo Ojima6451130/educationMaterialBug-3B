@@ -57,7 +57,10 @@ public class ShiftMstMntDao extends Dao {
             StringBuffer strSql = new StringBuffer();
             strSql.append("SELECT * FROM ");
             strSql.append("m_shift ");
-            strSql.append(" ORDER BY start_time desc ");
+//            障害No121　久保田(8/14)
+//            元データ
+//          strSql.append(" ORDER BY start_time desc ");
+            strSql.append(" ORDER BY shift_id ");
 
             PreparedStatement ps = connection.prepareStatement(strSql.toString());
 
