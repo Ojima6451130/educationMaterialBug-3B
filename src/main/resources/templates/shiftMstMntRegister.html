@@ -61,7 +61,8 @@
       	// from - to のチェック
            if (!checkTimeCompare(varStartTime, varEndTime)) {
         	   //障害No.057 (7/31)　矢田部　!を追記
-             if (!checkTime(varStartTime) && checkTime(varEndTime)) {
+        	   //障害No117(8/14)久保田　上記!を削除
+             if (checkTime(varStartTime) && checkTime(varEndTime)) {
                  fromToErrMsg = getMessageCodeOnly('E-MSG-000005');
                  startTime.style.backgroundColor = 'red';
                  endTime.style.backgroundColor = 'red';
