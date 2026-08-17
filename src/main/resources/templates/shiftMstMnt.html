@@ -82,7 +82,8 @@
             if (!checkTime(breakTimeValue)) {
               var strArr = ['休憩時間'];
               breakTimeErrMsg = getMessage('E-MSG-000004', strArr);
-              breakTimeInput.style.backgroundColor = 'blue';
+              //　山口 blueをredに変更
+              breakTimeInput.style.backgroundColor = 'red';
             }else{
               breakTimeInput.style.backgroundColor = 'white';
             }
@@ -236,8 +237,8 @@
           <td id="footRight">
             <form action="/kikin/shiftMstMnt/regist" method="post">
               <input value="新規登録" type="submit" class="smallButton" name="regist" />
-              <!-- 障害No111　山口　↓　onclickのreturnを削除 -->
-              <input value="更新" form="update" type="submit" class="smallButton" style="margin:10px;" onclick="shiftMstMntUpdate()"/>
+              <!-- 障害No111　山口　↓　onclickのreturnを削除 --><!-- 障害No115　山口　↓　修正を戻した -->
+              <input value="更新" form="update" type="submit" class="smallButton" style="margin:10px;" onclick="return shiftMstMntUpdate()"/>
           </form>
           </td>
         </tr>
