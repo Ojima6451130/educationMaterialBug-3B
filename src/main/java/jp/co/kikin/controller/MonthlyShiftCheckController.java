@@ -22,6 +22,10 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +43,8 @@ import jp.co.kikin.dto.MonthlyShiftDto;
 import jp.co.kikin.model.DateBean;
 import jp.co.kikin.model.MonthlyShiftCheckBean;
 import jp.co.kikin.model.MonthlyShiftCheckForm;
+import jp.co.kikin.model.WorkDateRequestCheckBean;
+import jp.co.kikin.model.WorkDateRequestCheckForm;
 import jp.co.kikin.service.ComboListUtilLogic;
 import jp.co.kikin.service.CommonUtils;
 import jp.co.kikin.service.MethodComparator;
@@ -70,7 +76,7 @@ public class MonthlyShiftCheckController {
 
     /** 画面URL */
     public static final String SCREEN_PATH = "/monthlyShiftCheck";
-    /** 「検索」押下時 */
+    /** 表示年月変更時・前へ／次へ共通 */
     public static final String SCREEN_PATH_SEARCH = "/monthlyShiftCheck/search";
     /** 「印刷」押下時 */
     public static final String SCREEN_PATH_PRINT = "/monthlyShiftCheck/print";
@@ -80,6 +86,8 @@ public class MonthlyShiftCheckController {
     /** サービス機能名={@value} */
     public static final String CONTENTS = "月別シフト確認画面";
 
+    /** セッションに保存する対象年月のキー */
+    private static final String SESSION_YEAR_MONTH = "monthlyShiftYearMonth";
     /**
      * Viewに共通URLを渡す.
      *
@@ -99,27 +107,32 @@ public class MonthlyShiftCheckController {
      * @throws Exception
      */
     @RequestMapping(value = SCREEN_PATH)
-    public String init(HttpServletRequest request, HttpSession session, Model model, MonthlyShiftCheckForm form, BindingResult bindingResult)
-            throws Exception {
-        return view("init", request, model, form, bindingResult);
+    public String init(
+    			@PageableDefault(page = 0, size = 16) Pageable pageable, 
+    			HttpServletRequest request, HttpSession session, Model model, 
+    			MonthlyShiftCheckForm form, BindingResult result)throws Exception {
+        return view("init", pageable, request, session, model, form, result);
     }
 
     @RequestMapping(value = SCREEN_PATH_SEARCH)
-    public String search(HttpServletRequest request, HttpSession session, Model model, MonthlyShiftCheckForm form, BindingResult bindingResult) throws Exception {
-        return view("searchmth", request, model, form, bindingResult);
+    public String search(
+    			@PageableDefault(page = 0, size = 16) Pageable pageable, 
+    			HttpServletRequest request, HttpSession session, 
+    			Model model, MonthlyShiftCheckForm form, BindingResult result) throws Exception {
+        return view("search", pageable, request, session, model, form, result);
     }
 
     // 表示
-    private String view(String processType, HttpServletRequest request, Model model, MonthlyShiftCheckForm form,
-            BindingResult bindingResult)
+    private String view(String processType, Pageable pageable, HttpServletRequest request, HttpSession session,
+            Model model, MonthlyShiftCheckForm form, BindingResult result)
             throws Exception {
         // 対象年月日
         String yearMonth;
-        // 日付Benリスト
+        // 日付Beanリスト
         List<DateBean> dateBeanList = new ArrayList<>();
 
         // セッション
-        HttpSession session = request.getSession();
+        //HttpSession session = request.getSession();
 
         // ログインユーザ情報をセッションより取得
         LoginUserDto loginUserDto = (LoginUserDto) session
@@ -149,6 +162,11 @@ public class MonthlyShiftCheckController {
         } else {
             // 共通部品で対象年月の1ヶ月分の日付情報格納クラスのリストを取得する。
             String searchYearMonth = form.getYearMonth();
+
+            if(searchYearMonth == null || searchYearMonth.isEmpty()) {
+            	searchYearMonth = (String) session.getAttribute(SESSION_YEAR_MONTH);
+            }
+            
             yearMonth = CommonUtils.changeFormat(searchYearMonth, CommonConstant.YEARMONTH, CommonConstant.YEARMONTH_NOSL);
             dateBeanList = CommonUtils.getDateBeanList(yearMonth);
             yearMonthCmbMap = comboListUtils.getComboYearMonth(yearMonth, 2, 1, false);
@@ -158,6 +176,7 @@ public class MonthlyShiftCheckController {
             yearMonthValues = new ArrayList<>(yearMonthSet);
             yearMonthValues.sort(Comparator.naturalOrder());
             
+            //String initYearMonth = CommonUtils.changeFormat(yearMonth, CommonConstant.YEARMONTH_NOSL, CommonConstant.YEARMONTH);
             // 対象年月選択のため、選択年月を画面フォームにセット
             form.setYearMonth(searchYearMonth);
         }
@@ -186,6 +205,12 @@ public class MonthlyShiftCheckController {
             // データあり
             monthlyShiftCheckBean = dtoToBean(monthlyShiftDtoMap, loginUserDto);
         }
+        //No014 東國原 ページング処理のコードを追記
+        //----------------------
+        // ページング処理
+        //----------------------
+        Page<MonthlyShiftCheckBean> monthlyShiftPage = this.findByPageable(monthlyShiftCheckBean, pageable);
+        
         // フォームにデータをセットする
         // form.setShiftCmbMap(shiftCmbMap);
         form.setYearMonthCmbMap(yearMonthCmbMap);
@@ -198,6 +223,11 @@ public class MonthlyShiftCheckController {
         model.addAttribute("dateBeanList", dateBeanList);
         model.addAttribute("saturday", saturday);
         model.addAttribute("sunday", sunday);
+        
+        //No014 東國原 ページング処理の結果をmodelに加える
+        model.addAttribute("monthlyShiftPage", monthlyShiftPage);
+        model.addAttribute("monthlyShiftCheckBeanList", monthlyShiftPage.getContent());
+        session.setAttribute(SESSION_YEAR_MONTH, form.getYearMonth());
         //障害表No038 山口
 //      return null;修正前コード
         return "monthlyShiftCheck";
@@ -305,5 +335,20 @@ public class MonthlyShiftCheckController {
         }
 
         return monthlyShiftCheckBeanList;
+    }
+    //No014 東國原 ページング機能を追加
+    private Page<MonthlyShiftCheckBean> findByPageable(
+            List<MonthlyShiftCheckBean> monthlyShiftCheckBeanList, Pageable pageable) {
+        // 該当レコード数取得
+        int totalRows = monthlyShiftCheckBeanList.size();
+        // 先頭レコードの位置設定
+        int firstResult = pageable.getPageNumber() * pageable.getPageSize();
+        // 末尾レコードの位置設定
+        int lastResult = Math.min(firstResult + pageable.getPageSize(), totalRows);
+        List<MonthlyShiftCheckBean> content = (firstResult >= totalRows)
+                ? new ArrayList<>()
+                : monthlyShiftCheckBeanList.subList(firstResult, lastResult);
+        Page<MonthlyShiftCheckBean> monthlyShiftPage = new PageImpl<>(content, pageable, totalRows);
+        return monthlyShiftPage;
     }
 }

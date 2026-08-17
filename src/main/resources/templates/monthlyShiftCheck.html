@@ -33,12 +33,26 @@
     <div>
       <form id="searchForm" action="/kikin/monthlyShiftCheck/search" method="post" th:object="${MonthlyShiftCheckForm}">
         <label>表示年月：</label>
-        <select name="yearMonth" id="yearMonth" style="width: 5%; color: black;">
-            <option th:each="yearMonth : ${yearMonthValues}" th:value="${yearMonth}" th:selected="${yearMonth} == *{yearMonth}" th:inline="text" inputmode="text">[[${yearMonth}]]</option>
+        <!--No014 東國原 検索のボタンがなくても検索できるように修正 -->
+        <select name="yearMonth" id="yearMonth" onchange="document.getElementById('searchForm').submit();">
+            <option th:each="yearMonth : ${yearMonthValues}" th:value="${yearMonth}" th:selected="${yearMonth} == *{yearMonth}" 
+             		th:inline="text" inputmode="text">[[${yearMonth}]]</option>
         </select>
-        <button type="submit" value="search" >検索</button> 
       </form>
+    		<!--No014 東國原 ページング機能を追加 -->
+    		<div th:if="${monthlyShiftCheckBeanList != null && #lists.size(monthlyShiftCheckBeanList) != 0}" style="float: right;">
+				<span th:if="${monthlyShiftPage.isFirst()}">前へ</span>
+				<a th:unless="${monthlyShiftPage.isFirst()}"
+					th:href="@{/kikin/monthlyShiftCheck/search(page = ${monthlyShiftPage.getNumber() - 1})}">前へ</a>
+					
+				<span th:if="${monthlyShiftPage.isLast()}">次へ</span>
+				<a th:unless="${monthlyShiftPage.isLast()}"
+					th:href="@{/kikin/monthlyShiftCheck/search(page = ${monthlyShiftPage.getNumber() + 1})}">次へ</a>
+				<span th:text="| ${monthlyShiftPage.getNumber() + 1} / ${monthlyShiftPage.getTotalPages()}|"></span>
+    		</div>
     </div>
+
+    
     <div id="businessBody">
       <table class="daysTable">
         <thead style="display: block; position: sticky;">
@@ -65,8 +79,10 @@
             </td>
           </tr>
         </thead>
-        <tbody style="display: block; max-height: 400px; overflow-y: scroll;">
-          <tr th:each="monthlyShiftCheck : ${monthlyShiftCheckBean}" class="tableBody">
+          <!--No014 東國原 overflow-y: scroll;を消去（スクロールバーが必要ないため）
+          				 ${monthlyShiftCheckBean} → ${monthlyShiftCheckBeanList}に修正（ページング済みの内容を表示するため） -->
+        <tbody style="display: block; max-height: 400px;">
+          <tr th:each="monthlyShiftCheck : ${monthlyShiftCheckBeanList}" class="tableBody">
             <td class="tableBody" style="width: 150px; text-align: center;">
               <span th:text="${monthlyShiftCheck.employeeName}"></span>
             </td>
@@ -109,15 +125,16 @@
     <div id="footer" style="margin-top: 150px;">
       <table>
         <tr>
-        <!-- 障害No.86 矢田部　8/17 tdタグのid="footLeft"を削除してformタグを囲うtdタグを追加 -->
+          <!-- 障害No.86 矢田部　8/17 tdタグのid="footLeft"を削除してformタグを囲うtdタグを追加 -->
           <td>
+          
           	<!-- 修正前 -->
           	<!-- <input value="凡例表示" type="button" class="longButton" onclick="openWindow()" /> -->
             
           	<!-- 修正後 障害No.43 寺松-->
             <input value="凡例表示" type="button" class="longButton" onclick="openWindow()" />
           	<!-- ここまで -->
-          </td>
+            </td>
           <td>
             <!-- No044 東國原夏鈴 actionタグを変更 -->
             <form id="excelForm" action="/kikin/monthlyShiftCheck/print" method="post" th:object="${MonthlyShiftCheckForm}">
@@ -137,4 +154,3 @@
 </body>
 
 </html>
-

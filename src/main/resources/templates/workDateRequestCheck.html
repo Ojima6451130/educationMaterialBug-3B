@@ -28,30 +28,37 @@
 				</tr>
 			</table>
 		</div>
-
-
-
 		<!--  障害票No.021 田渕 2026/8/7 -->
 		<!-- div class="search"を追記 -->
-		<div class="search">
+		<!--No026 東國原 検索のボタンがなくても検索できるように修正 -->
+		<div class="search" style="text-align: center; display: flex; justify-content: center; align-items: center; gap: 20px;">
 			<form id="searchForm" action="/kikin/workDateRequestCheck/search"
 				method="post" th:object="${workDateRequestCheckForm}">
 
-
-				<label>表示年月：</label> <select th:name="yearMonth" id="yearMonth"
-					style="width: 5%; color: black;">
+				<label>表示年月：</label>
+				<select th:name="yearMonth" id="yearMonth"
+					onchange="document.getElementById('searchForm').submit();">
 					<option th:each="yearMonth : ${yearMonthValues}"
 						th:value="${yearMonth}" th:selected="${yearMonth} == *{yearMonth}"
 						th:inline="text" inputmode="text">[[${yearMonth}]]</option>
 				</select>
-				<button type="submit" value="search">検索</button>
 			</form>
-
+			<!--No026 東國原 ページング機能を追加 -->
+			<div th:if="${workDateRequestCheckBeanList != null && #lists.size(workDateRequestCheckBeanList) != 0}">
+				<span th:if="${workDateRequestPage.isFirst()}">前へ</span>
+				<a th:unless="${workDateRequestPage.isFirst()}"
+					th:href="@{/kikin/workDateRequestCheck/search(page = ${workDateRequestPage.getNumber() - 1})}">前へ</a>
+					
+				<span th:if="${workDateRequestPage.isLast()}">次へ</span>
+				<a th:unless="${workDateRequestPage.isLast()}"
+					th:href="@{/kikin/workDateRequestCheck/search(page = ${workDateRequestPage.getNumber() + 1})}">次へ</a>
+				<span th:text="| ${workDateRequestPage.getNumber() + 1} / ${workDateRequestPage.getTotalPages()}|"></span>
+			</div>
+			
 		</div>
+
 		<!--<br>追加　　障害No.21 川面　7/31 -->
 		<br>
-
-
 
 		<!-- id→ classに変更　　障害No.21 川面　7/31-->
 		<div class="businessBody">
@@ -84,85 +91,86 @@
 						</td>
 					</tr>
 				</thead>
+				<!--No014 東國原 ${resWorkDateRequestLogics} → ${workDateRequestCheckBeanList}
+								workRequest1 → symbol01に修正（ページング済みの内容を表示するため） -->
 				<tbody
-					style="display: block; max-height: 400px; overflow-y: scroll;">
-						<!-- ${workDateRequestCheckBeanList} → ${resWorkDateRequestLogics}に変更-->
+					style="display: block; max-height: 400px;">
 					<tr
-						th:each="workDateRequestCheck : ${resWorkDateRequestLogics}"
+						th:each="workDateRequestCheck : ${workDateRequestCheckBeanList}"
 						class="tableBody">
 						<td class="tableBody" style="width: 150px; text-align: center;">
 							<span th:value="${workDateRequestCheck.employeeName}">[[${workDateRequestCheck.employeeName}]]</span>
 						</td>
-						<!-- workDateRequestCheck.symbol01 → workDateRequestCheck.workRequest1に変更。以降全て-->
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest1}"></td>
+							th:text="${workDateRequestCheck.symbol01}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest2}"></td>
+							th:text="${workDateRequestCheck.symbol02}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest3}"></td>
+							th:text="${workDateRequestCheck.symbol03}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest4}"></td>
+							th:text="${workDateRequestCheck.symbol04}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest5}"></td>
+							th:text="${workDateRequestCheck.symbol05}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest6}"></td>
+							th:text="${workDateRequestCheck.symbol06}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest7}"></td>
+							th:text="${workDateRequestCheck.symbol07}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest8}"></td>
+							th:text="${workDateRequestCheck.symbol08}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest9}"></td>
+							th:text="${workDateRequestCheck.symbol09}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest10}"></td>
+							th:text="${workDateRequestCheck.symbol10}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest11}"></td>
+							th:text="${workDateRequestCheck.symbol11}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest12}"></td>
+							th:text="${workDateRequestCheck.symbol12}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest13}"></td>
+							th:text="${workDateRequestCheck.symbol13}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest14}"></td>
+							th:text="${workDateRequestCheck.symbol14}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest15}"></td>
+							th:text="${workDateRequestCheck.symbol15}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest16}"></td>
+							th:text="${workDateRequestCheck.symbol16}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest17}"></td>
+							th:text="${workDateRequestCheck.symbol17}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest18}"></td>
+							th:text="${workDateRequestCheck.symbol18}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest19}"></td>
+							th:text="${workDateRequestCheck.symbol19}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest20}"></td>
+							th:text="${workDateRequestCheck.symbol20}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest21}"></td>
+							th:text="${workDateRequestCheck.symbol21}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest22}"></td>
+							th:text="${workDateRequestCheck.symbol22}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest23}"></td>
+							th:text="${workDateRequestCheck.symbol23}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest24}"></td>
+							th:text="${workDateRequestCheck.symbol24}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest25}"></td>
+							th:text="${workDateRequestCheck.symbol25}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest26}"></td>
+							th:text="${workDateRequestCheck.symbol26}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest27}"></td>
+							th:text="${workDateRequestCheck.symbol27}"></td>
 						<td class="tableBody" style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest28}"></td>
+							th:text="${workDateRequestCheck.symbol28}"></td>
 						<td th:if="${datebeanList.size() > 28}" class="tableBody"
 							style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest29}"></td>
+							th:text="${workDateRequestCheck.symbol29}"></td>
 						<td th:if="${datebeanList.size() > 29}" class="tableBody"
 							style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest30}"></td>
+							th:text="${workDateRequestCheck.symbol30}"></td>
 						<td th:if="${datebeanList.size() > 30}" class="tableBody"
 							style="width: 40px; text-align: center;"
-							th:text="${workDateRequestCheck.workRequest31}"></td>
+							th:text="${workDateRequestCheck.symbol31}"></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+
 		<div id="footer" style="padding: 0;">
 			<table>
 				<tr>
