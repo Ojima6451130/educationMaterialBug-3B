@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<div id="wrapper">
+	<div id="wrapper" style="padding: 10px">
 		<div id="header">
 			<!-- centered-container→ full-widthに変更　　障害No.21 川面　7/31-->
 			<table class="full-width">
@@ -92,9 +92,10 @@
 					</tr>
 				</thead>
 				<!--No014 東國原 ${resWorkDateRequestLogics} → ${workDateRequestCheckBeanList}
-								workRequest1 → symbol01に修正（ページング済みの内容を表示するため） -->
+								workRequest1 → symbol01に修正（ページング済みの内容を表示するため）
+								max-height: 400px; → 500pxに修正（要素が被るため） -->
 				<tbody
-					style="display: block; max-height: 400px;">
+					style="display: block; max-height: 500px;">
 					<tr
 						th:each="workDateRequestCheck : ${workDateRequestCheckBeanList}"
 						class="tableBody">
@@ -170,11 +171,12 @@
 				</tbody>
 			</table>
 		</div>
-
-		<div id="footer" style="padding: 0;">
+	</div>
+</body>
+<footer>
 			<table>
 				<tr>
-					<td id="footLeft">
+					<td>
 						<div style="margin-left: 50px;">
 							<!--  障害票No.027 田渕 2026/8/6 -->
 							<!-- <input value="凡例表示" type="button" class="longButton"  onclick="openWindo()" /> -->
@@ -183,11 +185,7 @@
 							<input value="凡例表示" type="button" class="longButton"  onclick="openWindow()" />
 						</div>
 					</td>
-					<td id="footCenter"></td>
-					<td id="footRight"></td>
 				</tr>
 			</table>
-		</div>
-	</div>
-</body>
+</footer>
 </html>

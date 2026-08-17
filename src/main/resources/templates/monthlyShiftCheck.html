@@ -14,7 +14,7 @@
 <body>
   <div id="wrapper">
     <div id="header">
-      <table class="centered-container">
+      <table class="full-width">
         <tr>
           <td id="headLeft">
             <form action="/kikin/menu" method="post">
@@ -30,7 +30,7 @@
         </tr>
       </table>
     </div>
-    <div>
+    <div style=" display:flex; justify-content: space-between;">
       <form id="searchForm" action="/kikin/monthlyShiftCheck/search" method="post" th:object="${MonthlyShiftCheckForm}">
         <label>表示年月：</label>
         <!--No014 東國原 検索のボタンがなくても検索できるように修正 -->
@@ -121,9 +121,11 @@
         </tbody>
       </table>
     </div>
-    <!--障害No.86 矢田部 8/17 margin-top: 150pxを追記 -->
-    <div id="footer" style="margin-top: 150px;">
-      <table>
+  </div>
+ 
+</body>
+<footer>
+<table>
         <tr>
           <!-- 障害No.86 矢田部　8/17 tdタグのid="footLeft"を削除してformタグを囲うtdタグを追加 -->
           <td>
@@ -142,15 +144,8 @@
               <input type="submit" class="smallButton" id="btn_excel" value="印刷">
             </form>
           </td>
-          <td id="footCenter" style="text-align: right;">
-          </td>
-          <td id="footRight">
-          </td>
         </tr>
       </table>
-    </div>
-  </div>
- 
-</body>
+</footer>
 
 </html>
