@@ -162,11 +162,13 @@ public class WorkDateRequestCheckController {
         WorkDateRequestLogic workDateRequestLogic = new WorkDateRequestLogic();
         List<List<WorkDateRequestCheckDto>> workRequestCheckDtoList = workDateRequestLogic.getWorkDateRequestCheckDtoList(yearMonth);
         List<WorkDateRequestCheckBean> workDateRequestCheckBeanList = this.dtoToBean(workRequestCheckDtoList, loginUserDto);
-        //No014 東國原 ページング処理のコードを追記
+        
+        List<ResWorkDateRequestLogic> resWorkDateRequestLogics = workDateRequestLogic.getWorkDateRequestScreenData(workRequestCheckDtoList, dateBeanList);
+        //No014 東國原 ページング処理のコードを追記　8/18　矢田部　‐が適用されるように再修正。
         //----------------------
         // ページング処理
         //----------------------
-        Page<WorkDateRequestCheckBean> workDateRequestPage = this.findByPageable(workDateRequestCheckBeanList, pageable);
+        Page<ResWorkDateRequestLogic> workDateRequestPage = this.findByPageable(resWorkDateRequestLogics, pageable);
         
         //----------------
         // 画面への受渡し
@@ -178,7 +180,7 @@ public class WorkDateRequestCheckController {
         
         //No014 東國原 ページング処理の結果をmodelに加える
         model.addAttribute("workDateRequestPage", workDateRequestPage);
-        model.addAttribute("workDateRequestCheckBeanList", workDateRequestPage.getContent());
+        model.addAttribute("resWorkDateRequestLogics", workDateRequestPage.getContent());
         session.setAttribute(SESSION_YEAR_MONTH, form.getYearMonth());
         return "workDateRequestCheck";
     }
@@ -229,18 +231,18 @@ public class WorkDateRequestCheckController {
         return workDateRequestCheckBeanList;
     }
     //No026 東國原 ページング機能を追加
-    private Page<WorkDateRequestCheckBean> findByPageable(
-            List<WorkDateRequestCheckBean> workDateRequestCheckBeanList, Pageable pageable) {
+    private Page<ResWorkDateRequestLogic> findByPageable(
+            List<ResWorkDateRequestLogic> resWorkDateRequestLogics, Pageable pageable) {
         // 該当レコード数取得
-        int totalRows = workDateRequestCheckBeanList.size();
+        int totalRows = resWorkDateRequestLogics.size();
         // 先頭レコードの位置設定
         int firstResult = pageable.getPageNumber() * pageable.getPageSize();
         // 末尾レコードの位置設定
         int lastResult = Math.min(firstResult + pageable.getPageSize(), totalRows);
-        List<WorkDateRequestCheckBean> content = (firstResult >= totalRows)
+        List<ResWorkDateRequestLogic> content = (firstResult >= totalRows)
                 ? new ArrayList<>()
-                : workDateRequestCheckBeanList.subList(firstResult, lastResult);
-        Page<WorkDateRequestCheckBean> workDateRequestPage = new PageImpl<>(content, pageable, totalRows);
+                : resWorkDateRequestLogics.subList(firstResult, lastResult);
+        Page<ResWorkDateRequestLogic> workDateRequestPage = new PageImpl<>(content, pageable, totalRows);
         return workDateRequestPage;
     }
 }
