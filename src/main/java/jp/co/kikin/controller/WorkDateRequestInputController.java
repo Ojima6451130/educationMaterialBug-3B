@@ -123,7 +123,8 @@ public class WorkDateRequestInputController extends WorkDateRequestAbstractContr
             dateBeanList = CommonUtils.getDateBeanList(yearMonth);
             yearMonthCmbMap = comboListUtils.getComboYearMonth(yearMonth, 0, 1, false);
             yearMonthSet.addAll(yearMonthCmbMap.values());
-            yearMonthCmbMap = comboListUtils.getComboYearMonth(yearMonth, 2, 0, false);
+            //障害No123　山口 ↓　引数を(yearMonth, 2, 0, false) → (yearMonth, 2, 1, false)に変更
+            yearMonthCmbMap = comboListUtils.getComboYearMonth(yearMonth, 2, 1, false);
             yearMonthSet.addAll(yearMonthCmbMap.values());
             yearMonthValues = new ArrayList<>(yearMonthSet);
             yearMonthValues.sort(Comparator.naturalOrder());
@@ -136,9 +137,11 @@ public class WorkDateRequestInputController extends WorkDateRequestAbstractContr
             String searchYearMonth = form.getYearMonth();
             yearMonth = CommonUtils.changeFormat(searchYearMonth, CommonConstant.YEARMONTH, CommonConstant.YEARMONTH_NOSL);
             dateBeanList = CommonUtils.getDateBeanList(yearMonth);
-            yearMonthCmbMap = comboListUtils.getComboYearMonth(yearMonth, 2, 1, false);
+            //障害No123　山口 ↓　引数を(yearMonth, 2, 1, false) → (yearMonth, 0, 0, false)に変更
+            yearMonthCmbMap = comboListUtils.getComboYearMonth(yearMonth, 0, 0, false);
             yearMonthSet.addAll(yearMonthCmbMap.values());
-            yearMonthCmbMap = comboListUtils.getComboYearMonth(yearMonth, 2, 0, false);
+            //障害No123　山口 ↓　引数を(yearMonth, 2, 0, false) → (yearMonth, 2, 1, false)に変更
+            yearMonthCmbMap = comboListUtils.getComboYearMonth(yearMonth, 2, 1, false);
             yearMonthSet.addAll(yearMonthCmbMap.values());
             yearMonthValues = new ArrayList<>(yearMonthSet);
             yearMonthValues.sort(Comparator.naturalOrder());
