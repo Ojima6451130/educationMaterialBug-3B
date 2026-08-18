@@ -344,3 +344,59 @@ errorbody {
 .search{
 	text-align: center;
 }
+
+/* ==================================================
+ * 汎用サイバーページスタイル (.cyber-page)
+ * ================================================== */
+
+body.cyber-page {
+    background-color: #030a06 !important;
+    background-image: 
+        linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.25) 50%, rgba(0, 0, 0, 0.6) 100%),
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px) !important;
+    background-size: 100% 200px, 20px 20px, 20px 20px !important;
+    background-repeat: no-repeat, repeat, repeat !important;
+    animation: cyberScanline 4s linear infinite;
+    overflow: hidden !important;
+    font-family: 'Orbitron', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body.cyber-page #wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+body.cyber-page .cyber-outer-frame {
+    position: relative;
+    width: 95%;
+    max-width: 1050px;
+    height: 85vh;
+    background-color: rgba(4, 20, 14, 0.92);
+    background-image: 
+        linear-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.08) 1px, transparent 1px) !important;
+    background-size: 15px 15px !important;
+    border: 1px solid #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 15px rgba(0, 255, 136, 0.15);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px 30px;
+}
+
+/* ヘッダー装飾 */
+body.cyber-page #header {
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
