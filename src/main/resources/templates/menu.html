@@ -7,169 +7,228 @@
 <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
 <title>メニュー画面</title>
 <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/menu.css}" />
 <script type="text/javascript" th:src="@{/js/common.js}"></script>
 <script type="text/javascript" th:src="@{/js/message.js}"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap"
+	rel="stylesheet">
 </head>
 
-<body>
+<body class="menu-page">
 	<div id="wrapper">
-		<div id="header">
-			<table class="full-width">
-				<tr>
-					<td id="headLeft"></td>
-					<td id="headCenter">
-						<div th:if="${authority_id == adminAuthority}">メニュー(管理者)</div>
-						<div th:if="${authority_id == userAuthority}">メニュー(一般)</div>
-					</td>
-					<td id="headRight"><input value="ログアウト" type="button"
-						class="smallButton" onclick="logout()" /></td>
-				</tr>
-			</table>
-		</div>
-		<div id="businessBody">
-			<div th:if="${authority_id == adminAuthority}" style="margin: auto;">
+		<!-- サイバー外枠 -->
+		<div class="cyber-outer-frame">
+			<!-- 四隅のコーナーブラケット -->
+			<div class="corner corner-top-left"></div>
+			<div class="corner corner-top-right"></div>
+			<div class="corner corner-bottom-left"></div>
+			<div class="corner corner-bottom-right"></div>
 
-				<div class="menuBlock">
-					<!--  障害票No.072 田渕 2026/8/4 -->
-					<!-- <form action="/kikin/dailyShift" method="post">
-              <input type="submit" value="日別シフト確認" class="bigButton" />
-            </form> -->
-					<!-- ↑修正前コード -->
-					<!-- ↓修正後コード -->
-
-					<!--  障害票No.006 山口 2026/7/28 -->
-					<br>
-					<form action="/kikin/monthlyShiftCheck">
-						<!-- ↑修正コード action="/kikin/workDateRequestInput"　→　action="/kikin/monthlyShiftCheck"に変更 -->
-						<input type="submit" value="月別シフト確認" class="bigButton" />
-						<!-- ↑修正コード value="出勤希望日入力"　→　value="月別シフト確認"に変更 -->
-					</form>
-					<br>
-					<form action="/kikin/dailyShift" method="post">
-						<input type="submit" value="日別シフト確認" class="bigButton" />
-					</form>
-
+			<!-- ヘッダー領域 -->
+			<div id="header">
+				<div class="header-nav-left">
+					<input value="← 戻る" type="button" class="btn-cyber-nav"
+						onclick="history.back()" />
 				</div>
-
-				<div class="menuBlock">
-					<!--  障害票No.072 田渕 2026/8/4 -->
-					<!-- <form action="/kikin/workRecordCheck">
-              <input type="submit" value="勤務実績確認" class="bigButton" />
-            </form>
-            <form action="/kikin/workRecordInput">
-              <input type="submit" value="勤務実績入力" class="bigButton" />
-            </form> -->
-					<!-- ↑修正前コード -->
-					<!-- ↓修正後コード -->
-					<br>
-					<form action="/kikin/workRecordCheck">
-						<input type="submit" value="勤務実績確認" class="bigButton" />
-					</form>
-					<br>
-					<form action="/kikin/workRecordInput">
-						<input type="submit" value="勤務実績入力" class="bigButton" />
-					</form>
+				<div class="header-nav-center">
+					<div class="cyber-sub-title">SYSTEM MENU // GENERAL</div>
+					<div class="menu-title-card">
+						<span th:if="${authority_id == adminAuthority}">メニュー (管理者)</span>
+						<span th:if="${authority_id == userAuthority}">メニュー (一般)</span>
+					</div>
 				</div>
-
-				<!--  障害票No.072 田渕 2026/8/4 -->
-				<!-- ↓の文をコメントアウト -->
-				<!-- <div class="menuBlock"></div> -->
-
-
-				<div class="menuBlock">
-					<!--  障害票No.072 田渕 2026/8/4 -->
-					<!-- <form action="/kikin/workDateRequestCheck">
-						<input type="submit" value="出勤希望日確認" class="bigButton" />
-					</form>
-					<form action="/kikin/monthlyShiftInput">
-						<input type="submit" value="月別シフト入力" class="bigButton" />
-					</form> -->
-					<!-- ↑修正前コード -->
-					<!-- ↓修正後コード -->
-					<br>
-					<form action="/kikin/workDateRequestCheck">
-						<input type="submit" value="出勤希望日確認" class="bigButton" />
-					</form>
-					<br>
-					<form action="/kikin/monthlyShiftInput">
-						<input type="submit" value="月別シフト入力" class="bigButton" />
-					</form>
-				</div>
-
-				<div class="menuBlock">
-				<!--  障害票No.072 田渕 2026/8/4 -->
-				<!-- <form action="/kikin/shiftMstMnt">
-						<input type="submit" value="シフトマスタメンテナンス" class="bigButton" />
-					</form>
-					<form action="/kikin/employeeMstMnt">
-						<input type="submit" value="社員マスタメンテナンス" class="bigButton" />
-					</form>
-					<form action="/kikin/baseShiftInput">
-						<input type="submit" value="基本シフト登録" class="bigButton" />
-					</form> -->
-					<!-- ↑修正前コード -->
-					<!-- ↓修正後コード -->
-					
-					<!-- No.003 寺松 action先を　shiftMstMnt　→　employeeMstMntに変更 -->
-					<br>
-					<!-- テスト項目006 田渕 社員マスタメンテナンスとシフトマスタメンテナンスのコード記載順を入れ替え -->
-					<form action="/kikin/employeeMstMnt">
-						<input type="submit" value="社員マスタメンテナンス" class="bigButton" />
-					</form>
-					<br>
-						<!-- No.008 寺松 action先を　employeeMstMnt　→　shiftMstMntに変更 -->
-					<form action="/kikin/shiftMstMnt">
-						<input type="submit" value="シフトマスタメンテナンス" class="bigButton" />
-					</form>
-					<br>
-					<form action="/kikin/baseShiftInput">
-						<input type="submit" value="基本シフト登録" class="bigButton" />
-					</form>
+				<div class="header-nav-right">
+					<input value="ログアウト" type="button" class="btn-cyber-nav"
+						onclick="logout()" />
 				</div>
 			</div>
-			<div th:if="${authority_id == userAuthority}" style="margin: auto;">
-				<div class="menuBlock">
-					<form action="/kikin/monthlyShiftCheck">
-						<input type="submit" value="月別シフト確認" class="bigButton" />
-					</form>
-					<!--  障害票No.101 田渕 2026/8/6 -->
-					<!-- ↓<br>を追記 -->
-					<br>
-					<form action="/kikin/dailyShift">
-						<input type="submit" value="日別シフト確認" class="bigButton" />
-					</form>
+
+			<!-- 業務ボディ領域 -->
+			<div id="businessBody">
+				<!-- 管理者メニュー -->
+				<div th:if="${authority_id == adminAuthority}"
+					class="menu-grid-container">
+					<div class="menuBlock">
+						<form action="/kikin/monthlyShiftCheck">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="月別シフト確認" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // MONTHLY SHIFT</div>
+								</div>
+							</div>
+						</form>
+						<form action="/kikin/dailyShift" method="post">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="日別シフト確認" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // DAILY SHIFT</div>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="menuBlock">
+						<form action="/kikin/workRecordCheck">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="勤務実績確認" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // WORK RECORD CHECK</div>
+								</div>
+							</div>
+						</form>
+						<form action="/kikin/workRecordInput">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="勤務実績入力" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // WORK RECORD INPUT</div>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="menuBlock">
+						<form action="/kikin/workDateRequestCheck">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="出勤希望日確認" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // REQUEST CHECK</div>
+								</div>
+							</div>
+						</form>
+						<form action="/kikin/monthlyShiftInput">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="月別シフト入力" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // MONTHLY SHIFT INPUT</div>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="menuBlock">
+						<form action="/kikin/employeeMstMnt">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="社員マスタメンテナンス" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // EMPLOYEE MASTER</div>
+								</div>
+							</div>
+						</form>
+						<form action="/kikin/shiftMstMnt">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="シフトマスタメンテナンス" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // SHIFT MASTER</div>
+								</div>
+							</div>
+						</form>
+						<form action="/kikin/baseShiftInput">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="基本シフト登録" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // BASE SHIFT REGIST</div>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 
-				<div class="menuBlock">
-					<form action="/kikin/workRecordInput">
-						<input type="submit" value="勤務実績入力" class="bigButton" />
-					</form>
-				</div>
+				<!-- 一般ユーザーメニュー -->
+				<div th:if="${authority_id == userAuthority}"
+					class="menu-grid-container">
+					<div class="menuBlock">
+						<form action="/kikin/monthlyShiftCheck">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="月別シフト確認" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // MONTHLY SHIFT</div>
+								</div>
+							</div>
+						</form>
+						<form action="/kikin/dailyShift">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="日別シフト確認" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // DAILY SHIFT</div>
+								</div>
+							</div>
+						</form>
+					</div>
 
-				<div class="menuBlock">
-					<form action="/kikin/workDateRequestInput" method="post">
-						<input type="submit" value="出勤希望日入力" class="bigButton" />
-					</form>
-				</div>
+					<div class="menuBlock">
+						<form action="/kikin/workRecordInput">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="勤務実績入力" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // WORK RECORD INPUT</div>
+								</div>
+							</div>
+						</form>
+					</div>
 
-				<div class="menuBlock">
-					<form action="/kikin/BaseShiftCheck">
-						<input type="submit" value="基本シフト確認" class="bigButton" />
-					</form>
+					<div class="menuBlock">
+						<form action="/kikin/workDateRequestInput" method="post">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="出勤希望日入力" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // REQUEST INPUT</div>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="menuBlock">
+						<form action="/kikin/BaseShiftCheck">
+							<div class="scouter-btn-wrapper">
+								<input type="submit" value="基本シフト確認" class="bigButton" />
+								<div class="scouter-target">
+									<div class="cross-line-h"></div>
+									<div class="cross-line-v"></div>
+									<div class="scouter-text">LOCK ON // BASE SHIFT CHECK</div>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
 
-	<div id="footer">
-		<table>
-			<tr>
-				<td id="footLeft"></td>
-				<td id="footCenter"></td>
-				<td id="footRight"></td>
-			</tr>
-		</table>
+			<div id="footer">
+				<!-- フッター -->
+			</div>
+			
+			
+
+			<!-- ★左下に配置するアニメーション付きキャラクター画像 -->
+			<img th:src="@{/images/chara_bg.png}" class="menu-cyber-chara"
+				alt="Chara Graphics" />
+		</div>
 	</div>
 </body>
-
 </html>

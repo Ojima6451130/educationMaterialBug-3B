@@ -1,0 +1,317 @@
+/* ==================================================
+ * ログイン画面専用スタイル 
+ * ================================================== */
+
+/* 1. 全体背景：漆黒 ＋ グリッド背景パターン */
+body.login-page {
+    background-color: #030a06 ;
+    background-image: 
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px) !important;
+    background-size: 20px 20px !important;
+    overflow: hidden !important;
+    font-family: 'Orbitron', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body.login-page #wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* 2. 中央の大型サイバー外枠（緑の光る枠） */
+body.login-page .cyber-outer-frame {
+    position: relative;
+    width: 780px;
+    height: 520px;
+    background: rgba(4, 20, 14, 0.85);
+    border: 1px solid #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 15px rgba(0, 255, 136, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px 0;
+}
+
+/* 中央を横切る細いグリッドライン */
+body.login-page .cyber-outer-frame::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 255, 136, 0.25);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 四隅のコーナー「L」字アタッチメント */
+body.login-page .corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: #00ff88;
+    border-style: solid;
+    z-index: 3;
+}
+body.login-page .corner-top-left {
+    top: -3px;
+    left: -3px;
+    border-width: 3px 0 0 3px;
+}
+body.login-page .corner-top-right {
+    top: -3px;
+    right: -3px;
+    border-width: 3px 3px 0 0;
+}
+body.login-page .corner-bottom-left {
+    bottom: -3px;
+    left: -3px;
+    border-width: 0 0 3px 3px;
+}
+body.login-page .corner-bottom-right {
+    bottom: -3px;
+    right: -3px;
+    border-width: 0 3px 3px 0;
+}
+
+/* 3. ヘッダー / タイトルエリア（重なり防止の設定を追加） */
+body.login-page #header {
+    margin: 0 0 12px 0 !important; /* 下部に適度な余白を確保 */
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    position: relative;
+}
+
+body.login-page .cyber-sub-title {
+    font-size: 11px;
+    color: #00ff88;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.8);
+    text-align: center;
+}
+
+body.login-page .login-title-card {
+    width: 260px;
+    padding: 6px 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    background: rgba(0, 20, 10, 0.9);
+    border: 1px solid #00ff88;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+    text-shadow: 0 0 8px #ffffff, 0 0 12px rgba(0, 255, 136, 0.8);
+}
+
+/* 4. メインフォームカードエリア（親要素からの影響をリセット） */
+body.login-page #businessBody {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    width: auto !important;
+    overflow: visible !important;
+    z-index: 2;
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+}
+
+body.login-page .login-card {
+    width: 440px;
+    background: rgba(2, 28, 18, 0.9);
+    border: 1px solid rgba(0, 255, 136, 0.5);
+    border-radius: 12px;
+    padding: 22px 35px;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+    box-sizing: border-box;
+}
+
+body.login-page .login-message {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+/* 5. 入力ボックス */
+body.login-page .input-group {
+    margin-bottom: 14px;
+}
+
+body.login-page .input-group input[type="text"],
+body.login-page .input-group input[type="password"] {
+    width: 100%;
+    height: 42px;
+    padding: 0 18px;
+    font-size: 14px;
+    color: #00ff88;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-color: rgba(0, 15, 8, 0.95);
+    border: 1px solid #00ff88;
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.3), inset 0 0 5px rgba(0, 255, 136, 0.2);
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+body.login-page .input-group input::placeholder {
+    color: rgba(0, 255, 136, 0.5);
+}
+
+body.login-page .input-group input:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.7), inset 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+/* 6. ボタンエリア */
+body.login-page .button-area {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 22px;
+}
+
+body.login-page .btn-login,
+body.login-page .btn-reset {
+    flex: 1;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #00ff88;
+    background: rgba(0, 40, 20, 0.8);
+    border: 1px solid #00ff88;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+    transition: all 0.2s ease;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.6);
+}
+
+body.login-page .btn-login {
+    background: rgba(0, 120, 60, 0.6);
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.5);
+}
+
+body.login-page .btn-login:hover,
+body.login-page .btn-reset:hover {
+    background: rgba(0, 255, 136, 0.25);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(0, 255, 136, 0.8);
+    transform: scale(1.02);
+}
+
+body.login-page #footer {
+    display: none !important;
+}
+
+/* ==================================================
+ * ログインローディング演出用スタイル
+ * ================================================== */
+
+.loading-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+/* 点々が円状に回るスピナー */
+.spinner-dots {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 25px;
+    animation: spinDots 1.2s linear infinite;
+}
+
+.spinner-dots .dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #00ff88;
+    top: 50%;
+    left: 50%;
+    margin: -3px;
+}
+
+/* 8個の点を円状に配置 */
+.spinner-dots .dot:nth-child(1) { transform: rotate(0deg) translate(18px); opacity: 1; }
+.spinner-dots .dot:nth-child(2) { transform: rotate(45deg) translate(18px); opacity: 0.85; }
+.spinner-dots .dot:nth-child(3) { transform: rotate(90deg) translate(18px); opacity: 0.7; }
+.spinner-dots .dot:nth-child(4) { transform: rotate(135deg) translate(18px); opacity: 0.55; }
+.spinner-dots .dot:nth-child(5) { transform: rotate(180deg) translate(18px); opacity: 0.4; }
+.spinner-dots .dot:nth-child(6) { transform: rotate(225deg) translate(18px); opacity: 0.3; }
+.spinner-dots .dot:nth-child(7) { transform: rotate(270deg) translate(18px); opacity: 0.2; }
+.spinner-dots .dot:nth-child(8) { transform: rotate(315deg) translate(18px); opacity: 0.1; }
+
+@keyframes spinDots {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 中央を横切るライン */
+.loading-line {
+    width: 260px;
+    height: 2px;
+    background: #00ff88;
+    box-shadow: 0 0 8px #00ff88;
+    margin-bottom: 15px;
+}
+
+/* テキストスタイル（Now Loading...） */
+.loading-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #00ff88;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.8);
+    transition: color 0.3s ease;
+}
+
+/* スカウター起動用の黄色テキスト */
+.loading-text.yellow-text {
+    color: #ffee00 !important;
+    text-shadow: 0 0 8px rgba(255, 238, 0, 0.8) !important;
+}
+
+/* アニメーションキーフレームの追加（画面上部から下部へ走査線が移動） */
+@keyframes cyberScanline {
+    0% {
+        background-position: 
+            0 -200px, /* ① 動く波の初期位置（画面の上外） */
+            0 0,      /* ② 横格子 */
+            0 0;      /* ③ 縦格子 */
+    }
+    100% {
+        background-position: 
+            0 100vh,  /* ① 動く波の終了位置（画面の最下部） */
+            0 0,      /* ② 横格子 */
+            0 0;      /* ③ 縦格子 */
+    }
+}
+

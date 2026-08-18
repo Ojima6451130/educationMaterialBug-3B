@@ -1,0 +1,359 @@
+/* ==================================================
+ * メニュー画面専用 スカウター選択スタイル (.menu-page)
+ * ================================================== */
+
+body.menu-page {
+    background-color: #030a06 !important;
+    background-image: 
+        /* ① 上から下へ動く緑の走査線グラデーション */
+        linear-gradient(180deg, 
+            transparent 0%, 
+            rgba(0, 255, 136, 0.25) 50%, 
+            rgba(0, 0, 0, 0.6) 100%
+        ),
+        /* ② 横方向の線（格子） */
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        /* ③ 縦方向の線（格子） */
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px) !important;
+        
+    /* グラデーションのサイズ指定 (①だけ高さ200px、②③は自動) */
+    background-size: 100% 200px, 20px 20px, 20px 20px !important;
+    background-repeat: no-repeat, repeat, repeat !important;
+    
+    /* 4秒周期で上から下にループ移動するアニメーション */
+    animation: cyberScanline 4s linear infinite;
+    
+    overflow: hidden !important;
+    font-family: 'Orbitron', 'Helvetica Neue', Arial, sans-serif;
+}
+
+
+body.menu-page #wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* 外枠サイバーフレーム（内側にもグリッドを表示） */
+body.menu-page .cyber-outer-frame {
+    position: relative;
+    width: 95%;
+    max-width: 1100px;
+    height: 85vh;
+    /* --- 背景色の後ろにグリッドパターン(15px間隔)を追加 --- */
+    background-color: rgba(4, 20, 14, 0.95);
+    background-image: 
+        linear-gradient(rgba(0, 255, 136, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.12) 1px, transparent 1px) !important;
+    background-size: 15px 15px !important; /* 格子の目の大きさ */
+    /* ----------------------------------------------- */
+    border: 1px solid #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 15px rgba(0, 255, 136, 0.15);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    
+}
+
+/* ヘッダーエリア */
+body.menu-page #header {
+    margin: 0 0 50px 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body.menu-page .header-nav-left,
+body.menu-page .header-nav-right {
+    width: 120px;
+}
+
+body.menu-page .header-nav-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.menu-page .btn-cyber-nav {
+    width: 100px;
+    height: 36px;
+    background: rgba(0, 20, 10, 0.8);
+    border: 1px solid #00ff88;
+    color: #00ff88;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+    transition: all 0.2s ease;
+}
+
+body.menu-page .btn-cyber-nav:hover {
+    background: rgba(0, 255, 136, 0.25);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
+}
+
+body.menu-page .cyber-sub-title {
+    font-size: 11px;
+    color: #00ff88;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.8);
+}
+
+body.menu-page .menu-title-card {
+    width: 280px;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    background: rgba(0, 20, 10, 0.9);
+    border: 1px solid #00ff88;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+    text-shadow: 0 0 8px #ffffff, 0 0 12px rgba(0, 255, 136, 0.8);
+}
+
+/* メニューボタン グリッドレイアウト */
+body.menu-page #businessBody {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    overflow: auto !important;
+}
+
+body.menu-page .menu-grid-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+body.menu-page .menuBlock {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* スカウター付きボタンラッパー */
+body.menu-page .scouter-btn-wrapper {
+    position: relative;
+    width: 240px;  /* ★ 220px から 240px（または 250px 等）へ変更 */
+    height: 80px;  /* ★ 65px から 80px（または 90px 等）へ変更 */
+    z-index: 1;
+}
+
+/* メニュー用大型ボタン (.bigButton) のサイズ・フォント調整 */
+body.menu-page .bigButton {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 20, 10, 0.85) !important;
+    border: 1px solid #00ff88 !important;
+    border-radius: 4px;
+    color: #ffffff !important;
+    font-size: 16px; /* ★ 14px から 16px へ拡大 */
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2), inset 0 0 8px rgba(0, 255, 136, 0.1);
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.8);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+/* ホバー時に親ラッパーの優先度（重なり）を上げる */
+body.menu-page .scouter-btn-wrapper:hover {
+    z-index: 100 !important;
+}
+
+/* 照準円（ターゲットマーク） */
+body.menu-page .scouter-target {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%) scale(1.5);
+    border: 2px solid #ffee00;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffee00, inset 0 0 8px #ffee00;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 101; /* 他のボタンより手前に表示 */
+}
+
+/* ホバー時に照準を拡大表示 */
+body.menu-page .scouter-btn-wrapper:hover .scouter-target {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 十字キー線 */
+body.menu-page .scouter-target .cross-line-h {
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    right: -15px;
+    height: 1px;
+    background: rgba(255, 238, 0, 0.8);
+    box-shadow: 0 0 4px #ffee00;
+}
+
+body.menu-page .scouter-target .cross-line-v {
+    position: absolute;
+    left: 50%;
+    top: -15px;
+    bottom: -15px;
+    width: 1px;
+    background: rgba(255, 238, 0, 0.8);
+    box-shadow: 0 0 4px #ffee00;
+}
+
+/* ボタン下の「LOCK ON // [英単語]」ラベル */
+body.menu-page .scouter-text {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: 900;
+    color: #ffee00;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px rgba(255, 238, 0, 0.9);
+    z-index: 102; /* テキストを最前面に保持 */
+}
+
+/* ==================================================
+ * メニュー画面専用 スカウター選択スタイル (.menu-page)
+ * ================================================== */
+
+/* メニュー用大型ボタン (.bigButton) のサイバー化 */
+body.menu-page .bigButton {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 20, 10, 0.85) !important; /* 暗い緑の半透明背景 */
+    border: 1px solid #00ff88 !important;         /* ネオングリーンの枠線 */
+    border-radius: 4px;
+    color: #ffffff !important;                    /* 白文字 */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2), inset 0 0 8px rgba(0, 255, 136, 0.1);
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.8);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+/* ホバー時のボタン変化 */
+body.menu-page .scouter-btn-wrapper:hover .bigButton {
+    background: rgba(0, 255, 136, 0.2) !important;
+    border-color: #ffee00 !important;             /* ホバー時はスカウターに合わせて黄色に変更 */
+    color: #ffee00 !important;
+    box-shadow: 0 0 15px rgba(255, 238, 0, 0.6), inset 0 0 10px rgba(255, 238, 0, 0.2);
+    text-shadow: 0 0 8px rgba(255, 238, 0, 0.9);
+}
+
+/* ==================================================
+ * 汎用サイバーページスタイル (.cyber-page)
+ * ================================================== */
+
+body.cyber-page {
+    background-color: #030a06 !important;
+    background-image: 
+        linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.25) 50%, rgba(0, 0, 0, 0.6) 100%),
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px) !important;
+    background-size: 100% 200px, 20px 20px, 20px 20px !important;
+    background-repeat: no-repeat, repeat, repeat !important;
+    animation: cyberScanline 4s linear infinite;
+    overflow: hidden !important;
+    font-family: 'Orbitron', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body.cyber-page #wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+body.cyber-page .cyber-outer-frame {
+    position: relative;
+    width: 95%;
+    max-width: 1050px;
+    height: 85vh;
+    background-color: rgba(4, 20, 14, 0.92);
+    background-image: 
+        linear-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.08) 1px, transparent 1px) !important;
+    background-size: 15px 15px !important;
+    border: 1px solid #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 15px rgba(0, 255, 136, 0.15);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px 30px;
+}
+
+/* ヘッダー装飾 */
+body.cyber-page #header {
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body.cyber-page .header-nav-left,
+body.cyber-page .header-nav-right {
+    width: 120px;
+}
+
+body.cyber-page .header-nav-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 業務エリアの親スタイル上書き */
+body.cyber-page #businessBody {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: calc(100% - 80px) !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    display: flex;
+    flex-direction: column;
+}
+
+body.cyber-page #businessBody > div[align="center"] {
+    background: transparent !important;
+    border: none !important;
+}
+
+body.cyber-page #mntform {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

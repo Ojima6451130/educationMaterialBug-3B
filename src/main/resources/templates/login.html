@@ -7,11 +7,13 @@
 <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
 <title>ろぐいん画面Login</title>
 <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/login.css}" />
 <script type="text/javascript" th:src="@{/js/common.js}"></script>
 <script type="text/javascript" th:src="@{/js/message.js}"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="login-page">
 
 	<!-- エラーメッセージの表示 -->
 	<script th:if="${error}" th:inline="javascript">
@@ -19,42 +21,97 @@
 	</script>
 
 	<div id="wrapper">
-		<div id="header">
-			<table class="full-width">
-				<tr>
-					<td id="headLeft"></td>
-					<td id="headCenter">ログイン</td>
-					<td id="headRight"></td>
-				</tr>
-			</table>
-		</div>
+		<!-- 外枠のサイバーフレーム -->
+		<div class="cyber-outer-frame">
+			<!-- 四隅のコーナーブラケット -->
+			<div class="corner corner-top-left"></div>
+			<div class="corner corner-top-right"></div>
+			<div class="corner corner-bottom-left"></div>
+			<div class="corner corner-bottom-right"></div>
 
-		<div id="businessBody">
-			<div align="center">
-				<div>ID・パスワードを入力してください。</div>
-				<form action="/kikin/dologin" method="post">
-				<!--value="sh0001"→ value=""　障害No.74　川面 　-->
-				<!--value="sh0002"→ value=""　障害No.74　川面 -->
-					<input type="text" id="employeeId" name="employeeId" size="16"
-						value="" required /> <br /> <input type="password"
-						id="password" name="password" size="16" value="" required />
-					<br /> <br /> <input type="submit" value="ログイン" /> <input
-						type="reset" value="リセット" />
-				</form>
+			<!-- ログイン入力フォーム部分 -->
+			<div id="loginContent">
+				<!-- サブタイトル & ヘッダー -->
+				<div id="header">
+					<div class="cyber-sub-title">AUTHENTICATION SYSTEM</div>
+					<div class="login-title-card">
+						ログイン
+					</div>
+				</div>
+
+				<!-- メインボディ -->
+				<div id="businessBody">
+					<div class="login-card">
+						<div class="login-message">ID・パスワードを入力してください。</div>
+						
+						<form id="loginForm" action="/kikin/dologin" method="post" class="login-form">
+							<div class="input-group">
+								<input type="text" id="employeeId" name="employeeId" value="" placeholder="ID" required />
+							</div>
+							<div class="input-group">
+								<input type="password" id="password" name="password" value="" placeholder="パスワード" required />
+							</div>
+							
+							<div class="button-area">
+								<input type="submit" value="ログイン" class="btn-login" />
+								<input type="reset" value="リセット" class="btn-reset" />
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
-		</div>
 
-		<div id="footer">
-			<table>
-				<tr>
-					<td id="footLeft"></td>
-					<td id="footCenter"></td>
-					<td id="footRight"></td>
-				</tr>
-			</table>
+			<!-- ローディング表示領域（初期状態は非表示） -->
+			<div id="loadingOverlay" class="loading-overlay" style="display: none;">
+				<div class="spinner-dots">
+					<div class="dot"></div>
+					<div class="dot"></div>
+					<div class="dot"></div>
+					<div class="dot"></div>
+					<div class="dot"></div>
+					<div class="dot"></div>
+					<div class="dot"></div>
+					<div class="dot"></div>
+				</div>
+				<div class="loading-line"></div>
+				<div id="loadingStatusText" class="loading-text">Now Loading...</div>
+			</div>
+
+			<div id="footer">
+				<!-- フッター領域 -->
+			</div>
 		</div>
 	</div>
 
-</body>
+	<!-- ログイン演出用JavaScript -->
+	<script>
+		document.getElementById('loginForm').addEventListener('submit', function(e) {
+			// 標準の即時フォーム送信を停止
+			e.preventDefault();
+			
+			const form = this;
+			const loginContent = document.getElementById('loginContent');
+			const loadingOverlay = document.getElementById('loadingOverlay');
+			const statusText = document.getElementById('loadingStatusText');
 
+			// フォーム入力欄を非表示にし、ローディングを表示
+			loginContent.style.display = 'none';
+			loadingOverlay.style.display = 'flex';
+
+			// 1回転（約1.2秒）の間「Now Loading...」を表示
+			setTimeout(() => {
+				// 文字を黄色に切り替えて「スカウター起動...」を表示
+				statusText.textContent = 'スカウター起動...';
+				statusText.classList.add('yellow-text');
+
+				// 短い演出タメ（0.8秒）の後にフォームを送信し、メニュー画面へ遷移
+				setTimeout(() => {
+					form.submit();
+				}, 800);
+
+			}, 1200);
+		});
+	</script>
+
+</body>
 </html>
