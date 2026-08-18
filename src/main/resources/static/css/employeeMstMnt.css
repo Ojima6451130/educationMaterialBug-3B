@@ -1,0 +1,209 @@
+/* ==================================================
+ * 社員マスタメンテナンス 
+ * ================================================== */
+
+/* サブタイトル */
+.cyber-sub-title {
+    color: #00ff88;
+    font-size: 11px;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-bottom: 2px;
+}
+
+/* メインタイトル (黒つぶれ対策) */
+.cyber-glitch-title {
+    color: #00ff88 !important;
+    font-size: 22px;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.8), 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+/* ナビボタン（戻る・ログアウト） */
+.btn-cyber-nav {
+    background: rgba(0, 30, 15, 0.8);
+    border: 1px solid #00ff88;
+    color: #00ff88;
+    padding: 6px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+    transition: all 0.2s;
+}
+
+.btn-cyber-nav:hover {
+    background: #00ff88;
+    color: #000;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+/* スクロール可能なサイバーテーブルデザイン */
+.table-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.cyber-table {
+    border-collapse: collapse !important;
+    border: 1px solid #00ff88 !important;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+    display: block !important; /* テーブル全体をブロック化 */
+    width: fit-content;
+}
+
+.cyber-table thead.tableHeader {
+    display: block !important; /* ヘッダーを独立ブロック */
+    background: rgba(0, 40, 20, 0.95) !important;
+    border-bottom: 2px solid #00ff88 !important;
+}
+
+.cyber-table thead tr {
+    display: flex;
+}
+
+.cyber-table thead th {
+    color: #00ff88 !important;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.8);
+    border-right: 1px solid rgba(0, 255, 136, 0.3);
+    box-sizing: border-box;
+}
+
+/* ★スクロールの要: tbody を指定サイズで縦スクロールさせる */
+.cyber-table tbody.tableBody {
+    display: block !important;
+    max-height: 50vh !important; /* スクロール枠の高さ */
+    overflow-y: scroll !important; /* スクロール有効化 */
+    background: rgba(2, 15, 10, 0.7) !important;
+}
+
+.cyber-table tbody tr {
+    display: flex;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+}
+
+.cyber-table tbody tr:hover {
+    background: rgba(0, 255, 136, 0.1) !important;
+}
+
+.cyber-table tbody td {
+    padding: 6px 0;
+    border-right: 1px solid rgba(0, 255, 136, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* テーブル内の入力要素 */
+.cyber-id-text {
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.cyber-input {
+    width: 85%;
+    height: 26px;
+    background: rgba(0, 15, 8, 0.95);
+    border: 1px solid rgba(0, 255, 136, 0.5);
+    border-radius: 4px;
+    color: #00ff88;
+    text-align: center;
+    font-weight: bold;
+    outline: none;
+}
+
+.cyber-input:focus {
+    border-color: #ffee00;
+    color: #ffee00;
+    box-shadow: 0 0 8px rgba(255, 238, 0, 0.6);
+}
+
+.cyber-select {
+    background: rgba(0, 15, 8, 0.95);
+    border: 1px solid rgba(0, 255, 136, 0.5);
+    border-radius: 4px;
+    color: #00ff88;
+    padding: 2px 5px;
+    font-weight: bold;
+    outline: none;
+}
+
+.cyber-checkbox {
+    accent-color: #00ff88;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* サイバー風スクロールバー */
+.cyber-table tbody::-webkit-scrollbar {
+    width: 8px;
+}
+.cyber-table tbody::-webkit-scrollbar-track {
+    background: rgba(0, 20, 10, 0.8);
+    border-left: 1px solid rgba(0, 255, 136, 0.2);
+}
+.cyber-table tbody::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #00ff88;
+}
+
+/* ==================================================
+ * フッターアクションボタン (新規登録・更新)
+ * ================================================== */
+
+/* ボタンエリアを右下に配置 */
+.cyber-footer-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+/* すべてのアクションボタン共通デザイン */
+.btn-cyber-action {
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #00ff88;
+    background: rgba(0, 30, 15, 0.85);
+    border: 1px solid #00ff88;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.8);
+    transition: all 0.2s ease;
+    font-family: 'Orbitron', sans-serif;
+    outline: none;
+}
+
+/* ホバー時に全体が黄色（スカウターカラー）で発光 */
+.btn-cyber-action:hover {
+    background: rgba(0, 255, 136, 0.25);
+    color: #ffee00;
+    border-color: #ffee00;
+    box-shadow: 0 0 15px rgba(255, 238, 0, 0.8), inset 0 0 8px rgba(255, 238, 0, 0.3);
+    text-shadow: 0 0 8px #ffee00;
+    transform: translateY(-2px);
+}
+
+/* クリック時の押し込み感 */
+.btn-cyber-action:active {
+    transform: translateY(0);
+    box-shadow: 0 0 8px rgba(255, 238, 0, 0.6);
+}
+
+
+
+
