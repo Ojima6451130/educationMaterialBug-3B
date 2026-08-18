@@ -1,0 +1,129 @@
+/* =========================================================
+   CYBERPUNK GREEN THEME - FORCE OVERRIDE
+   ========================================================= */
+
+/* 1. 全体背景とフォントの設定 */
+body {
+  background-color: #080d08 !important;
+  color: #00ff66 !important;
+  font-family: 'Orbitron', 'Noto Sans JP', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  background-color: #080d08 !important;
+}
+
+/* 2. ヘッダー周り */
+#header {
+  background: #0d1a0e !important;
+  border-bottom: 2px solid #00ff66 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.3) !important;
+  padding: 10px 0 !important;
+}
+
+#headCenter {
+  color: #00ff66 !important;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  letter-spacing: 2px !important;
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.8) !important;
+}
+
+/* 3. ボタンと日付入力フォーム */
+input[type="submit"], 
+input[type="button"], 
+.smallButton {
+  background: #0d1a0e !important;
+  color: #00ff66 !important;
+  border: 1px solid #00ff66 !important;
+  border-radius: 2px !important;
+  padding: 6px 16px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 0 8px rgba(0, 255, 102, 0.4) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6) !important;
+}
+
+input[type="submit"]:hover, 
+input[type="button"]:hover, 
+.smallButton:hover {
+  background: #00ff66 !important;
+  color: #080d08 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.8) !important;
+}
+
+input[type="date"] {
+  background-color: #0d1a0e !important;
+  color: #00ff66 !important;
+  border: 1px solid #00ff66 !important;
+  padding: 4px 8px !important;
+  border-radius: 2px !important;
+  outline: none !important;
+  box-shadow: 0 0 5px rgba(0, 255, 102, 0.4) !important;
+}
+
+/* 4. メインテーブル・コンテナ */
+#businessBody {
+  background-color: #080d08 !important;
+  border: 1px solid #142e17 !important;
+}
+
+.dailyShiftTable, 
+.tableHeaderDaily, 
+.tableBodyDaily {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  background-color: #080d08 !important;
+}
+
+/* 5. テーブルヘッダー（時間ヘッダー・社員名ヘッダー） */
+thead td, 
+.tableHeaderDaily td {
+  background-color: #0f2411 !important;
+  color: #00ff66 !important;
+  border-bottom: 2px solid #00ff66 !important;
+  border-right: 1px solid #142e17 !important;
+  font-weight: bold !important;
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.5) !important;
+}
+
+/* 6. テーブルセル（固定列および通常セル） */
+.tableBodyDaily td {
+  border-bottom: 1px solid #112413 !important;
+  border-right: 1px solid #112413 !important;
+  color: #70a377 !important;
+}
+
+/* 左側固定列（時間軸） */
+tbody > tr > td[style*="sticky"] .tableBodyDaily td {
+  background-color: #0d1a0e !important;
+  color: #00ff66 !important;
+  font-weight: bold !important;
+  border-right: 2px solid #00ff66 !important;
+}
+
+/* 7. 出勤シフトセル（水色・ネオンシアンに変更） */
+td[style*="background-color: lightPink"],
+td[style*="background-color:lightpink"] {
+  background-color: rgba(0, 240, 255, 0.18) !important;
+  border: 1px solid #00f0ff !important;
+  color: #00f0ff !important;
+  font-weight: bold !important;
+  box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.3) !important;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.8) !important;
+}
+/* 出勤セルホバー時 */
+td[style*="background-color: lightPink"]:hover,
+td[style*="background-color:lightpink"]:hover {
+  background-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.6), 0 0 10px rgba(0, 240, 255, 0.5) !important;
+}
+
+/* フッター */
+#footer {
+  border-top: 1px solid #142e17 !important;
+  background-color: #080d08 !important;
+}
