@@ -6,108 +6,83 @@
   <meta http-equiv="Cache-Control" content="no-cache">
   <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
   <title>シフトマスタメンテナンス画面</title>
-  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <!-- ファイル名を shiftMstMnt.css に変更 -->
+  <link rel="stylesheet" media="all" th:href="@{/css/shiftMstMnt.css}" />
   <script type="text/javascript" th:src="@{/js/common.js}"></script>
   <script type="text/javascript" th:src="@{/js/message.js}"></script>
   <script type="text/javascript" th:src="@{/js/checkCommon.js}"></script>
   <script>
     /**
-         * 更新処理を行う
-         */
+     * 更新処理を行う
+     */
     function shiftMstMntUpdate() {
 
-      // 一覧のサイズ
-      // var listSize = <%= beanListSize %>;
       var row = document.querySelectorAll('.tableBody');
       var listSize = row.length;
 
-      // 開始時間エラーメッセージ
       var startTimeErrMsg = '';
-      // 終了時間エラーメッセージ
       var endTimeErrMsg = '';
-      // 休憩時間エラーメッセージ
       var breakTimeErrMsg = '';
-      // From - To エラーメッセージ
       var fromToErrMsg = '';
-      // エラーメッセージ
       var errorMsg = '';
-
 
       with (document.forms['update'].elements) {
 
         for (var i = 0; i < listSize; i++) {
 
-          // 開始時間を取得する。
-          // var startTime = namedItem('shiftMstMntBeanList['+ i +'].startTime').value;
           var startTimeInput  = document.querySelector('#shiftMstMntBeanList' + i + '\\.startTime');
           var startTimeValue = startTimeInput.value;
-          // 終了時間を取得する。
-          // var endTime = namedItem('shiftMstMntBeanList[' + i + '].endTime').value;
           var endTimeInput = document.querySelector('#shiftMstMntBeanList' + i + '\\.endTime');
           var endTimeValue = endTimeInput.value;
-          // 休憩時間を取得する。
-          // var breakTime = namedItem('shiftMstMntBeanList[' + i + '].breakTime').value;
           var breakTimeInput = document.querySelector('#shiftMstMntBeanList' + i + '\\.breakTime');
           var breakTimeValue = breakTimeInput.value;
-          // 背景色をクリアする
-          // namedItem('shiftMstMntBeanList[' + i + '].startTime').style.backgroundColor = 'white';
-          // namedItem('shiftMstMntBeanList[' + i + '].endTime').style.backgroundColor = 'white';
-          // namedItem('shiftMstMntBeanList[' + i + '].breakTime').style.backgroundColor = 'white';
 
-          startTimeInput.style.backgroundColor = 'white';
-          endTimeInput.style.backgroundColor = 'white';
-          breakTimeInput.style.backgroundColor = 'white';
+          startTimeInput.style.backgroundColor = '#030814';
+          endTimeInput.style.backgroundColor = '#030814';
+          breakTimeInput.style.backgroundColor = '#030814';
 
-          // 時間チェック
           if (!startTimeErrMsg) {
             if (!checkTime(startTimeValue)) {
               var strArr = ['開始時間'];
               startTimeErrMsg = getMessage('E-MSG-000004', strArr);
-              startTimeInput.style.backgroundColor = 'red';
-            }else{
-              startTimeInput.style.backgroundColor = 'white';
+              startTimeInput.style.backgroundColor = '#330000';
+            } else {
+              startTimeInput.style.backgroundColor = '#030814';
             }
           }
           if (!endTimeErrMsg) {
-          	//障害No111　山口　checkHalfWidthKana関数をcheckTimeに変更
               if (!checkTime(endTimeValue)) {
                 var strArr = ['終了時間'];
                 endTimeErrMsg = getMessage('E-MSG-000004', strArr);
-              endTimeInput.style.backgroundColor = 'red';
-            }else{
-              endTimeInput.style.backgroundColor = 'white';
+              endTimeInput.style.backgroundColor = '#330000';
+            } else {
+              endTimeInput.style.backgroundColor = '#030814';
             }
           }
           if (!breakTimeErrMsg) {
             if (!checkTime(breakTimeValue)) {
               var strArr = ['休憩時間'];
               breakTimeErrMsg = getMessage('E-MSG-000004', strArr);
-              //　山口 blueをredに変更
-              breakTimeInput.style.backgroundColor = 'red';
-            }else{
-              breakTimeInput.style.backgroundColor = 'white';
+              breakTimeInput.style.backgroundColor = '#330000';
+            } else {
+              breakTimeInput.style.backgroundColor = '#030814';
             }
           }
 
-          // from - to のチェック
           if (!checkTimeCompare(startTimeValue, endTimeValue)) {
             if (checkTime(startTimeValue) && checkTime(endTimeValue)) {
               fromToErrMsg = getMessageCodeOnly('E-MSG-000005');
-              startTimeInput.style.backgroundColor = 'red';
-              endTimeInput.style.backgroundColor = 'red';
+              startTimeInput.style.backgroundColor = '#330000';
+              endTimeInput.style.backgroundColor = '#330000';
             }
           }
-
         }
       }
 
-      // エラーメッセージ
       errorMsg = startTimeErrMsg + endTimeErrMsg + breakTimeErrMsg + fromToErrMsg;
 
       if (errorMsg) {
-        //障害No111　山口　↓　alertを追加
         alert(errorMsg);
-        // エラー
         return false;
       }
 
@@ -117,15 +92,6 @@
 </head>
 
 <body>
-  <div th:each="entry : ${dataMap}">
-    <h2 th:text="${entry.key}"></h2> <!-- Mapのキー -->
-
-    <ul>
-      <li th:each="dto : ${entry.value}">
-        <span th:text="${dto.value}"></span> <!-- Dtoのvalueフィールド -->
-      </li>
-    </ul>
-  </div>
   <div id="wrapper">
     <div id="header">
       <table class="full-width">
@@ -146,10 +112,10 @@
     </div>
     <br>
     <div id="businessBody">
-      <form id = "update" action="/kikin/shiftMstMnt/update" th:object="${shiftMstMntForm}" method="post">
+      <form id="update" action="/kikin/shiftMstMnt/update" th:object="${shiftMstMntForm}" method="post">
         <table class="overflowFixed">
           <thead style="display: block; position: sticky;">
-            <tr class="tableHeader" >
+            <tr class="tableHeader">
               <td style="width: 100px; box-sizing: border-box; text-align: center;">
                 シフト名
               </td>
@@ -168,7 +134,6 @@
             </tr>
           </thead>
           <tbody style="display: block; max-height: 300px; overflow-x: hidden; overflow-y: auto; scrollbar-gutter: stable;">
-            <!-- classを変更 -->
             <tr th:each="item, itemStat : *{shiftMstMntBeanList}" class="tableBody">
               <td style="width: 100px; box-sizing: border-box;">
                 <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].shiftName}"
@@ -179,34 +144,16 @@
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
               </td>
               <td style="width: 100px; box-sizing: border-box;">
-              
-               <!--障害No.057 7/31　矢田部　shiftMstMntBeanList[__${itemStat.index}__].endTimeとstartTimeが逆 -->
                 <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].startTime}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
-                <!-- ここと、 No.057-->
               </td>
               <td class="non-border" style="width: 40px; box-sizing: border-box; text-align: center;">
-              ～<!--障害No.057 矢田部　削除 &#xFF5E; 障害No.047で合わせて見た目修正(8/6)-->
+              ～
               </td>
               <td style="width: 100px; box-sizing: border-box;">
                 <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].endTime}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
-                <!-- ここまで、 NO.057-->
-              <!-- ここから削除 (7/29)-->
-              <!-- <input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].breakTime}"
-                        style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" /> -->
-              <!-- ここまで -->
               </td>
-              
-               <!--元データ  (7/29)-->
-               <!-- <td style="width: 70px; box-sizing: border-box;"> 
-                     <input type="hidden" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].deleteFlg}"
-                        style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
-                     <input type="hidden" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].shiftId}">
-                    </td>-->
-               
-               
-               <!-- ここから変更＆追加 障害No.042　矢田部　7/29 -->
               <td style="width: 100px; box-sizing: border-box;">
               	<input type="text" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].breakTime}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
@@ -215,12 +162,9 @@
               	<input type="checkbox" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].deleteFlg}"
                         style="width: 100%; box-sizing: border-box; text-overflow: clip; text-align: center;" />
               </td>
-              <!-- ここまで -->
-               <!-- 障害No.047 矢田部　更新・削除処理用でshiftId追加 -->
-              <td>
+              <td class="hidden-cell">
                 <input type="hidden" th:field="*{shiftMstMntBeanList[__${itemStat.index}__].shiftId}">
               </td>
-              <!-- ここまで -->
             </tr>
           </tbody>
         </table>
@@ -230,21 +174,20 @@
       <table>
         <tr>
           <td id="footLeft">
-            　
+             
           </td>
           <td id="footCenter">
           </td>
           <td id="footRight">
             <form action="/kikin/shiftMstMnt/regist" method="post">
               <input value="新規登録" type="submit" class="smallButton" name="regist" />
-              <!-- 障害No111　山口　↓　onclickのreturnを削除 --><!-- 障害No115　山口　↓　修正を戻した -->
               <input value="更新" form="update" type="submit" class="smallButton" style="margin:10px;" onclick="return shiftMstMntUpdate()"/>
-          </form>
+            </form>
           </td>
         </tr>
       </table>
     </div>
-    </div>
+  </div>
 </body>
 
 </html>

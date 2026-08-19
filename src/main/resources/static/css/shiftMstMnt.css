@@ -1,0 +1,226 @@
+@charset "UTF-8";
+
+/* ==================================================
+ * サイバー調（黄緑系） シフトマスタメンテナンス専用スタイル
+ * ================================================== */
+
+body {
+    background-color: #030a06;
+    color: #00ff88;
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+#wrapper {
+    width: 99%;
+    height: 100%;
+    padding: 0px;
+}
+
+/* ヘッダー・フッター共通 */
+#header, #businessBody, #footer {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+}
+
+/* ヘッダーの中央揃え・レイアウト修正 */
+#header {
+    top: 2px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header .full-width {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#header tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#headLeft {
+    width: 150px;
+    text-align: left;
+}
+
+#headCenter {
+    font-size: 24px;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#headRight {
+    width: 150px;
+    text-align: right;
+}
+
+#businessBody {
+    height: 82%;
+    overflow: auto;
+}
+
+#footer {
+    bottom: 1%;
+    height: 70px;
+    width: 100%;
+}
+
+/* ヘッダーやテーブルと同じ最大幅（900px）にして中央に配置する */
+#footer table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#footLeft {
+    width: 150px;
+    text-align: left;
+}
+
+#footCenter {
+    width: auto;
+    text-align: center;
+}
+
+/* floatを解除し、幅を auto にして右寄せにする */
+#footRight {
+    float: none;
+    width: auto;
+    text-align: right;
+}
+
+/* ボタン装飾 */
+.smallButton {
+    width: 100px;
+    height: 30px;
+    background-color: #04140e;
+    color: #00ff88;
+    border: 1px solid #00ff88;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.4);
+    transition: all 0.2s ease;
+}
+
+.smallButton:hover {
+    background-color: #00ff88;
+    color: #030a06;
+    box-shadow: 0 0 12px #00ff88;
+}
+
+/* ==================================================
+ * テーブルデザイン（サイバー調）
+ * ================================================== */
+.overflowFixed {
+    border-collapse: collapse;
+    margin: auto;
+    background-color: transparent;
+    border: 1px solid #00ff88;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+.overflowFixed tr {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.overflowFixed thead, .overflowFixed tbody {
+    display: block;
+    width: 100%;
+}
+
+.tableHeader {
+    background-color: transparent;
+    font-weight: bold;
+    border-bottom: 1px solid #00ff88;
+    color: #a3ffcb;
+    text-shadow: 0 0 5px rgba(163, 255, 203, 0.6);
+}
+
+.tableHeader td, .tableHeader th {
+    padding: 6px;
+    border: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.tableBody {
+    background-color: transparent;
+}
+
+.tableBody td {
+    padding: 2px;
+    border: none;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: transparent;
+    white-space: nowrap;
+}
+
+/* 隠しフィールド用のセルを確実に非表示にする */
+.hidden-cell {
+    display: none;
+}
+
+/* 各列の幅を指定（シンボル列を専用クラスで確実に 120px に指定して強制適用） */
+.tableHeader td:nth-child(1), .tableBody td:nth-child(1) { width: 100px; } /* シフト名 */
+
+.tableHeader td.col-symbol, 
+.tableBody td.col-symbol,
+th.col-symbol { 
+    width: 120px !important; 
+    min-width: 120px !important;
+} /* シンボル */
+
+.tableHeader td:nth-child(3), .tableBody td:nth-child(3) { width: 100px; } /* 開始時間 */
+.tableHeader td:nth-child(4), .tableBody td:nth-child(4) { width: 40px; }  /* ～ */
+.tableHeader td:nth-child(5), .tableBody td:nth-child(5) { width: 100px; } /* 終了時間 */
+.tableHeader td:nth-child(6), .tableBody td:nth-child(6) { width: 100px; } /* 休憩 */
+.tableHeader td:nth-child(7), .tableBody td:nth-child(7) { width: 70px; }  /* 削除 */
+
+/* テーブル内のテキスト入力欄とチェックボックス */
+.tableBody input[type="text"] {
+    background-color: #030a06;
+    color: #00ff88;
+    border: 1px solid #00ff88;
+    padding: 4px;
+    font-family: inherit;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.tableBody input[type="text"]:focus {
+    outline: none;
+    background-color: #04140e;
+    box-shadow: 0 0 8px #00ff88;
+}
+
+.tableBody input[type="checkbox"] {
+    accent-color: #00ff88;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.non-border {
+    border: none;
+    color: #00ff88;
+}
