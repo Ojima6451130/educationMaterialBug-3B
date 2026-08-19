@@ -1,0 +1,477 @@
+@charset "UTF-8";
+
+/* ========================================
+   出勤希望入力画面 専用CSS
+   common.css の後に読み込む
+   ======================================== */
+
+
+/* ---------- 画面全体 ---------- */
+
+body {
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #0b2818 0%,
+            #03140c 45%,
+            #000 100%
+        );
+
+    color: white;
+    font-family: "Yu Gothic", "Meiryo", sans-serif;
+}
+
+#wrapper {
+    width: 99%;
+    height: 100%;
+    min-height: 100vh;
+    padding: 0;
+}
+
+
+/* ---------- ヘッダー ---------- */
+
+#header {
+    width: 100%;
+    height: 70px;
+
+    padding: 0;
+
+    background: linear-gradient(
+        to bottom,
+        #0b2517,
+        #031008
+    );
+
+    border-bottom: 2px solid #ffd500;
+
+    box-shadow:
+        0 3px 15px rgba(255, 215, 0, 0.35);
+}
+
+#header .centered-container {
+    width: 80%;
+    height: 70px;
+    margin: 0 auto;
+}
+
+#headLeft {
+    width: 15%;
+    text-align: left;
+}
+
+#headCenter {
+    width: 70%;
+    text-align: center;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    color: #ffd900;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 5px #ffd900,
+        0 0 12px rgba(255, 217, 0, 0.7),
+        0 0 22px rgba(255, 170, 0, 0.4);
+}
+
+#headRight {
+    width: 15%;
+    text-align: right;
+}
+
+
+/* ---------- ボタン ---------- */
+
+.smallButton,
+.longButton,
+#searchForm button {
+    color: white;
+    font-weight: bold;
+
+    background: linear-gradient(
+        to bottom,
+        #ff9d00 0%,
+        #f07000 55%,
+        #d94b00 100%
+    );
+
+    border: 2px solid #ffd900;
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 5px #ffd900,
+        0 0 12px rgba(255, 190, 0, 0.55);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        filter 0.15s ease;
+}
+
+/* 元CSSのサイズを大きく壊さない */
+.smallButton {
+    width: 120px;
+    height: 38px;
+}
+
+.longButton {
+    width: 220px;
+    height: 38px;
+}
+
+.smallButton:hover,
+.longButton:hover,
+#searchForm button:hover {
+    transform: scale(1.04);
+    filter: brightness(1.15);
+
+    box-shadow:
+        0 0 8px #ffff00,
+        0 0 18px #ffb000,
+        0 0 30px rgba(255, 140, 0, 0.6);
+}
+
+.smallButton:active,
+.longButton:active,
+#searchForm button:active {
+    transform: scale(0.97);
+}
+
+
+/* ---------- 表示年月 ---------- */
+
+#searchForm {
+    width: 85%;
+
+    margin: 20px auto 10px;
+
+    color: #dfff00;
+    font-weight: bold;
+}
+
+#searchForm label {
+    margin-right: 8px;
+    color: #dfff00;
+}
+
+#yearMonth {
+    width: 100px !important;
+
+    padding: 5px;
+
+    color: #eaff00 !important;
+    background: #07150d;
+
+    border: 1px solid #65d800;
+    border-radius: 5px;
+
+    box-shadow:
+        0 0 6px rgba(100, 255, 0, 0.35);
+}
+
+#searchForm button {
+    min-width: 75px;
+    height: 30px;
+
+    margin-left: 8px;
+}
+
+
+/* ---------- メイン領域 ---------- */
+
+#businessBody {
+    /*
+     * common.css の height:82% を解除。
+     * 今回の画面では高さ固定すると
+     * 凡例・footerとの位置関係がおかしくなりやすい。
+     */
+    height: auto;
+
+    width: 90%;
+
+    margin: 10px auto;
+    padding: 12px;
+
+    background: rgba(2, 25, 13, 0.8);
+
+    border: 2px solid #288d35;
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px rgba(57, 255, 60, 0.25),
+        0 12px 30px rgba(0, 0, 0, 0.65);
+
+    /*
+     * common.cssでは overflow:auto だが
+     * この画面では横スクロールだけここに持たせる。
+     */
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+
+/* ---------- シフト表 ---------- */
+
+.widthTable {
+    /*
+     * common.css の width:1500px は活かす。
+     * HTML側が40px×日数＋社員名列を前提としているため。
+     */
+    width: 1500px;
+
+    margin: 0;
+
+    border-collapse: collapse;
+
+    background: #081d13;
+    color: white;
+}
+
+/*
+ * common.cssでpadding:0になっているが、
+ * 専用画面では必要最小限だけ付ける。
+ */
+.widthTable td,
+.widthTable th {
+    box-sizing: border-box;
+}
+
+
+/* 社員名列 */
+.widthTable tr > td:first-child {
+    width: 150px !important;
+    min-width: 150px !important;
+    max-width: 150px !important;
+}
+
+
+/* 日付列
+   HTML側の style="width:40px" に合わせる */
+.widthTable tr > td:not(:first-child) {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+}
+
+
+/* ---------- 日付・曜日 ---------- */
+
+.tableHeader {
+    background: #174b2c;
+
+    border: 1px solid #001b0c;
+
+    font-weight: bold;
+}
+
+.tableHeader td,
+.tableHeader th {
+    padding: 5px 0;
+
+    background: #174b2c;
+
+    border: 1px solid #001b0c;
+
+    color: #6aff18;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+
+/* ---------- 社員名・シフト部分 ---------- */
+
+.tableBody {
+    background: #102f21;
+
+    border: 1px solid #00180b;
+}
+
+.tableBody td,
+.tableBody th,
+td.tableBody {
+    padding: 4px 0;
+
+    background: #102f21;
+
+    border: 1px solid #00180b;
+
+    color: white;
+
+    box-sizing: border-box;
+}
+
+
+/* ---------- プルダウン ---------- */
+
+#businessBody select {
+    /*
+     * 40pxセルの中に収めるため
+     * 42pxにはしない。
+     */
+    width: 34px;
+    min-width: 34px;
+    max-width: 34px;
+
+    min-height: 30px;
+
+    box-sizing: border-box;
+
+    color: #fff000;
+    background: #04140c;
+
+    border: 1px solid #55e000;
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    outline: none;
+
+    box-shadow:
+        inset 0 0 5px rgba(50, 255, 0, 0.15),
+        0 0 4px rgba(80, 255, 0, 0.3);
+}
+
+#businessBody select:hover {
+    border-color: #caff00;
+
+    box-shadow:
+        0 0 5px #7cff00,
+        0 0 10px rgba(100, 255, 0, 0.4);
+}
+
+#businessBody select:focus {
+    border-color: #fff600;
+
+    box-shadow:
+        0 0 6px #baff00,
+        0 0 13px rgba(140, 255, 0, 0.6);
+}
+
+
+/* ---------- businessBodyの横スクロールバー ---------- */
+
+#businessBody::-webkit-scrollbar {
+    height: 12px;
+}
+
+#businessBody::-webkit-scrollbar-track {
+    background: #d8d8d8;
+}
+
+#businessBody::-webkit-scrollbar-thumb {
+    background: #777;
+    border-radius: 10px;
+}
+
+
+/* Firefox */
+#businessBody {
+    scrollbar-width: auto;
+    scrollbar-color: #777 #d8d8d8;
+}
+
+
+/* ---------- 凡例 ---------- */
+
+#legendArea {
+    width: 90%;
+
+    margin: 10px auto 90px;
+
+    text-align: left;
+}
+
+#legendArea .longButton {
+    margin-left: 0;
+}
+
+
+/* ---------- フッター ---------- */
+
+#footer {
+    /*
+     * footerだけ画面下に固定。
+     * footRight自身はfixedにしない。
+     */
+    position: fixed;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 70px;
+
+    padding: 0;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(3, 20, 12, 0.95),
+        rgba(3, 28, 16, 0.98)
+    );
+
+    border-top: 2px solid #ffd900;
+
+    box-shadow:
+        0 -5px 20px rgba(255, 210, 0, 0.15);
+}
+
+
+/* footer内のテーブル */
+
+#footer table {
+    width: 100%;
+    height: 100%;
+
+    border-collapse: collapse;
+}
+
+
+/*
+ * common.cssのfloatを解除する。
+ * footerはtableレイアウトに任せる。
+ */
+
+#footLeft {
+    float: none;
+
+    width: 20%;
+
+    padding: 0;
+
+    text-align: left;
+}
+
+#footCenter {
+    width: 45%;
+
+    text-align: center;
+}
+
+#footRight {
+    float: none;
+
+    position: static;
+
+    width: 35%;
+
+    padding-right: 20px;
+
+    text-align: right;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+#footRight input {
+    margin-left: 8px;
+}

@@ -7,6 +7,7 @@
     <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
     <title>出勤希望日入力画面</title>
     <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" media="all" th:href="@{/css/workDateRequestInput.css}" />
     <script type="text/javascript" th:src="@{/js/common.js}"></script>
     <script type="text/javascript" th:src="@{/js/message.js}"></script>
 </head>
@@ -262,20 +263,22 @@
             </table>
           </form>
         </div>
+        
+        <div id="legendArea" style="margin-left:50px;">
+          <input value="凡例表示" type="button" class="longButton"  onclick="openWindow()" />
+        </div>
+        
         <div id="footer" style = "padding:0;">
           <table>
             <tr>
               <td id="footLeft">
-              <div style="margin-left:50px;">
-                <input value="凡例表示" type="button" class="longButton"  onclick="openWindow()" />
-              </div>
               </td>
               <td id="footCenter">
                 　
               </td>
               <td id="footRight">
                 <input value="出勤希望日参照" type="button" class="longButton" onclick="openSearch()">
-                <input value="登録" type="submit" form="registForm"  class="smallButton">               
+                <input value="登録" type="submit" form="registForm"  class="smallButton">
               </td>
             </tr>
           </table>
