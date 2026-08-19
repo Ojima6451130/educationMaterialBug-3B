@@ -1,0 +1,178 @@
+@charset "UTF-8";
+/* =========================================================
+   MONTHLY SHIFT VIEW - FORCE OVERRIDE
+   ========================================================= */
+
+/* 1. 全体背景 */
+body {
+  background-color: #080d08 !important;
+  color: #00ff66 !important;
+  font-family: 'Orbitron', 'Noto Sans JP', sans-serif !important;
+}
+
+#wrapper {
+  background-color: #080d08 !important;
+}
+
+/* 2. ヘッダー */
+#header {
+  background: #0d1a0e !important;
+  border-bottom: 2px solid #00ff66 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.3) !important;
+}
+
+#headCenter {
+  color: #00ff66 !important;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.8) !important;
+}
+
+/* 3. ボタン・選択フォーム・ページング */
+input[type="submit"], 
+input[type="button"], 
+.smallButton, 
+.longButton {
+  background: #0d1a0e !important;
+  color: #00ff66 !important;
+  border: 1px solid #00ff66 !important;
+  border-radius: 2px !important;
+  padding: 6px 16px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 0 8px rgba(0, 255, 102, 0.4) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6) !important;
+}
+
+input[type="submit"]:hover, 
+input[type="button"]:hover, 
+.smallButton:hover,
+.longButton:hover {
+  background: #00ff66 !important;
+  color: #080d08 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.8) !important;
+}
+
+select {
+  background-color: #0d1a0e !important;
+  color: #00ff66 !important;
+  border: 1px solid #00ff66 !important;
+  padding: 4px 8px !important;
+  border-radius: 2px !important;
+  outline: none !important;
+  box-shadow: 0 0 5px rgba(0, 255, 102, 0.4) !important;
+}
+
+label, div {
+  color: #00ff66 !important;
+}
+
+/* ページングのリンクテキスト */
+a {
+  color: #00f0ff !important;
+  text-decoration: none !important;
+  text-shadow: 0 0 5px rgba(0, 240, 255, 0.6) !important;
+  font-weight: bold !important;
+}
+
+a:hover {
+  text-decoration: underline !important;
+}
+
+/* 4. メインテーブル */
+#businessBody {
+  background-color: #080d08 !important;
+  border: 1px solid #142e17 !important;
+}
+
+.daysTable {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  background-color: #080d08 !important;
+}
+
+/* 日付・曜日のヘッダー行 */
+.tableHeader td {
+  background-color: #0f2411 !important;
+  color: #00ff66 !important;
+  border-bottom: 2px solid #00ff66 !important;
+  border-right: 1px solid #142e17 !important;
+  font-weight: bold !important;
+}
+
+/* 土曜・日曜・祝日の文字色制御（インラインstyleの上書き） */
+.tableHeader span[style*="color: blue"] {
+  color: #00f0ff !important; /* 土曜日：サイバーブルー */
+  text-shadow: 0 0 5px rgba(0, 240, 255, 0.8) !important;
+}
+
+.tableHeader span[style*="color: red"] {
+  color: #ff0055 !important; /* 日祝：ネオンピンク/レッド */
+  text-shadow: 0 0 5px rgba(255, 0, 85, 0.8) !important;
+}
+
+.tableHeader span[style*="color: black"] {
+  color: #00ff66 !important; /* 平日：ネオングリーン */
+}
+
+/* 5. シフトボディ（データセル） */
+td.tableBody {
+  background-color: #080d08 !important;
+  border-bottom: 1px solid #112413 !important;
+  border-right: 1px solid #112413 !important;
+  color: #00f0ff !important; /* セル内のシフト記号：水色 */
+  font-weight: bold !important;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.7) !important;
+}
+
+/* 社員名列（一番左の列） */
+tr.tableBody > td.tableBody:first-child {
+  background-color: #0d1a0e !important;
+  color: #00ff66 !important; /* 社員名：緑 */
+  border-right: 2px solid #00ff66 !important;
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6) !important;
+}
+
+/* 全セル共通：緑（ネオングリーン）の枠線を強制適用 */
+body .daysTable td,
+body .tableBody td,
+body td[style*="background-color: lightPink"],
+body td[style*="background-color:lightpink"] {
+  border: 1.5px solid #00ff66 !important;
+}
+/* 6. フッター */
+footer, #footer {
+  background-color: #080d08 !important;
+  border-top: 1px solid #142e17 !important;
+  padding: 10px 0 !important;
+}
+/* 社員名およびセル内の文字色を白に指定 */
+body .daysTable td,
+body .tableBody td,
+body tr.tableBody > td.tableBody:first-child,
+body td[style*="background-color: lightPink"],
+body td[style*="background-color:lightpink"] {
+  color: #ffffff !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 社員名（一番左の列）の文字色を緑（#00ff66）に指定 */
+body tr.tableBody > td.tableBody:first-child {
+  color: #00ff66 !important;
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6) !important;
+}
+
+/* 1. 社員名の項目名（ヘッダー）と社員名のデータ（1列目全体）をネオングリーンにする */
+body .daysTable thead tr td:first-child,
+body .daysTable tbody tr td:first-child,
+body .daysTable tbody tr td:first-child span {
+  color: #00ff66 !important;
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6) !important;
+}
+
+/* 2. シフトの記号が入るセル（データ行の2列目以降）を白にする */
+body .daysTable tbody tr td:not(:first-child) {
+  color: #ffffff !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6) !important;
+}

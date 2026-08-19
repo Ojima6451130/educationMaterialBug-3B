@@ -7,6 +7,7 @@
   <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
   <title>月別シフト確認画面</title>
   <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <link rel="stylesheet" media="all" th:href="@{/css/monthlyShiftCheck.css}" />
   <script type="text/javascript" th:src="@{/js/common.js}"></script>
   <script type="text/javascript" th:src="@{/js/message.js}"></script>
 </head>
@@ -71,8 +72,8 @@
             <td th:each="dateBean : ${dateBeanList}" style="width: 40px; text-align: center; vertical-align: middle;">
             
             <!-- 障害No.93　 寺松　日曜日が赤色になるようにした -->
-              <span th:if="${dateBean.weekDay == '土' && !dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: blue;">[[${dateBean.weekDay}]]</span>
-              <span th:if="${dateBean.weekDay == '日' || dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: red;">[[${dateBean.weekDay}]]</span>
+              <span th:if="${dateBean.weekDay == '土' && !dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: #CCE7D3;">[[${dateBean.weekDay}]]</span>
+              <span th:if="${dateBean.weekDay == '日' || dateBean.publicHolidayFlg}" th:value="${dateBean.weekDay}" style="color: #D3E173;">[[${dateBean.weekDay}]]</span>
               <span th:unless="${dateBean.weekDay == '土' || dateBean.weekDay == '日' || dateBean.publicHolidayFlg}" 
                         th:value="${dateBean.weekDay}" style="color: black;">[[${dateBean.weekDay}]]</span>
             <!-- ここまで　 sunday saturday などの表記をすべて'土''日'などにした-->
