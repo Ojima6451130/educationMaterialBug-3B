@@ -65,7 +65,7 @@
             if (!checkTime(startTimeValue)) {
               var strArr = ['開始時間'];
               startTimeErrMsg = getMessage('E-MSG-000004', strArr);
-              startTimeInput.style.backgroundColor = 'red';
+              startTimeInput.style.setProperty('background-color', '#EF4050cc', 'important');
             }else{
               startTimeInput.style.backgroundColor = 'white';
             }
@@ -74,7 +74,7 @@
             if (!checkTime(endTimeValue)) {
               var strArr = ['終了時間'];
               endTimeErrMsg = getMessage('E-MSG-000004', strArr);
-              endTimeInput.style.backgroundColor = 'red';
+              endTimeInput.style.setProperty('background-color', '#EF4050cc', 'important');
             }else{
               endTimeInput.style.backgroundColor = 'white';
             }
@@ -83,7 +83,7 @@
             if (!checkTime(breakTimeValue)) {
               var strArr = ['休憩時間'];
               breakTimeErrMsg = getMessage('E-MSG-000004', strArr);
-              breakTimeInput.style.backgroundColor = 'red';
+              breakTimeInput.style.setProperty('background-color', '#EF4050cc', 'important');
             }else{
               breakTimeInput.style.backgroundColor = 'white';
             }
@@ -94,8 +94,8 @@
           if (!checkTimeCompare(startTimeValue, endTimeValue)) {
             if (checkTime(startTimeValue) && checkTime(endTimeValue)) {
               fromToErrMsg = getMessageCodeOnly('E-MSG-000005');
-              startTimeInput.style.backgroundColor = 'red';
-              endTimeInput.style.backgroundColor = 'red';
+              startTimeInput.style.setProperty('background-color', '#EF4050cc', 'important');
+              endTimeInput.style.setProperty('background-color', '#EF4050cc', 'important');
             }
           }
 
