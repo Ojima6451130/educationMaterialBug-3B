@@ -382,14 +382,6 @@ td.tableBody {
 
 /* ---------- 凡例 ---------- */
 
-#legendArea {
-    width: 90%;
-
-    margin: 10px auto 90px;
-
-    text-align: left;
-}
-
 #legendArea .longButton {
     margin-left: 0;
 }
@@ -398,10 +390,7 @@ td.tableBody {
 /* ---------- フッター ---------- */
 
 #footer {
-    /*
-     * footerだけ画面下に固定。
-     * footRight自身はfixedにしない。
-     */
+
     position: fixed;
 
     left: 0;
@@ -433,12 +422,6 @@ td.tableBody {
 
     border-collapse: collapse;
 }
-
-
-/*
- * common.cssのfloatを解除する。
- * footerはtableレイアウトに任せる。
- */
 
 #footLeft {
     float: none;
@@ -475,3 +458,58 @@ td.tableBody {
 #footRight input {
     margin-left: 8px;
 }
+
+.shenronArea {
+    margin: 0 auto;
+    left: 80px;
+    bottom: 90px;
+
+    width: 420px;
+    height: 260px;
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+/*
+ * 神龍
+ */
+.shenronImage {
+	
+    height: 430px;
+    top: 320px;
+
+    object-fit: contain;
+
+    opacity: 0.9;
+
+    filter:
+        drop-shadow(0 0 8px rgba(80, 255, 80, 0.6))
+        drop-shadow(0 0 18px rgba(0, 255, 80, 0.35));
+}
+
+/* 神龍の吹き出し */
+.shenronSpeech {
+    text-align: center;
+    /* 神龍に合わせてここを調整 */
+    top: 30px;
+    right: -100px;
+
+    padding: 15px 30px;
+
+    background: white;
+    color: black;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    border: 3px solid black;
+    border-radius: 20px;
+
+    opacity: 0.9;
+
+    white-space: nowrap;
+
+    z-index: 3;
+}
+
