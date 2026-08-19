@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+/* ==================================================
+ * サイバー調共通スタイル
+ * ================================================== */
+body {
+    background-color: #030a06;
+    background-image: 
+        linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.25) 50%, rgba(0, 0, 0, 0.6) 100%),
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+    background-size: 100% 200px, 20px 20px, 20px 20px;
+    background-repeat: no-repeat, repeat, repeat;
+    color: #00ff88;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#wrapper {
+    position: relative;
+    width: 95%;
+    max-width: 1050px;
+    height: 85vh;
+    margin: 3vh auto;
+    background-color: rgba(4, 20, 14, 0.92);
+    border: 1px solid #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 15px rgba(0, 255, 136, 0.15);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px 30px;
+}
+
+/* ==================================================
+ * ヘッダー・フッター
+ * ================================================== */
+#header {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #00ff88;
+    margin-bottom: 20px;
+}
+
+#headLeft, #headRight {
+    width: 15%;
+    text-align: center;
+}
+
+#headCenter {
+    font-size: 20px;
+    color: #00ff88;
+    width: 70%;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#businessBody {
+    flex: 1;
+    overflow-y: auto;
+}
+
+#footer {
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #00ff88;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* ==================================================
+ * テーブル・入力フォーム
+ * ================================================== */
+.tbl-head {
+    background-color: #003311;
+    color: #00ff88;
+    font-weight: bold;
+    border: 1px solid #00ff88;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.tbl-head td {
+    padding: 8px;
+    border: 1px solid #00ff88;
+    text-align: center;
+    overflow: hidden;
+}
+
+.tbl-body {
+    background-color: rgba(2, 10, 5, 0.8);
+    border: 1px solid #00ff88;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.tbl-body td {
+    padding: 8px;
+    border: 1px solid #00ff88;
+    text-align: center;
+}
+
+/* 入力フィールド */
+input[type="text"] {
+    background-color: #011a0c;
+    border: 1px solid #00ff88;
+    color: #00ff88;
+    padding: 4px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    background-color: #003311;
+    box-shadow: 0 0 5px #00ff88;
+}
+
+/* ボタン */
+.smallButton {
+    background-color: #003311;
+    color: #00ff88;
+    border: 1px solid #00ff88;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.smallButton:hover {
+    background-color: #00ff88;
+    color: #030a06;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.non-border {
+    border: none !important;
+    color: #00ff88;
+}

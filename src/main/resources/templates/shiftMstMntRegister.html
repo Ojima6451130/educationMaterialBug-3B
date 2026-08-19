@@ -6,13 +6,13 @@
   <meta http-equiv="Cache-Control" content="no-cache">
   <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
   <title>シフトマスタメンテナンス画面(新規登録)</title>
-  <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+  <link rel="stylesheet" media="all" th:href="@{/css/shiftMstMntRegister.css}" />
   <script type="text/javascript" th:src="@{/js/common.js}"></script>
   <script type="text/javascript" th:src="@{/js/message.js}"></script>
   <script type="text/javascript" th:src="@{/js/checkCommon.js}"></script>
 <script>
   /**
-  * 登録処理を行うF
+  * 登録処理を行う
   */
  function shiftMstMntRegister() {
 	
@@ -37,35 +37,33 @@
        var varBreakTime = breakTime.value;
 
        // 背景色をクリアする
-       startTime.style.backgroundColor = 'white';
-       endTime.style.backgroundColor = 'white';
-       breakTime.style.backgroundColor = 'white';
+       startTime.style.backgroundColor = '#011a0c';
+       endTime.style.backgroundColor = '#011a0c';
+       breakTime.style.backgroundColor = '#011a0c';
 
        if (!checkTime(varStartTime)) {
            var strArr = ['開始時間'];
            startTimeErrMsg = getMessage('E-MSG-000004', strArr);
-           startTime.style.backgroundColor = 'red';
+           startTime.style.backgroundColor = '#550000';
        }
 
        if (!checkTime(varEndTime)) {
            var strArr = ['終了時間'];
            endTimeErrMsg = getMessage('E-MSG-000004', strArr);
-           endTime.style.backgroundColor = 'red';
+           endTime.style.backgroundColor = '#550000';
        }
 
        if (!checkTime(varBreakTime)) {
            var strArr = ['休憩時間'];
            breakTimeErrMsg = getMessage('E-MSG-000004', strArr);
-           breakTime.style.backgroundColor = 'red';
+           breakTime.style.backgroundColor = '#550000';
        }
       	// from - to のチェック
            if (!checkTimeCompare(varStartTime, varEndTime)) {
-        	   //障害No.057 (7/31)　矢田部　!を追記
-        	   //障害No117(8/14)久保田　上記!を削除
              if (checkTime(varStartTime) && checkTime(varEndTime)) {
                  fromToErrMsg = getMessageCodeOnly('E-MSG-000005');
-                 startTime.style.backgroundColor = 'red';
-                 endTime.style.backgroundColor = 'red';
+                 startTime.style.backgroundColor = '#550000';
+                 endTime.style.backgroundColor = '#550000';
              }
            }
          }
@@ -95,12 +93,12 @@
       </li>
     </ul>
   </div>
+
   <div id="wrapper">
     <div id="header">
       <table class="full-width">
         <tr>
           <td id="headLeft">
-          <!-- No.034 川面 action先を　　employeeMstMnt→　shiftMstMntに変更 -->
             <form action="/kikin/shiftMstMnt" method="get">
               <input value="戻る" type="submit" class="smallButton" />
             </form>
@@ -114,15 +112,19 @@
         </tr>
       </table>
     </div>
+    
     <div id="businessBody">
       <form action="/kikin/shiftMstMntRegister" id="regist" method="post">
-        <div style="width: max-content; margin: auto;">
-          <table class="tableHeader">
+        <!-- ヘッダーとボディをまとめるコンテナ -->
+        <div style="width: max-content; margin: auto; display: flex; flex-direction: column;">
+          
+          <table class="tbl-head" style="margin: 0; border-bottom: none; width: 535px;">
             <tr>
               <td style="width: 100px; box-sizing: border-box; text-align: center;">
                 シフト名
               </td>
-              <td style="width: 70px; box-sizing: border-box; text-align: center;">
+              <!-- シンボルの幅を95pxに拡大して折り返しを防ぐ -->
+              <td style="width: 95px; box-sizing: border-box; text-align: center;">
                 シンボル
               </td>
               <td style="width: 240px; box-sizing: border-box; text-align: center;">
@@ -133,41 +135,37 @@
               </td>
             </tr>
           </table>
+
+          <table class="tbl-body" style="margin: 0; width: 535px;">
+            <tr>
+              <td style="width: 100px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name="shiftName"></td>
+              <!-- シンボルの幅を95pxに合わせる -->
+              <td style="width: 95px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name="symbol"></td>
+              <td style="width: 100px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name="startTime"></td>
+              <td class="non-border" style="width: 40px; box-sizing: border-box; text-align: center;">
+                &#xFF5E
+              </td>
+              <td style="width: 100px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name="endTime"></td>
+              <td style="width: 100px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name="breakTime"></td>
+            </tr>
+          </table>
+
         </div>
-        <div style="height: 100px; width: max-content; margin: auto;">
-          <table class="tableBody">
-                <tr>
-	               <!--障害No.057(7/31)　矢田部 " name = "symbol"と"shiftName"が逆。"startTime"と"endTime"が逆　 修正済み-->
-	              <td style="width: 100px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "shiftName"></td>
-	              <td style="width: 70px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "symbol"></td>
-	              <td style="width: 110px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "startTime"></td>
-	              <td class="non-border" style="width: 20px; box-sizing: border-box; text-align: center;">
-	                &#xFF5E
-	              </td>
-	              <td style="width: 110px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "endTime"></td>
-	              <td style="width: 100px; box-sizing: border-box;"><input type="text" style="width: 100%; box-sizing: border-box; text-align: center;" name = "breakTime"></td>
-	            </tr>
-	          </table>
-	        </div>
-	    </form>
-	</div>
-	    <!--障害No.057(7/31)　矢田部 /formと/divの位置を入れ替え -->
-</div>
-<div id="footer">
-  <table>
-    <tr>
-      <td id="footLeft">
+      </form>
+    </div>
 
-      </td>
-      <td id="footCenter">
-
-      </td>
-      <td id="footRight">
-        <input value="登録" type="button" class="smallButton" onclick="shiftMstMntRegister()" style="margin-right: 50px;"/>
-      </td>
-    </tr>
-  </table>
-</div>
+    <div id="footer">
+      <table class="full-width">
+        <tr>
+          <td id="footLeft"></td>
+          <td id="footCenter"></td>
+          <td id="footRight" style="text-align: right;">
+            <input value="登録" type="button" class="smallButton" onclick="shiftMstMntRegister()" style="margin-right: 20px;"/>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </body>
 
 </html>
