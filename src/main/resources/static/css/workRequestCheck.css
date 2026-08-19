@@ -216,3 +216,108 @@ footer .longButton:hover {
     color: #000000 !important;
     box-shadow: 0 0 15px #00ff88, 0 0 25px #00ff88 !important;
 }
+
+/* ==================================================
+   テーブル下の余白確保 & ドット絵画像の配置
+   ================================================== */
+
+/* 1. テーブルコンテナ（テーブル全体）の下に余白（30px）を確保 */
+.cyber-table-container {
+    margin-bottom: 30px !important;
+}
+
+/* 2. 画像を囲むコンテナの配置指定 */
+.pixel-characters-container {
+    text-align: center !important;   /* 画像を中央寄せ */
+    margin-top: 20px !important;     /* 上のテーブルとの余白 */
+    margin-bottom: 10px !important;  /* 下部（フレーム境界）との余白 */
+    width: 100% !important;
+}
+
+/* 3. 画像自体の調整 */
+.pixel-characters-img {
+    max-width: 100% !important;     /* 画面幅からはみ出さないように制限 */
+    height: auto !important;
+    display: inline-block !important;
+    
+    /* ドット絵がボヤけずにクッキリ表示される設定 */
+    image-rendering: pixelated !important;
+    image-rendering: crisp-edges !important;
+    
+    /* サイバー感を出して浮かないように少しネオン効果（お好みで調整） */
+    filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.4)) !important;
+}
+
+/* ==================================================
+   外枠の高さと画像の位置調整
+   ================================================== */
+
+/* 1. 外枠（#wrapper）をコンテンツの高さにジャストフィットさせる */
+body.cyber-page #wrapper {
+    height: auto !important;
+    min-height: 0 !important;             /* 無駄な高さを強制解除 */
+    display: block !important;             /* Flexによる上下の押し出しを防止 */
+    padding-bottom: 20px !important;       /* 下部に適度な余白を確保 */
+}
+
+/* 2. 画像コンテナをテーブルの直下にピッタリ配置 */
+.pixel-characters-container {
+    text-align: center !important;
+   
+    margin-bottom: -6 !important;
+    width: 100% !important;
+    clear: both !important;
+}
+
+/* 3. 画像のサイズ調整（大きすぎずコンパクトに） */
+.pixel-characters-img {
+    max-width: 1100px !important;           /* 画像の横幅を適切に制限（お好みで調整可） */
+    width: 90% !important;                 /* テーブル幅に対してバランスの良い大きさに */
+    height: auto !important;
+    display: inline-block !important;
+    
+    /* ドット絵をクッキリ表示 */
+    image-rendering: pixelated !important;
+    
+    /* 背景透過画像の白い枠部分を馴染ませるネオンエフェクト */
+    filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.3)) !important;
+}
+
+/* ==================================================
+   凡例表示ボタン（footer）の位置修正
+   ================================================== */
+
+/* 1. footer自体の位置を#wrapper（メイン枠）の幅に合わせる */
+footer {
+    position: relative !important;
+    z-index: 10 !important;
+    width: 96% !important;               /* #wrapperと同じ幅に設定 */
+    max-width: 1600px !important;        /* #wrapperと同じ最大幅に設定 */
+    margin: 15px auto 30px auto !important; /* 中央寄せにして上に適度な余白を作る */
+    padding-left: 0 !important;
+}
+
+/* 2. footer内部の余計な余白（margin-left: 50px）を打ち消してテーブル左端と揃える */
+footer div {
+    margin-left: 0 !important;
+}
+
+/* 3. 凡例表示ボタンのスタイル指定 */
+footer .longButton {
+    background: rgba(0, 30, 15, 0.8) !important;
+    border: 1px solid #00ff88 !important;
+    color: #00ff88 !important;
+    font-weight: bold !important;
+    padding: 6px 16px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.3) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* ホバー時のネオン発光 */
+footer .longButton:hover {
+    background: #00ff88 !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px #00ff88, 0 0 25px #00ff88 !important;
+}
