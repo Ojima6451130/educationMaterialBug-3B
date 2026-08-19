@@ -1,0 +1,458 @@
+/* =========================================================
+   サイバーパンク・SFターミナル風 スタイルシート
+   ========================================================= */
+
+/* --- 全体・背景設定 --- */
+body {
+  background-color: #030a05;
+  color: #00ff66;
+  font-family: 'Courier New', Consolas, Monaco, 'Helvetica Neue', monospace;
+  margin: 0;
+  padding: 20px;
+  /* グリッド背景の描画 */
+  background-image: 
+    linear-gradient(rgba(0, 255, 102, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 102, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* --- 外枠（ラッパー） --- */
+#wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: rgba(3, 15, 8, 0.85);
+  border: 1px solid #00ff66;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.4), inset 0 0 15px rgba(0, 255, 102, 0.1);
+  box-sizing: border-box;
+}
+
+/* --- ヘッダー領域 --- */
+#header table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#headLeft, #headRight {
+  width: 20%;
+}
+
+#headCenter {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffff00; /* 黄色のネオンタイトル */
+  text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
+  letter-spacing: 2px;
+}
+
+/* ヘッダー上のサブテキスト疑似要素 */
+#headCenter::before {
+  content: "WORK MANAGEMENT // ATTENDANCE";
+  display: block;
+  font-size: 11px;
+  color: #00ff66;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+  text-shadow: none;
+}
+
+/* --- ボタン共通 --- */
+.smallButton, input[type="submit"] {
+  background: transparent;
+  color: #00ff66;
+  border: 1px solid #00ff66;
+  padding: 6px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 5px rgba(0, 255, 102, 0.2);
+}
+
+.smallButton:hover, input[type="submit"]:hover {
+  background-color: #00ff66;
+  color: #000;
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.8);
+}
+
+/* --- 検索・社員情報エリア --- */
+#businessBody {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: #00ff66;
+  font-weight: bold;
+}
+
+#businessBody label {
+  font-size: 16px;
+}
+
+/* セレクトボックス */
+select#yearMonth {
+  background-color: #030a05;
+  color: #00ff66;
+  border: 1px solid #00ff66;
+  padding: 4px 8px;
+  font-family: inherit;
+  outline: none;
+}
+
+/* --- テーブル（明細一覧） --- */
+.overflowFixed {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #005522;
+}
+
+/* ヘッダー行 */
+.tableHeader {
+  border-bottom: 2px solid #00ff66 !important;
+  background-color: rgba(0, 40, 15, 0.6);
+}
+
+.tableHeader td {
+  color: #00ff66;
+  font-weight: bold;
+  padding: 10px 4px;
+  border-right: 1px solid #005522;
+}
+
+/* ボディ行 */
+.tableBody tr.list {
+  border-bottom: 1px solid #003311;
+}
+
+.tableBody td {
+  padding: 6px 2px;
+  border-right: 1px solid #003311;
+  vertical-align: middle;
+}
+
+/* 文字色クラスの上書き */
+.fontBlack { color: #00ff66 !important; }
+.fontBlue  { color: #00ffff !important; text-shadow: 0 0 5px #00ffff; } /* 土曜日 */
+.fontRed   { color: #ff3366 !important; text-shadow: 0 0 5px #ff3366; } /* 日曜・祝日 */
+
+/* --- テキスト入力枠（input） --- */
+.tableBody input[type="text"] {
+  background-color: transparent !important;
+  color: #00ff66 !important;
+  border: 1px solid #008833 !important;
+  text-align: center;
+  padding: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.tableBody input[type="text"]:focus {
+  border-color: #00ff66 !important;
+  box-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+}
+
+/* 備考欄など左寄せにしたい場合 */
+.tableBody td:nth-child(10) input[type="text"] {
+  text-align: left;
+}
+
+/* --- スクロールバーのデザイン --- */
+.tableBody::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tableBody::-webkit-scrollbar-track {
+  background: #021208;
+  border-left: 1px solid #004411;
+}
+
+.tableBody::-webkit-scrollbar-thumb {
+  background: #009944;
+  border-radius: 2px;
+}
+
+.tableBody::-webkit-scrollbar-thumb:hover {
+  background: #00ff66;
+  box-shadow: 0 0 10px #00ff66;
+}
+
+/* --- フッターエリア --- */
+#footer {
+  margin-top: 15px;
+}
+
+#footer table {
+  width: 100%;
+}
+
+#footRight {
+  text-align: right;
+}
+
+/* 右下の「登録」ボタンを白背景にする仕様（画像通り） */
+#footRight input[type="submit"], 
+#footRight .smallButton {
+  background-color: #e6f5ed;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  padding: 8px 24px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#footRight input[type="submit"]:hover, 
+#footRight .smallButton:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================================
+   理想デザイン完全再現用 CSS (最終調整版)
+   ========================================================= */
+
+/* --- 全体背景とグリッドの調整 --- */
+body {
+  background-color: #030a05 !important;
+  color: #00ff66 !important;
+  font-family: 'Consolas', 'Courier New', monospace, sans-serif !important;
+  margin: 0;
+  padding: 20px;
+  background-image: 
+    linear-gradient(rgba(0, 255, 102, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 102, 0.08) 1px, transparent 1px) !important;
+  background-size: 16px 16px !important;
+}
+
+/* --- 外枠（緑のネオンフレーム） --- */
+#wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 30px;
+  background-color: rgba(3, 12, 6, 0.85) !important;
+  border: 1px solid #00ff66 !important;
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.35) !important;
+  box-sizing: border-box;
+}
+
+/* --- ヘッダータイトル --- */
+#headCenter {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffff00 !important;
+  text-shadow: 0 0 10px rgba(255, 255, 0, 0.8) !important;
+}
+
+#headCenter::before {
+  content: "WORK MANAGEMENT // ATTENDANCE";
+  display: block;
+  font-size: 10px;
+  color: #00ff66;
+  letter-spacing: 2px;
+  margin-bottom: 3px;
+  text-shadow: none;
+}
+
+/* --- ボタン類（戻る・検索・ログアウト） --- */
+.smallButton, input[type="submit"] {
+  background: transparent !important;
+  color: #00ff66 !important;
+  border: 1px solid #00ff66 !important;
+  padding: 4px 14px !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  cursor: pointer;
+}
+
+select#yearMonth {
+  background-color: rgba(3, 12, 6, 0.9) !important;
+  color: #00ff66 !important;
+  border: 1px solid #00ff66 !important;
+  padding: 3px 6px;
+  font-family: inherit;
+}
+
+/* --- テーブル全体のスタイルリセット --- */
+.overflowFixed, 
+.tableHeader, 
+.tableBody, 
+.tableBody tr, 
+.tableBody td {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* テーブルヘッダー (見出し) */
+.tableHeader {
+  border: 1px solid #00aa44 !important;
+  border-bottom: 2px solid #00ff66 !important;
+  background-color: rgba(0, 30, 10, 0.4) !important;
+}
+
+.tableHeader td {
+  color: #00ff66 !important;
+  font-weight: bold;
+  padding: 8px 0;
+  border: none !important;
+  font-size: 14px;
+}
+
+/* テーブルボディ (明細行) */
+.tableBody tr.list {
+  border-bottom: 1px solid rgba(0, 85, 34, 0.5) !important;
+}
+
+.tableBody td {
+  border: none !important; /* 縦線を消去 */
+  padding: 6px 0 !important;
+  color: #00ff66;
+  font-size: 14px;
+}
+
+/* 曜日・休日の文字色 */
+.fontBlue { color: #00ffff !important; text-shadow: 0 0 3px #00ffff; }
+.fontRed  { color: #ff3366 !important; text-shadow: 0 0 3px #ff3366; }
+
+/* --- 入力枠 (input) の見た目調整（角丸・細枠・黒背景） --- */
+.tableBody input[type="text"] {
+  background-color: rgba(3, 15, 8, 0.8) !important;
+  color: #00ff66 !important;
+  border: 1px solid #006622 !important;
+  border-radius: 3px !important; /* 角を少し丸くする */
+  padding: 3px 4px !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  text-align: center;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* フォーカス時のネオン発光 */
+.tableBody input[type="text"]:focus {
+  border-color: #00ff66 !important;
+  box-shadow: 0 0 6px rgba(0, 255, 102, 0.6) !important;
+}
+
+/* 備考欄（最後から2番目の入力）は左寄せ */
+.tableBody tr.list td:nth-last-child(2) input[type="text"] {
+  text-align: left !important;
+}
+
+/* --- スクロールバー --- */
+.tableBody::-webkit-scrollbar {
+  width: 8px;
+}
+.tableBody::-webkit-scrollbar-track {
+  background: #020c05;
+}
+.tableBody::-webkit-scrollbar-thumb {
+  background: #006622;
+  border-radius: 4px;
+}
+
+/* --- 右下「登録」ボタン（白枠ボタン） --- */
+#footRight input[type="submit"], 
+#footRight .smallButton {
+  background-color: #e6f5ed !important;
+  color: #000000 !important;
+  border: none !important;
+  font-weight: bold !important;
+  padding: 6px 20px !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
+  cursor: pointer;
+}
+
+/* =========================================================
+   「登録」ボタンをログアウトボタンと同じ緑ネオンデザインに変更
+   ========================================================= */
+
+#footRight input[type="submit"], 
+#footRight input[type="button"],
+#footRight .smallButton {
+  /* 背景と文字 */
+  background-color: #030804 !important; /* 黒背景 */
+  color: #00ff66 !important;            /* 緑文字 */
+  font-family: 'Consolas', 'Courier New', monospace, sans-serif !important;
+  font-size: 14px !important;
+  letter-spacing: 1px !important;
+
+  /* 枠線 */
+  border: 1.5px solid #00ff66 !important;
+  border-radius: 0px !important;
+
+  /* サイズ */
+  padding: 6px 20px !important;
+  cursor: pointer;
+  outline: none;
+
+  /* 緑のぼんやりした発光 (ログアウトボタンと同一) */
+  box-shadow: 
+    0 0 6px #00ff66,
+    0 0 12px rgba(0, 255, 102, 0.6),
+    0 0 20px rgba(0, 255, 102, 0.3) !important;
+
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* ホバー時の効果 */
+#footRight input[type="submit"]:hover, 
+#footRight input[type="button"]:hover,
+#footRight .smallButton:hover {
+  background-color: #00ff66 !important;
+  color: #000000 !important;
+  box-shadow: 
+    0 0 10px #00ff66,
+    0 0 20px #00ff66,
+    0 0 30px rgba(0, 255, 102, 0.8) !important;
+}
+/* =========================================================
+   横スクロールバー（下のバー）を縦と同じ緑ネオンに統一
+   ========================================================= */
+
+/* --- 全体のWebkitスクロールバー設定（縦横共通） --- */
+::-webkit-scrollbar {
+  width: 8px !important;   /* 縦バーの太さ */
+  height: 8px !important;  /* 横バーの太さ */
+}
+
+/* スクロールバーの背景（レール部分） */
+::-webkit-scrollbar-track {
+  background-color: #020c05 !important;
+  border: 1px solid #004411 !important;
+}
+
+/* つまみ（移動するバー部分） */
+::-webkit-scrollbar-thumb {
+  background-color: #00ff66 !important; /* 発光グリーン */
+  border-radius: 4px !important;         /* 角丸 */
+  box-shadow: 0 0 6px rgba(0, 255, 102, 0.8) !important;
+}
+
+/* つまみホバー時 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #66ffaa !important;
+  box-shadow: 0 0 10px rgba(0, 255, 102, 1) !important;
+}
+
+/* 両端の矢印ボタン（◀ ▶）を消去してすっきりさせる */
+::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+/* --- テーブル（.tableBody）の横スクロールバーも明示的に適用 --- */
+.tableBody::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  height: 8px !important;
+}
+
+.tableBody::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background-color: #020c05 !important;
+}
+
+.tableBody::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: #00ff66 !important;
+  border-radius: 4px !important;
+}
