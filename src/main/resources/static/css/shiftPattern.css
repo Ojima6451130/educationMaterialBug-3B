@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/* =========================================================
+   シフト凡例画面 サイバーパンク・テーマ設定
+   ========================================================= */
+
+/* 1. 凡例画面全体の背景と基本テキスト設定 */
+body {
+  background-color: #080d08 !important; /* ダーク背景 */
+  color: #ffffff !important;           /* 基本文字色は白 */
+}
+
+/* 2. ヘッダー（タイトル部分）の設定 */
+#header #headCenter {
+  color: #00ff66 !important;
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.8) !important;
+  font-weight: bold;
+}
+
+/* 3. テーブルヘッダー（項目名）の設定 */
+.tableHeader td {
+  color: #00ff66 !important;                     /* 項目名をネオングリーンに */
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6) !important;
+  border: 1.5px solid #00ff66 !important;        /* 緑の枠線 */
+  background-color: rgba(0, 255, 102, 0.05) !important; /* ほんのり緑の背景 */
+}
+
+/* 4. テーブルボディ（データ一覧）のセルと枠線の設定 */
+.tableBody td {
+  color: #ffffff !important;                     /* 中身の文字は白 */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6) !important;
+  border: 1.5px solid #00ff66 !important;        /* セル全体に緑の枠線 */
+  background-color: transparent !important;      /* 背景色は透過 */
+}
+/* テーブルの全セル（ヘッダー・ボディ問わず）の背景色を黒に固定 */
+body .daysTable td,
+body .daysTable th,
+body .tableBody td,
+body .tableHeader td,
+body td[style*="background-color"],
+body td {
+  background-color: #000000 !important;
+}
