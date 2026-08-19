@@ -7,6 +7,7 @@
     <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
     <title>基本シフトマスタメンテナンス確認画面</title>
     <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+        <link rel="stylesheet" media="all" th:href="@{/css/baseShiftMstMnt.css}" />
     <script type="text/javascript" th:src="@{/js/common.js}"></script>
     <script type="text/javascript" th:src="@{/js/message.js}"></script>
 </head>
@@ -31,7 +32,8 @@
             </table>
         </div>
         <div id="businessBody">
-            <div id="pattern" style="width:476px; margin-left:20%; float:left">
+          <div class="centered-container">
+            <div id="pattern" style="width:max-content; margin-left:20px; overflow:auto; float:left">
                 <div>
                     <table class="tableHeader">
                         <tr>
@@ -51,7 +53,7 @@
                     </table>
                 </div>
 
-                <div style="height:450px;overflow:auto">
+                <div style="overflow:auto">
                     <table class="tableBody">
                         <tbody>
                             <tr th:each="baseShiftPatternBean : ${baseShiftPatternBeanList}">
@@ -207,6 +209,7 @@
             </div>
 
         </div>
+      </div>
 
     </div>
     <div id="footer">
