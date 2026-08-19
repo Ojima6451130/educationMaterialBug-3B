@@ -7,36 +7,45 @@
 <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
 <title>出勤希望日確認画面</title>
 <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/workRequestCheck.css}" />
 <script type="text/javascript" th:src="@{/js/common.js}"></script>
 <script type="text/javascript" th:src="@{/js/message.js}"></script>
 </head>
 
-<body>
-	<div id="wrapper" style="padding: 10px">
+<!-- 【クラス付加】cyber-page を追加 -->
+<body class="cyber-page">
+	<!-- 【クラス付加】cyber-outer-frame を追加 -->
+	<div id="wrapper" class="cyber-outer-frame" style="padding: 10px">
 		<div id="header">
-			<!-- centered-container→ full-widthに変更　　障害No.21 川面　7/31-->
+			<!-- centered-container→ full-widthに変更  障害No.21 川面 7/31-->
 			<table class="full-width">
 				<tr>
 					<td id="headLeft">
 						<form action="/kikin/menu" method="post">
-							<input value="戻る" type="submit" class="smallButton" />
+							<!-- 【クラス付加】btn-cyber-nav を追加 -->
+							<input value="戻る" type="submit" class="smallButton btn-cyber-nav" />
 						</form>
 					</td>
-					<td id="headCenter">出勤希望確認</td>
+					<!-- 【クラス付加】cyber-title を追加 -->
+					<td id="headCenter" class="cyber-title">出勤希望確認</td>
+					<!-- 【クラス付加】btn-cyber-nav を追加 -->
 					<td id="headRight"><input value="ログアウト" type="button"
-						class="smallButton" onclick="logout()" /></td>
+						class="smallButton btn-cyber-nav" onclick="logout()" /></td>
 				</tr>
 			</table>
 		</div>
 		<!--  障害票No.021 田渕 2026/8/7 -->
 		<!-- div class="search"を追記 -->
 		<!--No026 東國原 検索のボタンがなくても検索できるように修正 -->
-		<div class="search" style="text-align: center; display: flex; justify-content: center; align-items: center; gap: 20px;">
+		<!-- 【クラス付加】cyber-search-bar を追加 -->
+		<div class="search cyber-search-bar" style="text-align: center; display: flex; justify-content: center; align-items: center; gap: 20px;">
 			<form id="searchForm" action="/kikin/workDateRequestCheck/search"
 				method="post" th:object="${workDateRequestCheckForm}">
 
-				<label>表示年月：</label>
-				<select th:name="yearMonth" id="yearMonth"
+				<!-- 【クラス付加】cyber-label を追加 -->
+				<label class="cyber-label">表示年月：</label>
+				<!-- 【クラス付加】cyber-select を追加 -->
+				<select th:name="yearMonth" id="yearMonth" class="cyber-select"
 					onchange="document.getElementById('searchForm').submit();">
 					<option th:each="yearMonth : ${yearMonthValues}"
 						th:value="${yearMonth}" th:selected="${yearMonth} == *{yearMonth}"
@@ -44,7 +53,8 @@
 				</select>
 			</form>
 			<!--No026 東國原 ページング機能を追加 -->
-			<div th:if="${resWorkDateRequestLogics != null && #lists.size(resWorkDateRequestLogics) != 0}">
+			<!-- 【クラス付加】cyber-pagination を追加 -->
+			<div th:if="${resWorkDateRequestLogics != null && #lists.size(resWorkDateRequestLogics) != 0}" class="cyber-pagination">
 				<span th:if="${workDateRequestPage.isFirst()}">前へ</span>
 				<a th:unless="${workDateRequestPage.isFirst()}"
 					th:href="@{/kikin/workDateRequestCheck/search(page = ${workDateRequestPage.getNumber() - 1})}">前へ</a>
@@ -57,12 +67,14 @@
 			
 		</div>
 
-		<!--<br>追加　　障害No.21 川面　7/31 -->
+		<!--<br>追加  障害No.21 川面 7/31 -->
 		<br>
 
-		<!-- id→ classに変更　　障害No.21 川面　7/31-->
-		<div class="businessBody">
-			<table class="daysTable">
+		<!-- id→ classに変更  障害No.21 川面 7/31-->
+		<!-- 【クラス付加】cyber-table-container を追加 -->
+		<div class="businessBody cyber-table-container">
+			<!-- 【クラス付加】cyber-table を追加 -->
+			<table class="daysTable cyber-table">
 				<thead style="display: block; position: sticky;">
 					<tr class="tableHeader">
 						<td style="width: 150px; text-align: center;">&nbsp;</td>
@@ -80,14 +92,14 @@
 							th:if="${dateBean.weekDay == saturday && !dateBean.publicHolidayFlg}"
 							th:value="${dateBean.weekDay}" style="color: blue;">[[${dateBean.weekDay}]]</span>
 							
-						<!-- 障害No.16　 寺松 日曜日が赤色になるように修正 -->
+						<!-- 障害No.16  寺松 日曜日が赤色になるように修正 -->
 							<span
 							th:if="${dateBean.weekDay == '日' || dateBean.publicHolidayFlg}"
 							th:value="${dateBean.weekDay}" style="color: red;">[[${dateBean.weekDay}]]</span>
 							<span
 							th:unless="${dateBean.weekDay == saturday || dateBean.weekDay == '日' || dateBean.publicHolidayFlg}"
 							th:value="${dateBean.weekDay}" style="color: black;">[[${dateBean.weekDay}]]</span>
-						<!-- ここまで　sundayの表記を全て'日'にした -->
+						<!-- ここまで sundayの表記を全て'日'にした -->
 						</td>
 					</tr>
 				</thead>
@@ -96,9 +108,10 @@
 								max-height: 400px; → 500pxに修正（要素が被るため） -->
 				<tbody
 					style="display: block; max-height: 500px;">
+					<!-- 【クラス付加】cyber-row を追加 -->
 					<tr
 						th:each="workDateRequestCheck : ${resWorkDateRequestLogics}"
-						class="tableBody">
+						class="tableBody cyber-row">
 						<td class="tableBody" style="width: 150px; text-align: center;">
 							<span th:value="${workDateRequestCheck.employeeName}">[[${workDateRequestCheck.employeeName}]]</span>
 						</td>
@@ -182,7 +195,8 @@
 							<!-- <input value="凡例表示" type="button" class="longButton"  onclick="openWindo()" /> -->
 							<!-- ↑修正前コード -->
 							<!-- ↓修正後コード -->
-							<input value="凡例表示" type="button" class="longButton"  onclick="openWindow()" />
+							<!-- 【クラス付加】btn-cyber-nav を追加 -->
+							<input value="凡例表示" type="button" class="longButton btn-cyber-nav"  onclick="openWindow()" />
 						</div>
 					</td>
 				</tr>

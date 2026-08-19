@@ -1,0 +1,218 @@
+/* --------------------------------------------------
+ * サイバーデザイン統合CSS (HTML最小限変更版)
+ * -------------------------------------------------- */
+
+/* 全体背景 */
+body.cyber-page {
+    background-color: #020d08 !important;
+    color: #00ff88 !important;
+    font-family: monospace, sans-serif;
+}
+
+/* 外枠ネオンフレーム */
+.cyber-outer-frame {
+    border: 2px solid #00ff88 !important;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4), inset 0 0 10px rgba(0, 255, 136, 0.1) !important;
+    background: rgba(0, 15, 8, 0.85) !important;
+    margin: 10px auto;
+}
+
+/* タイトル文字 */
+.cyber-title {
+    color: #00ff88 !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.8) !important;
+}
+
+/* ボタン（戻る・ログアウト・凡例表示）＋ ホバーで光る処理 */
+.btn-cyber-nav {
+    background: rgba(0, 30, 15, 0.8) !important;
+    border: 1px solid #00ff88 !important;
+    color: #00ff88 !important;
+    font-weight: bold !important;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* ★ ボタンにマウスを乗せた時に光る（ホバーアニメーション） */
+.btn-cyber-nav:hover {
+    background: #00ff88 !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px #00ff88, 0 0 25px #00ff88 !important;
+}
+
+/* 検索バー・セレクトボックス */
+.cyber-label {
+    color: #00ff88 !important;
+    font-weight: bold;
+}
+
+.cyber-select {
+    background: #00150a !important;
+    border: 1px solid #00ff88 !important;
+    color: #00ff88 !important;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+/* ページングナビ */
+.cyber-pagination a, 
+.cyber-pagination span {
+    color: #00ff88 !important;
+}
+
+.cyber-pagination a:hover {
+    text-shadow: 0 0 8px #00ff88 !important;
+}
+
+/* テーブル周り（はみ出し防止＋横スクロール化） */
+.cyber-table-container {
+    overflow-x: auto !important; /* 横スクロールを可能に */
+    border: 1px solid rgba(0, 255, 136, 0.4) !important;
+    background: rgba(0, 10, 5, 0.7) !important;
+}
+
+.cyber-table {
+    border-collapse: collapse !important;
+    width: max-content !important; /* セル幅を維持して枠内に収める */
+}
+
+/* ヘッダーセル */
+.cyber-table thead tr td {
+    background: rgba(0, 30, 15, 0.9) !important;
+    border: 1px solid rgba(0, 255, 136, 0.4) !important;
+    color: #00ff88 !important;
+    padding: 5px 1px !important;       /* ヘッダーの上下余白 */
+    font-size: 17px !important;        /* ヘッダー文字を少し大きく */
+}
+
+/* 土曜日・日曜日の色（インラインstyle="color: blue/red" を強引にネオンカラーへ上書き） */
+.cyber-table span[style*="color: blue"] {
+    color: #00ccff !important; /* 青→明るいシアン */
+    text-shadow: 0 0 5px #00ccff;
+}
+.cyber-table span[style*="color: red"] {
+    color: #ff3366 !important; /* 赤→ネオンピンク/レッド */
+    text-shadow: 0 0 5px #ff3366;
+}
+.cyber-table span[style*="color: black"] {
+    color: #00ff88 !important; /* 黒→サイバーグリーン */
+}
+
+/* データセル */
+.cyber-table tbody td {
+    border: 1px solid rgba(0, 255, 136, 0.2) !important;
+    /*color: #ffffff !important;*/
+    padding: 9px 1px !important;
+    font-size: 18px !important;        /* データ文字のサイズ */
+}
+
+/* ★ テーブルの行にマウスを乗せた時に発光して目立たせる */
+.cyber-row:hover {
+    background-color: rgba(0, 255, 136, 0.15) !important;
+    box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+/* 緑色の細身スクロールバー */
+.cyber-table-container::-webkit-scrollbar,
+.cyber-table tbody::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+.cyber-table-container::-webkit-scrollbar-track,
+.cyber-table tbody::-webkit-scrollbar-track {
+    background: rgba(0, 20, 10, 0.8);
+}
+.cyber-table-container::-webkit-scrollbar-thumb,
+.cyber-table tbody::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 4px;
+    box-shadow: 0 0 6px #00ff88;
+}
+
+/*テーブルをtransparent（透明）に変更*/
+.tableBody {
+    background-color: transparent;
+}
+
+/* common.css の padding:0!important と margin:0!important を無効化（上書き） */
+body.cyber-page #wrapper {
+	height: auto !important;
+	min-height: calc(100vh - 80px) !important; /* 画面下部にフッター用の余白を確保 */
+    margin: 20px auto !important; /* margin: 0 を打ち消して画面中央寄せにする */
+    padding: 10px !important;    /* padding: 0 を打ち消して余白を確保する */
+    width: 96% !important;          /* 画面横幅の96%を使用 */
+    max-width: 1600px !important;    /* 31日分がゆったり入る最大幅まで拡張 */
+    
+    
+}
+
+/* ==================================================
+   曜日（土曜日・日祝）のカラーカスタマイズ
+   ================================================== */
+
+/* 土曜日の色指定（HTMLの style="color: blue;" を上書き） */
+.cyber-table span[style*="color: blue"] {
+    color: #0de1f2!important;         /* 明るいネオンシアン（お好みの色に変更可） */
+    text-shadow: 0 0 6px #00ccff !important; /* 発光エフェクト */
+    font-weight: bold !important;
+}
+
+/* 日曜日・祝日の色指定（HTMLの style="color: red;" を上書き） */
+.cyber-table span[style*="color: red"] {
+    color: #ffc6aa!important;         /* ネオンピンク/レッド（お好みの色に変更可） */
+    text-shadow: 0 0 6px #ff3366 !important; /* 発光エフェクト */
+    font-weight: bold !important;
+}
+
+/* 平日の色指定（HTMLの style="color: black;" を上書き） */
+.cyber-table span[style*="color: black"] {
+    color: #00ff88 !important;         /* サイバーグリーン */
+    text-shadow: 0 0 5px #00ff88 !important;
+}
+
+/* ==================================================
+   セレクトボックス・プルダウン（option）のホバー＆選択時の発光設定
+   ================================================== */
+
+/* セレクトボックス本体のホバー＆フォーカス時 */
+.cyber-select:hover,
+.cyber-select:focus {
+    border-color:  #00ff88 !important;             /* 枠線 */
+    color:  #00ff88 !important;                    /* 文字 */
+    box-shadow: 0 0 10px  #00ff88, inset 0 0 5px #ffff00 !important; /* 発光エフェクト */
+    outline: none !important;
+}
+
+/* ==================================================
+   2. フッターおよび「凡例表示」ボタンの可視化＆位置調整
+   ================================================== */
+footer {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-top: 15px !important;
+    margin-bottom: 20px !important;
+}
+
+/* 凡例表示ボタン（.longButton）の位置調整とデザイン */
+footer .longButton {
+    background: rgba(0, 30, 15, 0.8) !important;
+    border: 1px solid #00ff88 !important;
+    color: #00ff88 !important;
+    font-weight: bold !important;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.3) !important;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 凡例表示ボタンホバー時の発光処理 */
+footer .longButton:hover {
+    background: #00ff88 !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px #00ff88, 0 0 25px #00ff88 !important;
+}
