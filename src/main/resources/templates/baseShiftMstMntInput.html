@@ -7,6 +7,7 @@
     <meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
     <title>基本シフトマスタメンテナンス入力画面</title>
     <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" media="all" th:href="@{/css/baseShiftMstMnt.css}" />
     <script type="text/javascript" th:src="@{/js/common.js}"></script>
     <script type="text/javascript" th:src="@{/js/message.js}"></script>
 </head>
@@ -30,12 +31,12 @@
                 </tr>
             </table>
         </div>
-        <div id="businessBody">
+        <div id="businessBody" style="padding-top: 20px;">
         <!-- 障害No85　山口　ここから変更 -->
-            <!-- <div class="centered-container" > -->
+            <div class="centered-container" >
                
                 <!-- <div id="pattern" style="width:50%; overflow:auto; float:left"> -->
-                <div id="pattern" style="width:476px; margin-left:20%; float:left">
+                <div id="pattern" style="width:max-content; margin-left:20px; overflow:auto; float:left">
                     <div>
                     <table class="tableHeader">
                         <tr>
@@ -220,7 +221,7 @@
                          </form>
                     </div>
 
-                <!-- </div> -->
+                </div>
             </div>
         </div>
         <div id="footer">

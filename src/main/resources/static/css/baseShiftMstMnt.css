@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+/* === 暗雲立ち込め、神龍が姿を現す背景 === */
+        body {
+            background: radial-gradient(circle at center, #0d1b12 0%, #050a07 70%, #000000 100%);
+            color: #e0f2fe;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* === 黄金の気を纏うヘッダー === */
+        #header {
+            background: linear-gradient(180deg, #11261a 0%, #050d08 100%);
+            border-bottom: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            padding: 10px 20px;
+        }
+
+        #headCenter {
+            color: #ffd700;
+            font-size: 22px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        /* === ドラゴンボール風ボタン === */
+        .smallButton {
+            background: linear-gradient(135deg, #ff9900 0%, #cc3300 100%);
+            color: #ffffff;
+            border: 2px solid #ffd700;
+            border-radius: 20px;
+            padding: 6px 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(255, 153, 0, 0.6);
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .smallButton:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 18px #ffd700, 0 0 25px #ff4500;
+            background: linear-gradient(135deg, #ffcc00 0%, #ff3300 100%);
+        }
+
+        /* === 枠線と神龍のオーラ（テーブル・コンテナ） === */
+        /* === コンテナとテーブルスタイル === */
+        #pattern, #data {
+            background: rgba(13, 35, 23, 0.95) !important;
+            border: 2px solid #388e3c;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(46, 125, 50, 0.6);
+            padding: 10px;
+        }
+
+        .tableHeader {
+            background: #1e4a2b !important;
+            color: #76ff03 !important;
+            font-weight: bold;
+            border-bottom: 2px solid #76ff03;
+        }
+
+        .tableHeader td {
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        /* テーブルボディの背景色・文字色を強力に上書き */
+        .tableBody, .tableBody tbody, .tableBody tr, .tableBody td {
+            background-color: transparent !important; /* 既存の薄水色背景を消去 */
+            color: #ffffff !important; /* 文字を白に固定 */
+            font-weight: bold;
+        }
+
+        .tableBody tr {
+            border-bottom: 1px solid rgba(118, 255, 3, 0.2);
+        }
+
+        .tableBody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .tableBody td {
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .tableBody td span {
+            color: #ffffff !important;
+            text-shadow: 1px 1px 3px #000000;
+        }
+
+        /* === 魔法陣セレクトボックス === */
+        select {
+            background-color: #091a10;
+            color: #ffd700;
+            border: 1px solid #76ff03;
+            border-radius: 4px;
+            padding: 3px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(118, 255, 3, 0.3);
+        }
+
+        select:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        /* === 神々しいフッター === */
+        #footer {
+            margin-top: 20px;
+            background: linear-gradient(0deg, #11261a 0%, #050d08 100%);
+            border-top: 2px solid #ffd700;
+            padding: 15px 20px;
+            box-shadow: 0 -5px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .full-width {
+            width: 100%;
+        }
