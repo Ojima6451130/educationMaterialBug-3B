@@ -1,0 +1,290 @@
+/* ==================================================
+ * 月別シフト入力画面用 カスタムサイバースタイル
+ * (monthlyShiftInput.css)
+ * ================================================== */
+
+/* Google Fontsのサイバーフォント読み込み */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
+
+/* --------------------------------------------------
+ * 1. 画面全体の背景 & フォント設定
+ * -------------------------------------------------- */
+body {
+    background-color: #030a06 !important;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0, 40, 20, 0.4) 0%, rgba(3, 10, 6, 0.95) 100%),
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 30px 30px, 30px 30px !important;
+    color: #ffffff !important;
+    font-family: 'Orbitron', 'Consolas', 'Monaco', 'Courier New', sans-serif !important;
+}
+
+#wrapper {
+    background: transparent !important;
+    border: 2px solid #00ff88 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4), inset 0 0 15px rgba(0, 255, 136, 0.15) !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+}
+
+/* --------------------------------------------------
+ * 2. ヘッダー & タイトル
+ * -------------------------------------------------- */
+#header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3) !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 15px !important;
+}
+
+#headCenter {
+    color: #ffffff !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    font-family: 'Orbitron', 'Consolas', sans-serif !important;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.8) !important;
+    letter-spacing: 2px !important;
+}
+
+/* --------------------------------------------------
+ * 3. 各種ボタン（戻る、ログアウト、登録、凡例、反映）
+ * -------------------------------------------------- */
+/* 小ボタン (戻る / ログアウト / 登録) */
+.smallButton,
+#headLeft input[type="submit"],
+#headRight input[type="button"],
+#footRight input[type="submit"] {
+    background: rgba(0, 20, 10, 0.8) !important;
+    border: 1px solid #00ff88 !important;
+    color: #00ff88 !important;
+    font-family: 'Orbitron', 'Consolas', sans-serif !important;
+    font-weight: bold !important;
+    border-radius: 3px !important;
+    padding: 6px 18px !important;
+    cursor: pointer !important;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.3) !important;
+    transition: all 0.25s ease !important;
+}
+
+.smallButton:hover,
+#headLeft input[type="submit"]:hover,
+#headRight input[type="button"]:hover,
+#footRight input[type="submit"]:hover {
+    background: #00ff88 !important;
+    color: #000000 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 1), 0 0 30px rgba(0, 255, 136, 0.8) !important;
+}
+
+/* 長ボタン (凡例表示 / 基本シフト反映 / 出勤希望日反映) */
+.longButton {
+    background: rgba(0, 20, 10, 0.85) !important;
+    border: 1px solid #00ff88 !important;
+    color: #00ff88 !important;
+    font-family: 'Orbitron', 'Consolas', sans-serif !important;
+    font-weight: bold !important;
+    border-radius: 3px !important;
+    padding: 7px 16px !important;
+    margin-right: 10px !important;
+    cursor: pointer !important;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.3) !important;
+    transition: all 0.25s ease !important;
+}
+
+.longButton:hover {
+    background: #00ff88 !important;
+    color: #000000 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 1), 0 0 30px rgba(0, 255, 136, 0.8) !important;
+}
+
+/* 検索ボタン */
+.search button[type="submit"],
+.search input[type="submit"] {
+    background: rgba(20, 20, 0, 0.6) !important;
+    border: 1px solid #ffee00 !important;
+    color: #ffee00 !important;
+    font-family: 'Orbitron', 'Consolas', sans-serif !important;
+    font-weight: bold !important;
+    border-radius: 3px !important;
+    padding: 4px 14px !important;
+    cursor: pointer !important;
+    box-shadow: 0 0 8px rgba(255, 238, 0, 0.3) !important;
+    transition: all 0.25s ease !important;
+}
+
+.search button[type="submit"]:hover,
+.search input[type="submit"]:hover {
+    background: #aaff00 !important;
+    color: #000000 !important;
+    border-color: #ffee00 !important;
+    box-shadow: 0 0 20px rgba(255, 238, 0, 1), 0 0 30px rgba(170, 255, 0, 0.8) !important;
+}
+
+/* --------------------------------------------------
+ * 4. 検索バー & セレクトボックス
+ * -------------------------------------------------- */
+.search {
+    color: #ffffff !important;
+    font-weight: bold !important;
+    font-family: 'Orbitron', 'Consolas', sans-serif !important;
+    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.search label {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.5) !important;
+}
+
+/* 検索条件年月セレクト */
+.search select#yearMonth {
+    width: auto !important;
+    min-width: 100px !important;
+    background-color: rgba(0, 10, 5, 0.9) !important;
+    border: 1px solid #00ff88 !important;
+    color: #ffffff !important;
+    font-family: 'Orbitron', 'Consolas', sans-serif !important;
+    padding: 3px 6px !important;
+    border-radius: 3px !important;
+    outline: none !important;
+}
+
+/* --------------------------------------------------
+ * 5. シフト入力テーブル (daysTable)
+ * -------------------------------------------------- */
+table.daysTable {
+    background-color: rgba(0, 15, 8, 0.9) !important;
+    border: 1px solid #00ff88 !important;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.25) !important;
+    border-collapse: collapse !important;
+    font-family: 'Orbitron', 'Consolas', monospace !important;
+    width: 100% !important;
+}
+
+/* ヘッダー固定 & スタイル */
+table.daysTable thead {
+    background-color: rgba(0, 40, 20, 0.98) !important;
+    border-bottom: 2px solid #00ff88 !important;
+    z-index: 10 !important;
+}
+
+table.daysTable tr.tableHeader td {
+    background-color: rgba(0, 40, 20, 0.95) !important;
+    color: #00ff88 !important;
+    font-weight: bold !important;
+    border: 1px solid rgba(0, 255, 136, 0.4) !important;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.8) !important;
+    padding: 6px 2px !important;
+}
+
+/* ヘッダー内 曜日文字色（HTML直書きインラインスタイルの上書き） */
+table.daysTable tr.tableHeader td span[style*="color: blue"],
+table.daysTable tr.tableHeader td span[style*="blue"] {
+    color: #00e5ff !important; /* 青曜日：ネオンシアン */
+    font-weight: bold !important;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.9) !important;
+}
+
+table.daysTable tr.tableHeader td span[style*="color: red"],
+table.daysTable tr.tableHeader td span[style*="red"] {
+    color: #ff3366 !important; /* 赤曜日：ネオンピンク/レッド */
+    font-weight: bold !important;
+    text-shadow: 0 0 8px rgba(255, 51, 102, 0.9) !important;
+}
+
+table.daysTable tr.tableHeader td span[style*="color: black"],
+table.daysTable tr.tableHeader td span[style*="black"] {
+    color: #ffffff !important; /* 平日：ホワイト */
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* データ行 & セル */
+table.daysTable tbody td.tableBody,
+table.daysTable tbody td {
+    background-color: rgba(0, 20, 10, 0.85) !important;
+    border: 1px solid rgba(0, 255, 136, 0.2) !important;
+    color: #ffffff !important;
+    font-family: 'Orbitron', 'Consolas', monospace !important;
+    padding: 3px 1px !important;
+}
+
+/* --------------------------------------------------
+ * 6. テーブル内シフト選択用 セレクトボックス (select)
+ * -------------------------------------------------- */
+#resize select,
+table.daysTable td select {
+    background-color: rgba(0, 15, 8, 0.95) !important;
+    border: 1px solid rgba(0, 255, 136, 0.5) !important;
+    color: #00ff88 !important;
+    font-family: 'Orbitron', 'Consolas', monospace !important;
+    font-weight: bold !important;
+    padding: 2px 0 !important;
+    border-radius: 2px !important;
+    text-align: center !important;
+    text-align-last: center !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+}
+
+/* セレクトボックス フォーカス時 */
+#resize select:focus,
+table.daysTable td select:focus {
+    border-color: #ffee00 !important;
+    box-shadow: 0 0 8px rgba(255, 238, 0, 0.8) !important;
+    color: #ffee00 !important;
+}
+
+/* セレクトボックスのドロップダウン選択肢 */
+select option {
+    background-color: #00140a !important;
+    color: #ffffff !important;
+}
+
+/* --------------------------------------------------
+ * 7. テーブル行ホバー時（緑発光 & 文字視認性保持）
+ * -------------------------------------------------- */
+table.daysTable tbody tr:hover td {
+    background-color: rgba(0, 100, 50, 0.45) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000 !important;
+}
+
+/* ホバー時の行内セレクトボックス背景透過感調整 */
+table.daysTable tbody tr:hover td select {
+    background-color: rgba(0, 30, 15, 0.9) !important;
+    border-color: #00ff88 !important;
+}
+
+/* --------------------------------------------------
+ * 8. フッター & スクロールバー
+ * -------------------------------------------------- */
+#footer {
+    margin-top: 15px !important;
+    padding-top: 10px !important;
+    border-top: 1px solid rgba(0, 255, 136, 0.2) !important;
+}
+
+/* サイバースクロールバー */
+table.daysTable tbody::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+table.daysTable tbody::-webkit-scrollbar-track {
+    background: rgba(0, 20, 10, 0.8);
+    border: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+table.daysTable tbody::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.8);
+}
+
+table.daysTable tbody::-webkit-scrollbar-thumb:hover {
+    background: #aaff00;
+    box-shadow: 0 0 12px rgba(170, 255, 0, 1);
+}
